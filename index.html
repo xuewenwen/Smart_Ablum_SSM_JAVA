@@ -1,0 +1,210 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>常用焦点图</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/swiper-4.1.0.min.css">
+</head>
+<body>
+<style>
+body {
+	padding: 0;
+	margin: 0;
+}
+
+.pc-slide {
+	width: 500px;
+	margin: 0 auto;
+}
+
+.view .swiper-container {
+	width: 500px;
+	height: 500px;
+}
+
+.view .arrow-left {
+	background: url(images/index_tab_l.png) no-repeat left top;
+	position: absolute;
+	left: 10px;
+	top: 50%;
+	margin-top: -25px;
+	width: 28px;
+	height: 51px;
+	z-index: 10;
+}
+
+.view .arrow-right {
+	background: url(images/index_tab_r.png) no-repeat left bottom;
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	margin-top: -25px;
+	width: 28px;
+	height: 51px;
+	z-index: 10;
+}
+
+.preview {
+	width: 100%;
+	margin-top: 10px;
+	position: relative;
+}
+
+.preview .swiper-container {
+	width: 430px;
+	height: 82px;
+	margin-left: 35px;
+}
+
+.preview .swiper-slide {
+	width: 87px;
+	height: 82px;
+	cursor:pointer;
+}
+
+.preview .slide6 {
+	width: 82px;
+}
+
+.preview .arrow-left {
+	background: url(images/feel3.png) no-repeat left top;
+	position: absolute;
+	left: 10px;
+	top: 50%;
+	margin-top: -9px;
+	width: 9px;
+	height: 18px;
+	z-index: 10;
+}
+
+.preview .arrow-right {
+	background: url(images/feel4.png) no-repeat left bottom;
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	margin-top: -9px;
+	width: 9px;
+	height: 18px;
+	z-index: 10;
+}
+
+.preview img {
+	padding: 1px;
+}
+
+.preview .active-nav img {
+	padding: 0;
+	border: 1px solid #F00;
+}
+</style>
+ <div class="pc-slide">
+	<div class="view">
+		<div class="swiper-container">
+			<a class="arrow-left" href="#"></a>
+			<a class="arrow-right" href="#"></a>
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<a href="http://bbs.swiper.com.cn/forum.php?mod=viewthread&tid=1598&extra=" target="_blank"><img src="images/b1.jpg" alt=""></a>
+				</div>
+				<div class="swiper-slide">
+					<a href="http://bbs.swiper.com.cn/forum.php?mod=viewthread&tid=1598&extra=" target="_blank"><img src="images/b2.jpg" alt=""></a>
+				</div>
+				<div class="swiper-slide">
+					<a href="http://bbs.swiper.com.cn/forum.php?mod=viewthread&tid=1598&extra=" target="_blank"><img src="images/b3.jpg" alt=""></a>
+				</div>
+				<div class="swiper-slide">
+					<a href="http://bbs.swiper.com.cn/forum.php?mod=viewthread&tid=1598&extra=" target="_blank"><img src="images/b4.jpg" alt=""></a>
+				</div>
+				<div class="swiper-slide">
+					<a href="http://bbs.swiper.com.cn/forum.php?mod=viewthread&tid=1598&extra=" target="_blank"><img src="images/b5.jpg" alt=""></a>
+				</div>
+				<div class="swiper-slide">
+					<a href="http://bbs.swiper.com.cn/forum.php?mod=viewthread&tid=1598&extra=" target="_blank"><img src="images/b6.jpg" alt=""></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="preview">
+		<a class="arrow-left" href="#"></a>
+		<a class="arrow-right" href="#"></a>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide active-nav">
+					<img src="images/s1.jpg" alt="">
+				</div>
+				<div class="swiper-slide">
+					<img src="images/s2.jpg" alt="">
+				</div>
+				<div class="swiper-slide">
+					<img src="images/s3.jpg" alt="">
+				</div>
+				<div class="swiper-slide">
+					<img src="images/s4.jpg" alt="">
+				</div>
+				<div class="swiper-slide">
+					<img src="images/s5.jpg" alt="">
+				</div>
+				<div class="swiper-slide slide6">
+					<img src="images/s6.jpg" alt="">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/swiper-4.1.0.min.js"></script>
+
+<script>
+var viewSwiper = new Swiper('.view .swiper-container', {
+	on:{
+		slideChangeTransitionStart: function() {
+		    updateNavPosition()
+	    }
+	}
+})
+
+$('.view .arrow-left,.preview .arrow-left').on('click', function(e) {
+	e.preventDefault()
+	if (viewSwiper.activeIndex == 0) {
+		viewSwiper.slideTo(viewSwiper.slides.length - 1, 1000);
+		return
+	}
+	viewSwiper.slidePrev()
+})
+$('.view .arrow-right,.preview .arrow-right').on('click', function(e) {
+	e.preventDefault()
+	if (viewSwiper.activeIndex == viewSwiper.slides.length - 1) {
+		viewSwiper.slideTo(0, 1000);
+		return
+	}
+	viewSwiper.slideNext()
+})
+
+var previewSwiper = new Swiper('.preview .swiper-container', {
+	//visibilityFullFit: true,
+	slidesPerView: 'auto',
+	allowTouchMove: false,
+	on:{
+		tap: function() {
+		    viewSwiper.slideTo(previewSwiper.clickedIndex)
+	  }
+	}
+})
+
+function updateNavPosition() {
+		$('.preview .active-nav').removeClass('active-nav')
+		var activeNav = $('.preview .swiper-slide').eq(viewSwiper.activeIndex).addClass('active-nav')
+		if (!activeNav.hasClass('swiper-slide-visible')) {
+			if (activeNav.index() > previewSwiper.activeIndex) {
+				var thumbsPerNav = Math.floor(previewSwiper.width / activeNav.width()) - 1
+				previewSwiper.slideTo(activeNav.index() - thumbsPerNav)
+			} else {
+				previewSwiper.slideTo(activeNav.index())
+			}
+		}
+	}
+</script>
+</body>
+</html>
