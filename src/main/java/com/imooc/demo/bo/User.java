@@ -5,36 +5,36 @@ import java.util.Date;
 import java.util.Locale;
 
 public class User {
-    private int user_id;
-    private String user_name;
-    private String password;
+    private int userId;
+    private String userName;
+    private String passWord;
     private String email;
-    private int user_state;
-    private int user_size;
-    private Date user_time;
+    private int userState;
+    private int userSize;
+    private Date userTime;
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public String getUser_name() {
-        return user_name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPassWord() {
+        return passWord;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
     }
 
     public String getEmail() {
@@ -45,40 +45,40 @@ public class User {
         this.email = email;
     }
 
-    public int getUser_state() {
-        return user_state;
+    public int getUserState() {
+        return userState;
     }
 
-    public void setUser_state(int user_state) {
-        this.user_state = user_state;
+    public void setUserState(int userState) {
+        this.userState = userState;
     }
 
-    public int getUser_size() {
-        return user_size;
+    public int getUserSize() {
+        return userSize;
     }
 
-    public void setUser_size(int user_size) {
-        this.user_size = user_size;
+    public void setUserSize(int userSize) {
+        this.userSize = userSize;
     }
 
-    public Date getUser_time() {
-        return user_time;
+    public Date getUserTime() {
+        return userTime;
     }
 
-    public void setUser_time(Date user_time) {
-        this.user_time = user_time;
+    public void setUserTime(Date userTime) {
+        this.userTime = userTime;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "user_id=" + user_id +
-                ", user_name='" + user_name + '\'' +
-                ", password='" + password + '\'' +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", passWord='" + passWord + '\'' +
                 ", email='" + email + '\'' +
-                ", user_state=" + user_state +
-                ", user_size=" + user_size +
-                ", user_time=" + user_time +
+                ", userState=" + userState +
+                ", userSize=" + userSize +
+                ", userTime=" + userTime +
                 '}';
     }
 }
