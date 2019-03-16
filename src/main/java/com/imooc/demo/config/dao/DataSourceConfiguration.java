@@ -24,7 +24,7 @@ public class DataSourceConfiguration {
 	private String jdbcUrl;
 	@Value("${jdbc.username}")
 	private String jdbcUsername;
-	@Value("123456")
+	@Value("3THSEbrSMcPth78A")
 	private String jdbcPassword;
 
 	/**

@@ -12,5 +12,5 @@
 		<setting name="useColumnLabel" value="true" />
 
 		<!-- 开启驼峰命名转换:Table{create_time} -> Entity{createTime} -->
-		111111110settings>
+		</settings>
 </configuration>
