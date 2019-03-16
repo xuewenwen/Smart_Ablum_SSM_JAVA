@@ -35,12 +35,12 @@
 		</set>
 		where area_id=#{areaId}
 	</update>
-	<delete id="deleteArea">
+	<update id="deleteUser">
 		DELETE FROM
 		tb_area
 		WHERE
 		area_id =
 		#{areaId}
-	</delete>
+	</update>
 </mapper>
     
