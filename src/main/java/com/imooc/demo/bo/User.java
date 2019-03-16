@@ -9,7 +9,7 @@ public class User {
     private String userName;
     private String userPassword;
     private String userEmail;
-    private int userState;
+    private int userStatus;
     private int userSize;
     private Date userRegisterTime;
     private Date userLastLoginTime;
@@ -32,12 +32,12 @@ public class User {
 
 
 
-    public int getUserState() {
-        return userState;
+    public int getUserStatus() {
+        return userStatus;
     }
 
-    public void setUserState(int userState) {
-        this.userState = userState;
+    public void setUserStatus(int userStatus) {
+        this.userStatus = userStatus;
     }
 
     public int getUserSize() {
@@ -87,7 +87,7 @@ public class User {
                 ", userName='" + userName + '\'' +
                 ", userPassword='" + userPassword + '\'' +
                 ", userEmail='" + userEmail + '\'' +
-                ", userState=" + userState +
+                ", userStatus=" + userStatus +
                 ", userSize=" + userSize +
                 ", userRegisterTime=" + userRegisterTime +
                 ", userLastLoginTime=" + userLastLoginTime +
