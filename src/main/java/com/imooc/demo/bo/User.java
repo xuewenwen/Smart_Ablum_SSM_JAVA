@@ -5,80 +5,92 @@ import java.util.Date;
 import java.util.Locale;
 
 public class User {
-    private int user_id;
-    private String user_name;
-    private String password;
-    private String email;
-    private int user_state;
-    private int user_size;
-    private Date user_time;
+    private int userId;
+    private String userName;
+    private String userPassword;
+    private String userEmail;
+    private int userStatus;
+    private int userSize;
+    private Date userRegisterTime;
+    private Date userLastLoginTime;
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public String getUser_name() {
-        return user_name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getPassword() {
-        return password;
+
+
+    public int getUserStatus() {
+        return userStatus;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUserStatus(int userStatus) {
+        this.userStatus = userStatus;
     }
 
-    public String getEmail() {
-        return email;
+    public int getUserSize() {
+        return userSize;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUserSize(int userSize) {
+        this.userSize = userSize;
     }
 
-    public int getUser_state() {
-        return user_state;
+    public String getUserPassword() {
+        return userPassword;
     }
 
-    public void setUser_state(int user_state) {
-        this.user_state = user_state;
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
-    public int getUser_size() {
-        return user_size;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setUser_size(int user_size) {
-        this.user_size = user_size;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
-    public Date getUser_time() {
-        return user_time;
+    public Date getUserRegisterTime() {
+        return userRegisterTime;
     }
 
-    public void setUser_time(Date user_time) {
-        this.user_time = user_time;
+    public void setUserRegisterTime(Date userRegisterTime) {
+        this.userRegisterTime = userRegisterTime;
+    }
+
+    public Date getUserLastLoginTime() {
+        return userLastLoginTime;
+    }
+
+    public void setUserLastLoginTime(Date userLastLoginTime) {
+        this.userLastLoginTime = userLastLoginTime;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "user_id=" + user_id +
-                ", user_name='" + user_name + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", user_state=" + user_state +
-                ", user_size=" + user_size +
-                ", user_time=" + user_time +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", userStatus=" + userStatus +
+                ", userSize=" + userSize +
+                ", userRegisterTime=" + userRegisterTime +
+                ", userLastLoginTime=" + userLastLoginTime +
                 '}';
     }
 }
