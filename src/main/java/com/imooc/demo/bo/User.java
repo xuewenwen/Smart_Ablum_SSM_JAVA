@@ -1,10 +1,9 @@
 package com.imooc.demo.bo;
-
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
+//user实体类
 
 public class User {
+
     private int userId;
     private String userName;
     private String userPassword;
@@ -30,7 +29,21 @@ public class User {
         this.userName = userName;
     }
 
+    public String getUserPassword() {
+        return userPassword;
+    }
 
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
 
     public int getUserStatus() {
         return userStatus;
@@ -48,22 +61,6 @@ public class User {
         this.userSize = userSize;
     }
 
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
-    }
-
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
     public Date getUserRegisterTime() {
         return userRegisterTime;
     }
@@ -79,6 +76,7 @@ public class User {
     public void setUserLastLoginTime(Date userLastLoginTime) {
         this.userLastLoginTime = userLastLoginTime;
     }
+
 
     @Override
     public String toString() {
