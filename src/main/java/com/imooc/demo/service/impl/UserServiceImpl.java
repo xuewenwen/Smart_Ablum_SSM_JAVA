@@ -1,5 +1,6 @@
 package com.imooc.demo.service.impl;
 
+import com.imooc.demo.bo.AlbumAndUser;
 import com.imooc.demo.bo.User;
 import com.imooc.demo.dao.UserDao;
 import com.imooc.demo.service.UserService;

@@ -1,5 +1,6 @@
 package com.imooc.demo.dao;
 
+import com.imooc.demo.bo.AlbumAndUser;
 import com.imooc.demo.bo.User;
 import org.apache.ibatis.annotations.Mapper;
 

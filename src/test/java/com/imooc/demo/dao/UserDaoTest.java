@@ -1,5 +1,6 @@
 package com.imooc.demo.dao;
 
+import com.imooc.demo.bo.AlbumAndUser;
 import com.imooc.demo.bo.User;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -21,6 +22,7 @@ public class UserDaoTest {
     @Test
     public void testUserSelectAll()throws Exception{
         List<User> userlist=userDao.UserSelectAll();
+        userlist.get(0);
         System.out.println(userlist);
     }
 

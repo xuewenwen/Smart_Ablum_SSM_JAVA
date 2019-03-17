@@ -2,15 +2,15 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.imooc.demo.dao.AreaDao">
-    <select id="selectAlbumByName" resultType="com.imooc.demo.bo.AlbumDao">
+<mapper namespace="com.imooc.demo.dao.AlbumDao">
+    <select id="selectAlbumByName" resultType="com.imooc.demo.bo.Album">
 		SELECT area_id, area_name,
 		priority, create_time, last_edit_time
 		FROM tb_area
 		ORDER BY priority
 		DESC
 	</select>
-    <select id="selectAlbumById" resultType="com.imooc.demo.bo.AlbumDao">
+    <select id="selectAlbumById" resultType="com.imooc.demo.bo.Album">
 		SELECT area_id, area_name,
 		priority, create_time, last_edit_time
 		FROM tb_area
@@ -18,7 +18,7 @@
 		area_id=#{areaId}
 	</select>
     <insert id="insertAlbum" useGeneratedKeys="true" keyProperty="areaId"
-            keyColumn="area_id" parameterType="com.imooc.demo.bo.AlbumDao">
+            keyColumn="area_id" parameterType="com.imooc.demo.bo.Album">
 		INSERT INTO
 		tb_area(area_name,priority,
 		create_time,last_edit_time)
@@ -32,7 +32,7 @@
 
 
     <!--以下全更新了-->
-    <update id="updateAlbum" parameterType="com.imooc.demo.bo.AlbumDao">
+    <update id="updateAlbum" parameterType="com.imooc.demo.bo.Album">
         update album
         <set>
             <if test="Album_name != null">Album_name=#{Album_name},</if>
