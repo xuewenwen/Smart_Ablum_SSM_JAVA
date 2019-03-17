@@ -10,6 +10,15 @@ public class Album {
     private String albumCover;
     private int userId;
     private String albumDescribtion;
+    private int albumNumOfPic;
+    public int getAlbumNumOfPic() {
+        return albumNumOfPic;
+    }
+
+    public void setAlbumNumOfPic(int albumNumOfPic) {
+        this.albumNumOfPic = albumNumOfPic;
+    }
+
 
     public int getAlbumId() {
         return albumId;
