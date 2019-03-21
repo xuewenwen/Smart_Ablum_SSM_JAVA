@@ -7,9 +7,9 @@
     <select id="UserSelectAll" resultType="com.imooc.demo.bo.User">
         select user_name,user_password from user
     </select>
-    <!--<select id="selectUserById" resultType="com.imooc.demo.bo.User">-->
-        <!--select * from user where user_id=#{userId}-->
-    <!--</select>-->
+    <select id="selectUserById" resultType="com.imooc.demo.bo.User">
+       select * from user where user_id=#{userId}
+    </select>
     <!--<select id="selectUserByName" resultType="com.imooc.demo.bo.User">-->
         <!--select * from user where user_name=#{userName}-->
     <!--</select>-->
@@ -20,15 +20,15 @@
 		<!--(#{userName},#{userPassword},#{userEmail},#{userStatus},#{userSize},#{userRegisterTime},#{userLastLoginTime}-->
 		<!--)-->
     <!--</insert>-->
-    <!--<update id="updateUser" parameterType="com.imooc.demo.bo.User">-->
-        <!--update user-->
-        <!--<set>-->
-            <!--<if test="userName != null">user_name=#{userName},</if>-->
-            <!--<if test="userPassword != null">user_password=#{userPassword},</if>-->
-            <!--<if test="userEmail != null">user_email=#{userEmail}</if>-->
-        <!--</set>-->
-        <!--where user_id=#{userId}-->
-    <!--</update>-->
+    <update id="updateUser" parameterType="com.imooc.demo.bo.User">
+        update user
+       <set>
+            <if test="userName != null">user_name=#{userName},</if>
+            <if test="userPassword != null">user_password=#{userPassword},</if>
+        <!--    <if test="userEmail != null">user_email=#{userEmail}</if>-->
+        </set>
+        where user_id=#{userId}
+    </update>
     <!--<update id="BanUser" parameterType="com.imooc.demo.bo.User">-->
 		<!--update user-->
         <!--<set>-->

@@ -18,7 +18,14 @@ public interface UserDao {
      *
      * @return user
      */
-    User queryUserById(String userID);
+    User selectUserById(String userID);
+
+    void UpdateUser(User user);//更新用户
+
+
+
+
+
     /**
      * 根据用户名找到具体用户
      *
