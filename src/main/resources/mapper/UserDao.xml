@@ -4,10 +4,20 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.imooc.demo.dao.UserDao">
     <!--显示所有的用户信息包括相册表的相册数统计-->
-    <select id="UserSelectAll" resultType="com.imooc.demo.bo.User">
-        select user_name,user_password from user
+    <select id="userSelectAll" resultType="java.util.HashMap">
+        select user.user_id,user_name,user_email,sum(album_num_of_pic) as 'count',user_size,user_last_login_time,user_status
+        from user,album
+        where user.user_id=album.user_id
+        GROUP BY user.user_id
     </select>
-    <select id="selectUserById" resultType="com.imooc.demo.bo.User">
+    <!--根据用户id进行搜索-->
+    <select id="selectUserById" resultType="java.util.HashMap" parameterType="java.lang.Integer">
+        select user.user_id,user_name,user_email,sum(album_num_of_pic) as 'count',user_size,user_last_login_time,user_status
+        from user,album
+        where user.user_id=album.user_id AND user.user_id=#{id}
+        GROUP BY user.user_id
+    </select>
+    <select id="selectUserByName" resultType="com.imooc.demo.bo.User">
        select * from user where user_id=#{userId}
     </select>
     <!--<select id="selectUserByName" resultType="com.imooc.demo.bo.User">-->
