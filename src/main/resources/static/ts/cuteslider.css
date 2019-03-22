@@ -1,0 +1,226 @@
+/* Global styles */
+
+.cute-slider {
+	position: relative;
+	visibility: hidden;
+	overflow: hidden;
+}
+
+.cute-ie8 *,
+.cute-ie7 * {
+	filter: inherit;
+	opacity: inherit;
+}
+
+/* Slider Controls */
+
+.br-controls {
+	position: absolute;
+	z-index: 10;
+}
+
+.br-next,
+.br-previous,
+.br-slidecontrol,
+.br-thumb-bottom .br-thumb-img,
+.br-thumb-up .br-thumb-img,
+.br-thumblist {
+	position: absolute;
+}
+
+.br-slidecontrol {
+	list-style: none;
+	cursor: auto !important;
+}
+
+	.br-slidecontrol ul {
+		margin: 0px;
+		padding: 0px;
+		height: 0px;
+	}
+
+	.br-slidecontrol ul li {
+		display: block;
+		position: relative;
+		float: left;
+		cursor: pointer !important;
+	}
+
+	.br-slidecontrol ul li .br-control-selected {
+		display: none;
+	}
+
+.br-thumb-bottom,
+.br-thumb-up {
+	position: relative;
+}
+
+.br-thumblist {
+	width: 100%;
+	text-align: center;
+	height: 0px;
+	left: 0px;
+	bottom: 0px;
+}
+
+.br-thumblist-frame {
+	overflow: hidden;
+	position: relative;	
+}
+
+.br-list-thumb {
+	display: inline-block;
+	overflow: hidden;
+}
+
+.br-thumblist-content .br-list-thumb img {
+	cursor: pointer !important;
+}
+
+.br-thumb-img img {
+	height: 100% !important;
+}
+
+.br-slideinfo .top,
+.br-slideinfo .bottom {
+	width: 100%;
+}
+
+.br-slideinfo .right,
+.br-slideinfo .left {
+	height: 100%;
+}
+
+.br-slideinfo .more-btn {
+	cursor: pointer !important;
+	display: block;
+	position: relative;
+	text-decoration: none;
+}
+
+.br-slideinfo .subtitle,
+.br-slideinfo .title,
+.br-slideinfo .text {
+	display: block;
+}
+
+/* Slider Timer */
+
+.br-circle-timer,
+.br-circle-timer .br-timer-dot,
+.br-bar-timer,
+.br-bar-timer .br-timer-bar {
+	position: absolute !important;
+}
+
+.br-circle-timer .br-timer-dot {
+	left: 50% !important;
+	top: 50% !important;
+}
+
+/* Slider Captions */
+
+.br-captions div {
+	position: absolute;
+	text-shadow: none;
+}
+
+/* Slider Video */
+
+.br-video .play-btn,
+.br-video .close-btn {
+	background-repeat: no-repeat;
+	cursor: pointer !important;
+	position: absolute;
+}
+
+.br-video .video-cont {
+	position: absolute;
+	z-index: 2;
+}
+
+.cute-ie8 .video-cont,
+.cute-ie7 .video-cont {
+	z-index: auto !important;
+}
+
+/* Slider Shadow */
+
+.cute-shadow {
+	width: 100%;
+}
+
+.cute-shadow img {
+	max-width: 100%;
+}
+
+/* Slider Loading */
+
+.br-loading {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 101;
+}
+
+.br-large-loading {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 100;	
+}
+
+.br-loading .img,
+.br-large-loading .img {
+	width: 100%;
+	height: 100%;
+}
+
+/* Trying to remove all the default global styles of WordPress :) */
+
+.cute-slider img {
+	max-width: none !important;
+}
+
+.cute-slider img,
+.entry-content .cute-slider img,
+.comment-content .cute-slider img,
+.widget .cute-slider img,
+.cute-shadow img,
+.entry-content .cute-shadow img,
+.comment-content .cute-shadow img,
+.widget .cute-shadow img {
+	border-radius: 0px;
+	box-shadow: none;
+	border: 0px;
+	margin: 0px;
+}
+
+.entry-content .cute-slider li,
+.comment-content .cute-slider li,
+.widget .cute-slider li {
+	margin: 0px !important;
+}
+
+.cute-slider br.clear {
+	clear: both;
+}
+
+.cute-slider .top div ,
+.cute-slider .right div,
+.cute-slider .bottom div,
+.cute-slider .left div {
+	padding: 20px !important;
+}
+
+.br-infocontent .title {
+	background: none !important;
+	margin: 0px !important;
+	padding: 0px !important;
+}
+
+.br-infocontent .text {
+	text-align: justify;	
+	margin: 10px 0px 0px 0px !important;
+	padding: 0px !important;
+}
