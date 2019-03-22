@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
@@ -21,8 +23,12 @@ public class UserDaoTest {
     private UserDao userDao;
     @Test
     public void testUserSelectAll()throws Exception{
-        List<User> userlist=userDao.UserSelectAll();
-        userlist.get(0);
+        List<Map<String,Object>> userlist=userDao.userSelectAll();
+        System.out.println(userlist);
+    }
+    @Test
+    public void testselectUserById()throws Exception{
+        Map<String,Object> userlist=userDao.selectUserById(1);
         System.out.println(userlist);
     }
 

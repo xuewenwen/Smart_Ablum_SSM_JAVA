@@ -12,7 +12,7 @@ public class GloBalImp implements GlobalService {
     public UserDao userDao;
     @Override
     public User login(String username, String userpassword) {
-        User user = userDao.selectUserById(username);
+        User user = userDao.selectUserByName(username);
         if (user != null && user.getUserPassword().equals(userpassword)) {
             return user;
         }

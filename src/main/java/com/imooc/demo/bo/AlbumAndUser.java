@@ -1,18 +1,10 @@
 package com.imooc.demo.bo;
 //相册表和用户表的结合即vo层
 public class AlbumAndUser {
-    private int userId;
+    private Integer userId;
     private String userName;
     private String userEmail;
-    private int albumNumOfPic;
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
+    private Integer albumNumOfPic;
 
     public String getUserName() {
         return userName;
@@ -30,11 +22,19 @@ public class AlbumAndUser {
         this.userEmail = userEmail;
     }
 
-    public int getAlbumNumOfPic() {
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public Integer getAlbumNumOfPic() {
         return albumNumOfPic;
     }
 
-    public void setAlbumNumOfPic(int albumNumOfPic) {
+    public void setAlbumNumOfPic(Integer albumNumOfPic) {
         this.albumNumOfPic = albumNumOfPic;
     }
 

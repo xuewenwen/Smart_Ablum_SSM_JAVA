@@ -4,34 +4,23 @@ import com.imooc.demo.bo.AlbumAndUser;
 import com.imooc.demo.bo.User;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 @Mapper
 public interface UserDao {
-    /**
-     * 列出用户列表
-     *
-     * @return areaList
-     */
-    public List<User> UserSelectAll() throws Exception;
-    /**
-     * 用ID找具体用户
-     *
-     * @return user
-     */
-    User selectUserById(String userID);
+    public List<Map<String,Object>> userSelectAll() throws Exception;
+
+    public Map<String,Object> selectUserById(Integer id) throws Exception;
+
+    User selectUserByName(String userID);
 
     void UpdateUser(User user);//更新用户
 
-
-
-
-
-    /**
-     * 根据用户名找到具体用户
-     *
-     * @return user
-     */
-    User queryUserByName(String userName);
-
-    int insertUser();
+//    User queryUserById(String userID);
+//
+//    User queryUserByName(String userName);
+//
+//    int insertUser();
 }
