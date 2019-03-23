@@ -10,5 +10,6 @@ public class Hello {
 	public String hello() {
 		//返回Hello SpringBoot!
 		return "Hello SpringBoot!";
+
 	}
 }

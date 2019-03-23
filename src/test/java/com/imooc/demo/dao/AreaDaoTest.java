@@ -34,7 +34,7 @@ public class AreaDaoTest {
 	public void testBInsertArea() {
 		//创建一个区域对象
 		Area area = new Area();
-		area.setAreaName("测试区域");
+		area.setAreaName("测试区域1");
 		area.setCreateTime(new Date());
 		area.setPriority(1);
 		//将该对象实例添加入库
