@@ -95,4 +95,20 @@ public class Picture {
     public void setPictureDescribtion(String pictureDescribtion) {
         this.pictureDescribtion = pictureDescribtion;
     }
+
+    @Override
+    public String toString() {
+        return "Picture{" +
+                "pictureId=" + pictureId +
+                ", albumId=" + albumId +
+                ", pictureName='" + pictureName + '\'' +
+                ", pictureCreateTime=" + pictureCreateTime +
+                ", pictureUrl='" + pictureUrl + '\'' +
+                ", pictureTag='" + pictureTag + '\'' +
+                ", pictureSize=" + pictureSize +
+                ", pictureStatus=" + pictureStatus +
+                ", pictureThumbnaill='" + pictureThumbnaill + '\'' +
+                ", pictureDescribtion='" + pictureDescribtion + '\'' +
+                '}';
+    }
 }

@@ -35,10 +35,16 @@ public class UserController {
         //return model;
     }
 
-    @RequestMapping("/user/selectById/{id}")
+    @RequestMapping("/user/selectById")
     //   @ResponseBody
-    public String selectUserById(@PathVariable Integer id, ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception{
-
+    public String selectUserById(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+        //@RequestParam(value = "id") Integer id,
+        Integer id = null;
+        try {
+            id= Integer.parseInt(request.getParameter("id"));
+        } catch (NumberFormatException e) {
+            return "";
+        }
         Map<String,Object> map=userService.selectUserById(id);
         model.addAttribute("user",map);
         return "/user/searchResult";

@@ -22,25 +22,25 @@
     <title>Title</title>
     <script>
         function judgment() {
-            var a=document.getElementById("userId").value;
-            var i = parseInt(a)
-            if(a!=null && a!="" && !isNaN(i)){
-                window.location.href = "/user/selectById?id="+i;
+            var a=document.getElementById("tagName").value;
+            //var i = parseInt(a)
+            if(a!=null && a!="" ){
+                window.location.href = "/picture/search/"+a;
                 //alert(a);
             }
             else {
-                alert("未输入正确ID");
+                alert("输入异常");
             }
-           // alert(a);
+            // alert(a);
         }
     </script>
 </head>
 <body>
 <form class="form-horizontal">
     <div class="form-group">
-        <label for="userId" class="col-sm-2 control-label">搜索（按用户ID搜索）</label>
+        <label for="tagName" class="col-sm-2 control-label">搜索（根据tag）</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="userId" placeholder="text">
+            <input type="text" class="form-control" id="tagName" placeholder="text">
         </div>
     </div>
     <div class="form-group">
