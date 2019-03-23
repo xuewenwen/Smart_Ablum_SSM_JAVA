@@ -25,5 +25,5 @@ public interface UserDao {
      */
     User queryUserByName(String userName);
 
-    int insertUser();
+    int insertUser(User user);
 }

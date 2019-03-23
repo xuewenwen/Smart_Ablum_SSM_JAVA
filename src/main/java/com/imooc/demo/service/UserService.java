@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface UserService {
     public List<User> UserSelectAll()throws Exception;
-
+    public void SaveUser()throws Exception;
 }

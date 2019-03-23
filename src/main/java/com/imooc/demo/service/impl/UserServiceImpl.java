@@ -15,4 +15,8 @@ public class UserServiceImpl implements UserService {
     public List<User> UserSelectAll() throws Exception {
         return userDao.UserSelectAll();
     }
+    @Override
+    public void SaveUser(User user)throws Exception{
+        userDao.insertUser();
+    }
 }

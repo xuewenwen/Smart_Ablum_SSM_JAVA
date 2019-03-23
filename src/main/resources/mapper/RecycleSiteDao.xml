@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imooc.demo.dao.RecycleSiteDao">
+    <select id="queryRecycleSiteAll" resultType="com.imooc.demo.bo.RecycleSite">
+        select * from recycle_site ORDER BY pic_delete_time DESC;
+    </select>
+    <select id="queryRecycleSiteById" resultType="com.imooc.demo.bo.RecycleSite">
+        select * from recycle_site where user_id=#{userId}
+    </select>
+    <insert id="insertRecycleSite" useGeneratedKeys="true" keyProperty="RecycleSite">
+        insert into user(picture_id,user_id,pic_delete_time)
+		VALUES
+		(#{pictureId},#{userId},#{picDeleteTime}
+		)
+    </insert>
+
+    <delete id="restoreBackAlbum" parameterType="com.imooc.demo.bo.RecycleSite">
+		DELETE FROM
+		recycleSite
+		WHERE
+		area_id =
+		#{areaId}
+    </delete>
+</mapper>
