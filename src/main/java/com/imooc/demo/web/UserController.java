@@ -31,7 +31,7 @@ public class UserController {
     @RequestMapping(value="/user/search")
     //   @ResponseBody
     public String Search(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception{
-        return "/user/search";
+        return "/admin";
         //return model;
     }
 
