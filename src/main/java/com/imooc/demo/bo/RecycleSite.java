@@ -41,4 +41,13 @@ public class RecycleSite {
 
     private Date pictureDeleteTime;
 
+    @Override
+    public String toString() {
+        return "RecycleSite{" +
+                "recycleId=" + recycleId +
+                ", pictureId=" + pictureId +
+                ", userId=" + userId +
+                ", pictureDeleteTime=" + pictureDeleteTime +
+                '}';
+    }
 }

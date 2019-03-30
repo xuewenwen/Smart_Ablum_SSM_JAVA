@@ -24,7 +24,7 @@
 </head>
 <body>
 <form name="userList" >
-    <table border="1" align="center" class="table table-striped">
+    <table width="88%" border="1" align="right" style="text-align:center;vertical-align:middle;">
         <tr>
             <td>ID</td>
             <td>用户名</td>
@@ -34,6 +34,7 @@
             <td>最后登录时间</td>
             <td>用户状态</td>
         </tr>
+        <c:forEach items="${user}" var="user" >
         <tr align="center">
             <%--<td>${user.USER_ID}</td>--%>
             <td><c:out value="${user.user_id}"></c:out></td>
@@ -52,8 +53,17 @@
                     <c:if test="${user.user_status==2}">
                         <button type="button" class="btn btn-success">解封</button>
                     </c:if>
+
+
                 </td>
+            <%--<td>${user.USER_NAME}</td>--%>
+            <%--<td>${user.USER_EMAIL}</td>--%>
+            <%--<td>${user.COUNT}</td>--%>
+            <%--<td>${user.USER_SIZE}</td>--%>
+            <%--<td>${user.USER_LAST_LOGIN_TIME}</td>--%>
         </tr>
+
+        </c:forEach>
     </table>
 </form>
 

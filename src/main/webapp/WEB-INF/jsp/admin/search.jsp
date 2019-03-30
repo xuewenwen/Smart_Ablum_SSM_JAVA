@@ -25,7 +25,7 @@
             var a=document.getElementById("userId").value;
             var i = parseInt(a)
             if(a!=null && a!="" && !isNaN(i)){
-                window.location.href = "/user/selectById?id="+i;
+                window.location.href = "/admin/selectById?id="+i;
                 //alert(a);
             }
             else {
