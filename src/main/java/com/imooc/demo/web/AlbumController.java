@@ -18,13 +18,17 @@ public class AlbumController {
     @Autowired
     private AlbumService albumService;
 
-    @RequestMapping("/album/show")
+    @RequestMapping("/list")
+    public String list(ModelMap model, HttpServletRequest request, HttpServletResponse response )throws Exception {
+        return "list";
+    }
+    @RequestMapping("/albumList")
     public String listAlbum(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception{
         HttpSession session = request.getSession();
         User user=(User)session.getAttribute("user");
         int id = user.getUserId();
         List<Album> list = albumService.selectAlbumByUserId(id);
         model.addAttribute("album",list);
-        return "/album/show";
+        return "/albumList";
     }
 }

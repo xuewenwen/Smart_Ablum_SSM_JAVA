@@ -33,6 +33,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous">
   <link href="../themes/explorer-fas/theme.css" media="all" rel="stylesheet" type="text/css" />
 
+  <script src="/js/jquery.min.js"></script>
 </head>
 
 <body class="admin-validation-page" data-spy="scroll" data-target="#nav-spy" data-offset="200">
@@ -245,48 +246,28 @@
               </div>
               <!-- message listings table -->
 
+              <script>
+                function list() {
+                  $.ajax({
+                    type:"GET",
+                    url:"/albumList",
+                    success: function(html){
+                      $("#list").html(html);
+                    },
+                    error:function () {
+                      $("#list").html("加载失败，请刷新重试！");
+                    }
+                  });
+                }
+                $(function() {
+                  list();
+                })
+              </script>
               <div class="panel-body pn">
-                <div class="row">
-                  <div class="col-xs-6 col-md-3">
-                    <a href="#" class="thumbnail">
-                      <img src="assets/img/avatars/3.jpg" alt="...">
-                    </a>
-                  </div>
-                  <div class="col-xs-6 col-md-3">
-                    <a href="#" class="thumbnail" style="text-align:center;">
-                      <img src="assets/img/avatars/3.jpg" alt="...">
-                      SSA
-                    </a>
-                  </div>
-                  <div class="col-xs-6 col-md-3">
-                    <a href="#" class="thumbnail">
-                      <img src="assets/img/avatars/3.jpg" alt="...">
-                    </a>
-                  </div>
-                  <div class="col-xs-6 col-md-3">
-                    <a href="#" class="thumbnail" style="text-align:center;">
-                      <img src="assets/img/avatars/3.jpg" alt="...">
-                      SSA
-                    </a>
-                  </div>
-                  <div class="col-xs-6 col-md-3">
-                    <a href="#" class="thumbnail">
-                      <img src="assets/img/avatars/3.jpg" alt="...">
-                    </a>
-                  </div>
-                  <div class="col-xs-6 col-md-3">
-                    <a href="#" class="thumbnail" style="text-align:center;">
-                      <img src="assets/img/avatars/3.jpg" alt="...">
-                      SSA
-                    </a>
-                  </div>
-                  ...
+                <div id="list">
+                  正在加载...
                 </div>
-              </div>
-
-
               <!-- end: .admin-form -->
-
             </div>
             <!-- end: .tray-center -->
       </section>
