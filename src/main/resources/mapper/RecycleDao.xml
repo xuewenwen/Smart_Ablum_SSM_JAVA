@@ -26,6 +26,17 @@
     <delete id="deleteRecycleById">
         DELETE FROM recycle_site WHERE recycle_id=#{id}
     </delete>
+    <!--将删除的那条记录的图片id保存下来-->
+    <select id="selectRecyclePictureId" resultType="java.lang.Integer">
+        SELECT recycle_site.picture_id
+        FROM recycle_site
+        WHERE recycle_id=#{id}
+    </select>
+
+    <delete id="deletePictureById">
+        DELETE FROM picture
+        WHERE picture.picture_id=#{id}
+    </delete>
 
 
 

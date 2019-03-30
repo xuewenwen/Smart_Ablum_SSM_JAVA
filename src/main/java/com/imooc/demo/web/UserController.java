@@ -26,13 +26,6 @@ public class UserController {
        return "/admin/show";
     }
 
-//    @RequestMapping(value="/admin/search")
-//    //   @ResponseBody
-//    public String Search(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception{
-//        return "/admin/search";
-//        //return model;
-//    }
-
     @RequestMapping("/admin/selectById")
     public String selectUserById(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception{
         Integer id = null;

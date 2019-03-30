@@ -18,13 +18,20 @@ public class RecycleServiceImpl implements RecycleService {
 
     @Override
     public void updatePictureStatus(Integer id) throws Exception {
+        //更新照片的状态
         recycleDao.updatePictureStatus(id);
+        //删除回收站中的记录
         recycleDao.deleteRecycleById(id);
     }
 
     @Override
     public void deleteRecycleById(Integer id) throws Exception {
+        //获取到回收站中照片id
+        Integer picture_id = recycleDao.selectRecyclePictureId(id);
+        //删除回收站的记录
         recycleDao.deleteRecycleById(id);
+        //删除照片中的记录
+        recycleDao.deletePictureById(picture_id);
     }
 
 }
