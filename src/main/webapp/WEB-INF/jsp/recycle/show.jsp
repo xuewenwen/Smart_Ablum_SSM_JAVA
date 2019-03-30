@@ -36,6 +36,31 @@
             });
         }
     </script>
+    <script>
+        function fun1() {
+            var obj = document.getElementsByName("picture");
+            var check_val = [];
+            for(var k in obj){
+                if(obj[k].checked)
+                    check_val.push(obj[k].value);
+            }
+            var str = check_val.join(",");
+            $.ajax({
+                type:"POST",
+                url:"/recycle/removePicture",
+                contentType:false,
+                dataType:"text",
+                data:str,
+                success: function(data){
+                    list();
+                    console.log(data);
+                },
+                error:function () {
+                    alert("错误");
+                }
+            });
+        }
+    </script>
 </head>
 <body>
 <div id="list">
@@ -61,6 +86,6 @@
         list();
     })
 </script>
-<input >
+<input type="button" value="彻底删除" onclick="fun1()">
 </body>
 </html>

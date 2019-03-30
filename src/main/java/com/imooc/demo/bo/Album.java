@@ -67,4 +67,17 @@ public class Album {
     public void setAlbumDescribtion(String albumDescribtion) {
         this.albumDescribtion = albumDescribtion;
     }
+
+    @Override
+    public String toString() {
+        return "Album{" +
+                "albumId=" + albumId +
+                ", albumName='" + albumName + '\'' +
+                ", albumCreateTime=" + albumCreateTime +
+                ", albumCover='" + albumCover + '\'' +
+                ", userId=" + userId +
+                ", albumDescribtion='" + albumDescribtion + '\'' +
+                ", albumNumOfPic=" + albumNumOfPic +
+                '}';
+    }
 }

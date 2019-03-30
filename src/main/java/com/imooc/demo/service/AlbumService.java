@@ -1,12 +1,10 @@
-package com.imooc.demo.dao;
+package com.imooc.demo.service;
 
 import com.imooc.demo.bo.Album;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-@Mapper
-public interface AlbumDao {
+public interface AlbumService {
     public List<Album> selectAlbumByUserId(@Param("id") Integer id) throws Exception;
 }

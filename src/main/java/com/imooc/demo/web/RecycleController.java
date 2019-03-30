@@ -21,14 +21,14 @@ public class RecycleController {
     @Autowired
     private RecycleService recycleService;
 
-    @RequestMapping("/recycle/show")
+    @RequestMapping("/recycle/recycle")
     public String showAllRecyclePicture(ModelMap model, HttpServletRequest request, HttpServletResponse response )throws Exception {
         /*HttpSession session = request.getSession();
         User user=(User)session.getAttribute("user");
         int id = user.getUserId();
         List<Map<String,Object>> list = recycleService.selectAllPicture(id);
         model.addAttribute("recycle",list);*/
-        return "/recycle/show";
+        return "/recycle/recycle";
     }
 
     @RequestMapping("/recycle/list")
@@ -41,6 +41,7 @@ public class RecycleController {
         return "/recycle/list";
     }
 
+    //将回收站的照片移回到原来的相册中
     @RequestMapping("/recycle/remove")
     public void removePicture(@RequestBody String str, ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception{
 
@@ -48,6 +49,15 @@ public class RecycleController {
         for(int i=0;i<arr.length;i++){
             int j =Integer.parseInt(arr[i]);
             recycleService.updatePictureStatus(j);
+        }
+    }
+    //将回收站的照片彻底删除，同时删除照片表里面的记录
+    @RequestMapping("/recycle/removePicture")
+    public void removePictureCompletely(@RequestBody String str, ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+        String[] arr = str.split(",");
+        for(int i=0;i<arr.length;i++){
+            int j =Integer.parseInt(arr[i]);
+            recycleService.deleteRecycleById(j);
         }
     }
 }

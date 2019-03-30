@@ -15,13 +15,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Theme CSS -->
-  <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">
+  <link rel="stylesheet" type="text/css" href="../assets/skin/default_skin/css/theme.css">
 
   <!-- Admin Forms CSS -->
-  <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.css">
+  <link rel="stylesheet" type="text/css" href="../assets/admin-tools/admin-forms/css/admin-forms.css">
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="assets/img/favicon.ico">
+  <link rel="shortcut icon" href="../assets/img/favicon.ico">
   
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -33,6 +33,74 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous">
   <link href="../themes/explorer-fas/theme.css" media="all" rel="stylesheet" type="text/css" />
 
+  <script src="/js/jquery.min.js"></script>
+  <script>
+    function fun() {
+      var obj = document.getElementsByName("picture");
+      var check_val = [];
+      for(var k in obj){
+        if(obj[k].checked)
+          check_val.push(obj[k].value);
+      }
+      var str = check_val.join(",");
+      $.ajax({
+        type:"POST",
+        url:"/recycle/remove",
+        contentType:false,
+        dataType:"text",
+        data:str,
+        success: function(data){
+          list();
+          console.log(data);
+        },
+        error:function () {
+          alert("错误");
+        }
+      });
+    }
+  </script>
+  <script>
+    function fun1() {
+      var obj = document.getElementsByName("picture");
+      var check_val = [];
+      for(var k in obj){
+        if(obj[k].checked)
+          check_val.push(obj[k].value);
+      }
+      var str = check_val.join(",");
+      $.ajax({
+        type:"POST",
+        url:"/recycle/removePicture",
+        contentType:false,
+        dataType:"text",
+        data:str,
+        success: function(data){
+          list();
+          console.log(data);
+        },
+        error:function () {
+          alert("错误");
+        }
+      });
+    }
+  </script>
+  <script>
+    function list() {
+      $.ajax({
+        type:"GET",
+        url:"/recycle/list",
+        success: function(html){
+          $("#list").html(html);
+        },
+        error:function () {
+          $("#list").html("加载失败，请刷新重试！");
+        }
+      });
+    }
+    $(function() {
+      list();
+    })
+  </script>
 </head>
 
 <body class="admin-validation-page" data-spy="scroll" data-target="#nav-spy" data-offset="200">
@@ -190,10 +258,12 @@
                 <div class="row">
                   <div class="hidden-xs hidden-sm col-md-3">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-default light ">
+                      <!--返回-->
+                      <button type="button" class="btn btn-default light " onclick="fun()">
                         <i class="fa fa-refresh"></i>
                       </button>
-                      <button type="button" class="btn btn-default light">
+                      <!--删除-->
+                      <button type="button" class="btn btn-default light" onclick="fun1()">
                         <i class="fa fa-trash"></i>
                       </button>
                     
@@ -244,32 +314,23 @@
               <!-- message listings table -->
 
               <div class="panel-body pn">
-                <div class="row">
-                   
+                <div class="row" id="list">
+                   <!--图-->
+                  正在加载...
 
-                  <div class="col-xs-6 col-md-3">
-                    <a href="#" class="thumbnail" style="text-align:center";>
-                        <label class="option block mn" style="text-align:left">
-                            <input type="checkbox" name="mobileos" value="FR">
-                            <span class="checkbox mn"></span>
-                          </label>
-                      <img src="assets/img/avatars/3.jpg" alt="...">
-                      SSa
-                    </a>
-                  </div>
-                  
-                  <div class="col-xs-6 col-md-3">
-                      <a href="#" class="thumbnail" style="text-align:center";>
-                          <label class="option block mn" style="text-align:left">
-                              <input type="checkbox" name="mobileos" value="FR">
-                              <span class="checkbox mn"></span>
-                            </label>
-                        <img src="assets/img/avatars/3.jpg" alt="...">
-                        AAB
-                      </a>
-                    </div>
-                 
-                  ...
+                  <%--<div class="col-xs-6 col-md-3">--%>
+                    <%--<a href="#" class="thumbnail" style="text-align:center";>--%>
+                        <%--<label class="option block mn" style="text-align:left">--%>
+                            <%--<input type="checkbox" name="mobileos" value="FR">--%>
+                            <%--<span class="checkbox mn"></span>--%>
+                          <%--</label>--%>
+                      <%--<img src="assets/img/avatars/3.jpg" alt="...">--%>
+                      <%--SSa--%>
+                    <%--</a>--%>
+                  <%--</div>--%>
+
+                 <%----%>
+                  <%--...--%>
                 </div>
               </div>
 
@@ -339,15 +400,15 @@
   <script src="assets/admin-tools/admin-forms/js/additional-methods.min.js"></script>
 
   <!-- AdminForms JS -->
-  <script src="assets/admin-tools/admin-forms/js/jquery-ui-datepicker.min.js"></script>
+  <script src="../assets/admin-tools/admin-forms/js/jquery-ui-datepicker.min.js"></script>
 
   <!-- Theme Javascript -->
-  <script src="assets/js/utility/utility.js"></script>
-  <script src="assets/js/demo/demo.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script src="../assets/js/utility/utility.js"></script>
+  <script src="../assets/js/demo/demo.js"></script>
+  <script src="../assets/js/main.js"></script>
   <!-- END: PAGE SCRIPTS -->
-  <script type="text/javascript" src="js/pages.js"></script>
-  <script type="text/javascript" src="js/items.js"></script>
+  <script type="text/javascript" src="../js/pages.js"></script>
+  <script type="text/javascript" src="../js/items.js"></script>
   <!-- END: PAGE SCRIPTS -->
   <script src="../js/plugins/piexif.js" type="text/javascript"></script>
   <script src="../js/plugins/sortable.js" type="text/javascript"></script>
