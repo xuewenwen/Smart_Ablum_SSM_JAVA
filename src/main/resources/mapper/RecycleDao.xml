@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imooc.demo.dao.RecycleDao">
+    <!--查找指定用户的所有的回收站照片-->
+    <select id="selectAllPicture" resultType="java.util.HashMap" >
+        SELECT picture.picture_url,recycle_site.recycle_id
+        FROM recycle_site,picture,album,user
+        WHERE picture.picture_id=recycle_site.picture_id AND picture.album_id=album.album_id
+                AND album.user_id=`user`.user_id AND `user`.user_id=#{id} AND picture.picture_status=0
+    </select>
+    <!--将回收站照片移回原始相册-->
+    <!--1.通过回收站的照片id找到其在picture表的位置，更改其状态从0变为1-->
+    <update id="updatePictureStatus">
+        UPDATE picture
+        SET picture.picture_status=1
+        WHERE picture.picture_id=(
+            SELECT recycle_site.picture_id
+            FROM recycle_site
+            WHERE recycle_site.recycle_id=#{id}
+        )
+    </update>
+    <!--2.将相关的记录给从回收站中删除-->
+    <!--也可以当作将回收站的照片彻底删除的功能-->
+    <delete id="deleteRecycleById">
+        DELETE FROM recycle_site WHERE recycle_id=#{id}
+    </delete>
+
+
+
+
+</mapper>

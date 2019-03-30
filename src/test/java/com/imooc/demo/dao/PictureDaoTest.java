@@ -21,7 +21,7 @@ public class PictureDaoTest {
     @Test
     public void TestselectUrlByTagName() throws Exception{
         //System.out.println(pictureDao.selectUrlByTagName("天空"));
-        List<String> list=pictureDao.selectUrlByTagName("天空");
+        List<String> list=pictureDao.selectUrlByTagName("天空",1);
         System.out.println(list);
     }
 

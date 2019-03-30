@@ -13,7 +13,7 @@ public class PictureServiceImpl implements PictureService {
     PictureDao pictureDao;
 
     @Override
-    public List<String> selectUrlByTagName(String tagName) {
-        return pictureDao.selectUrlByTagName(tagName);
+    public List<String> selectUrlByTagName(String tagName,Integer id) {
+        return pictureDao.selectUrlByTagName(tagName,id);
     }
 }
