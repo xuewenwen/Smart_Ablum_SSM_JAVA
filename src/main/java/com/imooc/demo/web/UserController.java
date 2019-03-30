@@ -19,26 +19,15 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/user/show")
- //   @ResponseBody
-    public ModelMap listUser(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+    @RequestMapping("/admin/show")
+    public String listUser(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception{
         List<Map<String,Object>> list=userService.userSelectAll();
         model.addAttribute("user",list);
-       return model;
-     // return "user/show";
+       return "/admin/show";
     }
 
-    @RequestMapping(value="/user/search")
-    //   @ResponseBody
-    public String Search(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception{
-        return "/user/search";
-        //return model;
-    }
-
-    @RequestMapping("/user/selectById")
-    //   @ResponseBody
+    @RequestMapping("/admin/selectById")
     public String selectUserById(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception{
-        //@RequestParam(value = "id") Integer id,
         Integer id = null;
         try {
             id= Integer.parseInt(request.getParameter("id"));
@@ -47,6 +36,6 @@ public class UserController {
         }
         Map<String,Object> map=userService.selectUserById(id);
         model.addAttribute("user",map);
-        return "/user/searchResult";
+        return "/admin/searchResult";
     }
 }

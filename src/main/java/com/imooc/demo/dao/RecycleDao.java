@@ -13,4 +13,8 @@ public interface RecycleDao {
     public void updatePictureStatus(@Param("id") Integer id) throws Exception;
 
     public void deleteRecycleById(@Param("id") Integer id) throws Exception;
+
+    public Integer selectRecyclePictureId(@Param("id") Integer id) throws Exception;
+
+    public void deletePictureById(@Param("id") Integer id) throws Exception;
 }

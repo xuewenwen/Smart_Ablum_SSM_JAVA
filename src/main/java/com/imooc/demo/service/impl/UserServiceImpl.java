@@ -16,8 +16,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
 
-
-
     @Override
     public List<Map<String,Object>> userSelectAll() throws Exception {
         return userDao.userSelectAll();
