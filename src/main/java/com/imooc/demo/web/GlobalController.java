@@ -13,10 +13,10 @@ import javax.servlet.http.HttpSession;
 public class GlobalController {
    @Autowired
     private GlobalService globalService;
-        @RequestMapping("to_login")
-        public String toLogin(){
-                   return "login";
-        }
+    @RequestMapping("to_login")
+    public String toLogin(){
+               return "login";
+    }
 // @RequestParam 表示注明用户提交过来的信息
     @RequestMapping("/login")
     public String login(HttpSession session, @RequestParam String username, @RequestParam String userpassword) {

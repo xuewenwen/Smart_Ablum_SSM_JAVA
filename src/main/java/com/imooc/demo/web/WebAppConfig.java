@@ -34,7 +34,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
             if (session.getAttribute("user") != null) {
                 return true;
             }
-            httpServletResponse.sendRedirect("login");
+            httpServletResponse.sendRedirect("/login");
             return false;
         }
 

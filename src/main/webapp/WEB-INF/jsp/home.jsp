@@ -13,5 +13,7 @@
 </head>
 <body>
 欢迎您进入本相册
+<img src="/images/upload/1.png"/>
+
 </body>
 </html>

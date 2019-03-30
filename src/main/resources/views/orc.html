@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<script src="static/js/ajaxupload.js"></script>
+</head>
+<body>
+	<div align="center">
+		<h1>AI文字解析解析</h1>
+		<hr>
+		<form name="upform" action="" id="myForm">
+			<input type="button" value="上传文件解析" id="upload" /><br />
+			<hr>
+			<br> 输入图片URL地址：<input type="text" name="urlNet" id="urlNet"
+				size="100""> <br>
+			<br> <input type="button" value="网络图片解析" id="url" /><br />
+		</form>
+		<div id="tip"></div>
+	</div>
+</body>
+<script type="text/javascript" src="static/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">  
+new AjaxUpload('#upload', {
+    action: 'ai/recognLocal',
+    name: 'file',
+    autoSubmit:true,
+    responseType:"json",
+    onSubmit:function(file, extension){
+    },
+    onComplete : function(file, r){
+        if(r.code == 0){
+        	document.getElementById("tip").innerHTML= r.orc
+        	
+        }else{
+        	document.getElementById("tip").innerHTML="解析失败"
+        }
+    }
+});
+
+$("#url").click(function () {
+    $.ajax({  
+            type: "POST",   //提交的方法
+            url:"/ai/recognNet", //提交的地址  
+            data:$('#myForm').serialize(),// 序列化表单值  
+            async: false,  
+            error: function(request) {  //失败的话
+            	document.getElementById("tip").innerHTML="解析失败"
+            },  
+            success: function(data) {  //成功
+            	$("#tip").html(data.orc);
+            }  
+         });
+       }); 
+</script>
+</html>
