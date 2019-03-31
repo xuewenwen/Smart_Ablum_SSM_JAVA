@@ -8,7 +8,20 @@
         FROM album
         WHERE album.user_id=#{id}
     </select>
-
+    <insert id="insertAlbum"    keyProperty="album_id"
+            keyColumn="album_id" parameterType="com.imooc.demo.bo.Album">
+		INSERT INTO
+		album
+		(album_name,
+		album_describtion,
+		album_create_time,
+		user_id)
+		VALUES
+		(#{albumName}
+		,#{albumDescribtion},
+		#{albumCreateTime},
+		#{userId})
+	</insert>
     <!--<select id="selectAlbumByName" resultType="com.imooc.demo.bo.Album">-->
 		<!--SELECT area_id, area_name,-->
 		<!--priority, create_time, last_edit_time-->
