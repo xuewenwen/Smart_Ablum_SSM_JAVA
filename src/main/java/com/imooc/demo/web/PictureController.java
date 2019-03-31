@@ -75,7 +75,7 @@ public class PictureController {
         String realFileName;
         if(file!=null){
             String fileName2 = file.getName();
-            fileType = fileName2.substring(file.getOriginalFilename().lastIndexOf("."));
+            fileType = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
             String filePath = "D:\\helloword\\"+user + "\\";
             File targetFile = new File(filePath);
 
