@@ -1,5 +1,6 @@
 package com.imooc.demo.dao;
 
+import com.imooc.demo.bo.Picture;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,10 +20,17 @@ public class PictureDaoTest {
     private PictureDao pictureDao;
 
     @Test
-    public void TestselectUrlByTagName() throws Exception{
-        //System.out.println(pictureDao.selectUrlByTagName("天空"));
-        List<String> list=pictureDao.selectUrlByTagName("天空",1);
-        System.out.println(list);
+    public void Test() throws Exception {
+        Picture picture = new Picture();
+        picture.setAlbumId(1);
+        pictureDao.insertPicture(picture);
     }
+
+//    @Test
+//    public void TestselectUrlByTagName() throws Exception{
+//        //System.out.println(pictureDao.selectUrlByTagName("天空"));
+//        List<String> list=pictureDao.selectUrlByTagName("天空",1);
+//        System.out.println(list);
+//    }
 
 }

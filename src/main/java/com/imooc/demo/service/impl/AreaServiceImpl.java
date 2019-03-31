@@ -14,7 +14,7 @@ import com.imooc.demo.service.AreaService;
 @Service
 public class AreaServiceImpl implements AreaService {
 	@Autowired
-	private AreaDao areaDao;
+	AreaDao areaDao;
 
 	@Override
 	public List<Area> getAreaList() {

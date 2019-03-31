@@ -11,8 +11,26 @@ public class Picture {
     private String pictureTag;
     private int pictureSize;
     private int pictureStatus;
-    private String pictureThumbnaill;
-    private  String pictureDescribtion;
+    private String pictureThumbnail;
+    private  String pictureDescription;
+
+    public String getPictureThumbnail() {
+        return pictureThumbnail;
+    }
+
+    public void setPictureThumbnail(String pictureThumbnail) {
+        this.pictureThumbnail = pictureThumbnail;
+    }
+
+    public String getPictureDescription() {
+        return pictureDescription;
+    }
+
+    public void setPictureDescription(String pictureDescription) {
+        this.pictureDescription = pictureDescription;
+    }
+
+
 
     public int getPictureId() {
         return pictureId;
@@ -37,8 +55,6 @@ public class Picture {
     public void setPictureName(String pictureName) {
         this.pictureName = pictureName;
     }
-
-
 
     public String getPictureUrl() {
         return pictureUrl;
@@ -80,21 +96,7 @@ public class Picture {
         this.pictureStatus = pictureStatus;
     }
 
-    public String getPictureThumbnaill() {
-        return pictureThumbnaill;
-    }
 
-    public void setPictureThumbnaill(String pictureThumbnaill) {
-        this.pictureThumbnaill = pictureThumbnaill;
-    }
-
-    public String getPictureDescribtion() {
-        return pictureDescribtion;
-    }
-
-    public void setPictureDescribtion(String pictureDescribtion) {
-        this.pictureDescribtion = pictureDescribtion;
-    }
 
     @Override
     public String toString() {
@@ -107,8 +109,8 @@ public class Picture {
                 ", pictureTag='" + pictureTag + '\'' +
                 ", pictureSize=" + pictureSize +
                 ", pictureStatus=" + pictureStatus +
-                ", pictureThumbnaill='" + pictureThumbnaill + '\'' +
-                ", pictureDescribtion='" + pictureDescribtion + '\'' +
+                ", pictureThumbnaill='" + pictureThumbnail + '\'' +
+                ", pictureDescribtion='" + pictureDescription + '\'' +
                 '}';
     }
 }

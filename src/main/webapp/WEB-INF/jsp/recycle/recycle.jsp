@@ -317,20 +317,6 @@
                 <div class="row" id="list">
                    <!--图-->
                   正在加载...
-
-                  <%--<div class="col-xs-6 col-md-3">--%>
-                    <%--<a href="#" class="thumbnail" style="text-align:center";>--%>
-                        <%--<label class="option block mn" style="text-align:left">--%>
-                            <%--<input type="checkbox" name="mobileos" value="FR">--%>
-                            <%--<span class="checkbox mn"></span>--%>
-                          <%--</label>--%>
-                      <%--<img src="assets/img/avatars/3.jpg" alt="...">--%>
-                      <%--SSa--%>
-                    <%--</a>--%>
-                  <%--</div>--%>
-
-                 <%----%>
-                  <%--...--%>
                 </div>
               </div>
 

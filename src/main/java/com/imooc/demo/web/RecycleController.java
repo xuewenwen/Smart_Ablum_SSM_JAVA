@@ -23,11 +23,6 @@ public class RecycleController {
 
     @RequestMapping("/recycle/recycle")
     public String showAllRecyclePicture(ModelMap model, HttpServletRequest request, HttpServletResponse response )throws Exception {
-        /*HttpSession session = request.getSession();
-        User user=(User)session.getAttribute("user");
-        int id = user.getUserId();
-        List<Map<String,Object>> list = recycleService.selectAllPicture(id);
-        model.addAttribute("recycle",list);*/
         return "/recycle/recycle";
     }
 
