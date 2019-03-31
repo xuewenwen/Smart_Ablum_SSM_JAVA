@@ -9,4 +9,5 @@ public interface PictureService {
     Picture getPicture(int pictureId) throws Exception;
     List<Picture> listPicture(int userId) throws Exception;
     void insertPicture(Picture picture) throws Throwable;
+    public List<String> selectUrlByTagName(String tagName,Integer id);
 }

@@ -55,19 +55,19 @@
         .div-td tr:nth-child(even){background: rgb(228, 228, 227);}
     </style>
     <script>
-        function judgment() {
-            var a=document.getElementById("userId").value;
-            var i = parseInt(a)
-            if(a!=null && a!="" && !isNaN(i)){
-                window.location.href = "/admin/selectById?id="+i;
-                //alert(a);
-            }
-            else {
-                alert("未输入正确ID");
-            }
-            // alert(a);
+    function judgment() {
+        var a=document.getElementById("userId").value;
+        var i = parseInt(a)
+        if(a!=null && a!="" && !isNaN(i)){
+            window.location.href = "/admin/selectById?id="+i;
+            //alert(a);
         }
-    </script>
+        else {
+            alert("未输入正确ID");
+        }
+        // alert(a);
+    }
+</script>
 </head>
 
 <body>
@@ -110,7 +110,6 @@
             </tr>
             <c:forEach items="${user}" var="user">
                 <tr align="center">
-                        <%--<td>${user.USER_ID}</td>--%>
                     <td><c:out value="${user.user_id}"></c:out></td>
                     <td><c:out value="${user.user_name}"></c:out></td>
                     <td><c:out value="${user.user_email}"></c:out></td>

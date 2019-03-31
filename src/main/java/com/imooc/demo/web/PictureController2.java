@@ -24,14 +24,14 @@ public class PictureController2 {
         return "/picture/search";
         //return model;
     }
-//    @RequestMapping("/picture/search/{tagName}")
-//    public String selectUrlByTagName(@PathVariable String tagName, ModelMap model, HttpServletRequest request, HttpServletResponse response){
-//        HttpSession session = request.getSession();
-//        User user=(User)session.getAttribute("user");
-//        int id = user.getUserId();
-//        List<String> url=pictureService.selectUrlByTagName(tagName,id);
-//        model.addAttribute("tag",url);
-//        return "picture/searchResult";
-//    }
+    @RequestMapping("/picture/search/{tagName}")
+    public String selectUrlByTagName(@PathVariable String tagName, ModelMap model, HttpServletRequest request, HttpServletResponse response){
+        HttpSession session = request.getSession();
+        User user=(User)session.getAttribute("user");
+        int id = user.getUserId();
+        List<String> url=pictureService.selectUrlByTagName(tagName,id);
+        model.addAttribute("tag",url);
+        return "picture/searchResult";
+    }
 
 }

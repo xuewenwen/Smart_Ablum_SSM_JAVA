@@ -29,5 +29,9 @@ public class PictureServiceImpl implements PictureService {
 
         pictureDao.insertPicture(picture);
     }
+    @Override
+    public List<String> selectUrlByTagName(String tagName,Integer id) {
+        return pictureDao.selectUrlByTagName(tagName,id);
+    }
 
 }
