@@ -23,7 +23,7 @@ public class UserController {
     public String listUser(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception{
         List<Map<String,Object>> list=userService.userSelectAll();
         model.addAttribute("user",list);
-       return "/admin/show";
+       return "/admin/show3";
     }
 
     @RequestMapping("/admin/selectById")

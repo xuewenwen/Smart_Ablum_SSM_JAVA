@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imooc.demo.dao.TagDao">
+    <!--查找是否有对应的tag值在tag表中-->
+    <select id="selectCountTag" resultType="java.lang.Integer">
+        SELECT tag_id
+        FROM tag
+        WHERE tag_name=#{name}
+    </select>
+    <!--如果没有则要插入-->
+    <insert id="insertTag" useGeneratedKeys="true" keyProperty="tagId"
+            keyColumn="tag_id" parameterType="com.imooc.demo.bo.Tag">
+        INSERT into tag(tag_name) VALUES(#{tagName})
+    </insert>
+    <!--把tag表中的id以及picture中的id一起插入到pc_tag表中-->
+    <insert id="insertPicTag" useGeneratedKeys="true" keyProperty="ptId"
+            keyColumn="pt_id" parameterType="com.imooc.demo.bo.PicTag">
+        INSERT INTO pic_tag(picture_id,tag_id) VALUES(#{pictureId},#{tagId})
+    </insert>
+
+
+</mapper>

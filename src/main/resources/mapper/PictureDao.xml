@@ -3,13 +3,13 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.imooc.demo.dao.PictureDao">
-    <!--<select id="selectUrlByTagName" resultType="java.lang.String" >-->
-        <!--select picture_url-->
-        <!--from picture,pic_tag,tag,album,user-->
-        <!--where picture.picture_id=pic_tag.picture_id AND pic_tag.tag_id=tag.tag_id-->
-			<!--AND picture.album_id=album.album_id AND album.user_id=`user`.user_id-->
-			<!--AND tag.tag_name=#{tagName} AND picture.picture_status=1 AND `user`.user_name=#{id}-->
-    <!--</select>-->
+    <select id="selectUrlByTagName" resultType="java.lang.String" >
+        select picture_url
+        from picture,pic_tag,tag,album,user
+        where picture.picture_id=pic_tag.picture_id AND pic_tag.tag_id=tag.tag_id
+			AND picture.album_id=album.album_id AND album.user_id=`user`.user_id
+			AND tag.tag_name=#{tagName} AND picture.picture_status=1 AND `user`.user_name=#{id}
+    </select>
     <select id="getPicture" resultType="com.imooc.demo.bo.Picture" parameterType="int">
         select * from picture where picture_id=#{pictureId}
     </select>

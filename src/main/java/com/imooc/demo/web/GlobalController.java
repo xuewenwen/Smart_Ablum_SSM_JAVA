@@ -25,13 +25,13 @@ public class GlobalController {
             return "redirect:login";
         }
         session.setAttribute("user", user);
-        return "redirect:home";
+        return "redirect:list";
     }
 
-    @RequestMapping("/home")
+    @RequestMapping("/list")
     public  String intoHome(){
 
-            return "home";
+            return "list";
 
     }
 
