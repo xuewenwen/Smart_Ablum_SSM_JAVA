@@ -1,10 +1,12 @@
 package com.imooc.demo.service;
 
-import com.imooc.demo.bo.Area;
+
+import com.imooc.demo.bo.Picture;
 
 import java.util.List;
 
 public interface PictureService {
-	public List<String> selectUrlByTagName(String tagName,Integer id);
-
+    Picture getPicture(int pictureId) throws Exception;
+    List<Picture> listPicture(int userId) throws Exception;
+    void insertPicture(Picture picture) throws Throwable;
 }

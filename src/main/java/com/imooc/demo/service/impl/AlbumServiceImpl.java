@@ -15,4 +15,10 @@ public class AlbumServiceImpl implements AlbumService {
     public List<Album> selectAlbumByUserId(Integer id) throws Exception {
         return albumDao.selectAlbumByUserId(id);
     }
+
+    @Override
+    public  int insertAlbum(Album album) throws Exception{
+        return albumDao.insertAlbum(album);
+    }
+
 }

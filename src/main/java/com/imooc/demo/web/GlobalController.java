@@ -20,7 +20,6 @@ public class GlobalController {
 // @RequestParam 表示注明用户提交过来的信息
     @RequestMapping("/login")
     public String login(HttpSession session, @RequestParam String username, @RequestParam String userpassword) {
-
         User user = globalService.login(username, userpassword);
         if (user == null) {
             return "redirect:login";

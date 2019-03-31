@@ -9,4 +9,6 @@ import java.util.List;
 @Mapper
 public interface AlbumDao {
     public List<Album> selectAlbumByUserId(@Param("id") Integer id) throws Exception;
+
+   public int insertAlbum(Album album);
 }
