@@ -113,7 +113,7 @@ public class PictureController {
                 }
             }*/
           
-          /*向数据库中插入数据*/
+          /*向*/
             Picture picture = new Picture();
             picture.setAlbumId(1);//暂用，值从cookie获取
             //picture.setPictureDescription("fvwavwsrgrw");
