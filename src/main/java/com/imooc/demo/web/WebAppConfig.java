@@ -3,7 +3,6 @@ package com.imooc.demo.web;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -28,7 +27,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
         public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
             String url = httpServletRequest.getRequestURI();
             //拦截！判断是否是LOGIN 其他的登录后才能访问
-            if (url.toLowerCase().indexOf("login") >= 0) {
+            if (url.toLowerCase().indexOf("login") >= 0 || url.toLowerCase().indexOf("register")>0 || url.toLowerCase().indexOf("activate")>0) {
                 return true;
             }
              //通过seesion来判断你是否登陆成功

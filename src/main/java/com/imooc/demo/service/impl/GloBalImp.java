@@ -22,6 +22,6 @@ public class GloBalImp implements GlobalService {
     @Override
     public void changepassword(User user) {
 
-                userDao.UpdateUser(user);
+//                userDao.UpdateUser(user);
     }
 }

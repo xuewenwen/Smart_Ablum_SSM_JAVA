@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 
-@SpringBootApplication
+@SpringBootApplication//开启组件扫描和自动配置的注解
 public class DemoApplication extends SpringBootServletInitializer {
 
 	@Override
@@ -14,6 +14,7 @@ public class DemoApplication extends SpringBootServletInitializer {
 	}
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
+		//向SpringApplication.run传一个DemoApplication类的参数来启动demo
 	}
 
 

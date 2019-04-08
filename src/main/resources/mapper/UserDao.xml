@@ -10,7 +10,7 @@
         where user.user_id=album.user_id
         GROUP BY user.user_id
     </select>
-    <!--根据用户id进行搜索-->
+    <!--根据用户id进行搜索,返回一个map对象-->
     <select id="selectUserById" resultType="java.util.HashMap" parameterType="java.lang.Integer">
         select user.user_id,user_name,user_email,sum(album_num_of_pic) as 'count',user_size,user_last_login_time,user_status
         from user,album
@@ -19,36 +19,41 @@
     </select>
 
     <select id="selectUserByName" resultType="com.imooc.demo.bo.User">
-       select * from user where user_id=#{userId}
+       select * from user where user_name=#{userName}
+    </select>
+    <!--根据用户id进行搜索,返回一个User对象-->
+    <select id="queryUserByName" resultType="com.imooc.demo.bo.User">
+        select * from user where user_name=#{userName}
     </select>
 
-    <select id="selectUserByEmail" resultType="com.imooc.demo.bo.User">
-        select * from user where user_email=#{userEmail}
-    </select>
-    <!--<select id="selectUserByName" resultType="com.imooc.demo.bo.User">-->
-        <!--select * from user where user_name=#{userName}-->
-    <!--</select>-->
-    <!--<insert id="insertUser" useGeneratedKeys="true" keyProperty="userId">-->
-        <!--insert into user(user_name,user_password,user_email,user_status,user_size,-->
-		<!--user_register_time,user_last_login_time)-->
-		<!--VALUES-->
-		<!--(#{userName},#{userPassword},#{userEmail},#{userStatus},#{userSize},#{userRegisterTime},#{userLastLoginTime}-->
-		<!--)-->
-    <!--</insert>-->
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="userId">
+        insert into user(user_name,user_password,user_email,user_status,user_size,
+		user_register_time,user_last_login_time,user_code)
+		VALUES
+		(#{userName},#{userPassword},#{userEmail},#{userStatus},#{userSize},#{userRegisterTime},#{userLastLoginTime},#{userCode}
+		)
+    </insert>
     <update id="updateUser" parameterType="com.imooc.demo.bo.User">
         update user
        <set>
             <if test="userName != null">user_name=#{userName},</if>
             <if test="userPassword != null">user_password=#{userPassword},</if>
-        <!--    <if test="userEmail != null">user_email=#{userEmail}</if>-->
+            <if test="userEmail != null">user_email=#{userEmail}</if>
         </set>
         where user_id=#{userId}
     </update>
-    <!--<update id="BanUser" parameterType="com.imooc.demo.bo.User">-->
-		<!--update user-->
-        <!--<set>-->
-            <!--<if test="userStatus != 2">user_status=#{userStatus}</if>-->
-        <!--</set>-->
-        <!--where user_id=#{userId}-->
-	<!--</update>-->
+    <update id="activateUserByName" parameterType="int" >
+        update user
+        <set>
+        <if test=" userStatus=1">user_Status=1</if>
+        </set>
+        where user_name=#{userName}
+    </update>
+    <update id="banUserById" parameterType="com.imooc.demo.bo.User">-->
+		update user
+        <set>
+            <if test="userStatus != 2">user_status=2</if>
+        </set>
+        where user_id=#{userId}
+	</update>
 </mapper>

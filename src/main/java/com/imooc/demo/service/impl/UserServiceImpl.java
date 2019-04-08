@@ -1,13 +1,17 @@
 package com.imooc.demo.service.impl;
 
-import com.imooc.demo.bo.AlbumAndUser;
 import com.imooc.demo.bo.User;
 import com.imooc.demo.dao.UserDao;
 import com.imooc.demo.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +19,17 @@ import java.util.Map;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
+
+    @Value("${spring.mail.username}") private String from;
+
+    @Autowired
+    private JavaMailSender mailSender;//发送邮件对象
+
+    @Autowired
+    private HttpServletRequest request;
+
+    Logger logger = LoggerFactory.getLogger(this.getClass());
+
 
     @Override
     public List<Map<String,Object>> userSelectAll() throws Exception {
@@ -25,8 +40,27 @@ public class UserServiceImpl implements UserService {
     public Map<String, Object> selectUserById(Integer id) throws Exception {
         return userDao.selectUserById(id);
     }
+//    @Override
+//    public User queryUserByName(String name){
+//        return userDao.selectUserByName(name);
+//    }
+    @Override
+    public void sendSimpleMail(String to,String title,String content){
+
+        SimpleMailMessage message=new SimpleMailMessage();
+            message.setFrom(from);
+            message.setTo(to);
+            message.setSubject(title);
+            message.setText(content);
+            mailSender.send(message);
+            logger.info("邮件发送成功");
+    }
+    @Override
+    public void activate(String name){
+            userDao.activateUserByName(name);
+    }
     @Override
     public void SaveUser(User user)throws Exception{
-        userDao.insertUser();
+            userDao.insertUser(user);
     }
 }

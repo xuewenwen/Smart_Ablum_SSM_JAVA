@@ -21,6 +21,7 @@
     } </script>
 
     <script src = "../js/jquery.min.js" ></script>
+    <!--script type="text/javascript" src="js/jquery.validate.js"></script-->
     <script src="../js/jquery.magnific-popup.js" type="text/javascript"></script>
     <script type="text/javascript" src="../js/modernizr.custom.53451.js"></script>
     <script>
@@ -43,7 +44,7 @@
 </head>
 <body>
 <h1>欢迎使用橘猫相册</h1>
-<div class="w3layouts">
+<div class="w3layouts" >
     <div class="signin-agile">
         <h2>登录
         </h2>
@@ -74,15 +75,71 @@
     <p class="agileinfo">代码敲不队</p>
 </div>
 <div class="pop-up">
+
     <div id="small-dialog" class="mfp-hide book-form">
         <h3>注册橘猫智能相册 </h3>
-        <form action="#" method="post">
-            <input type="text" name="Name" placeholder="请输入用户名" required=""/>
-            <input type="text" name="Email" class="email" placeholder="请输入邮件" required=""/>
-            <input type="password" name="Password" class="password" placeholder="请输入密码" required=""/>
-            <input type="password" name="Password" class="password" placeholder="请重复密码" required=""/>
-            <input type="submit" value="立即注册">
+        <form action="#" method="post" id="RegForm">
+            <input type="text" id ="Name" name="Name" placeholder="请输入用户名" required=""/>
+            <%--required里面放对象，对象里封装方法--%>
+            <input type="text" name="Email" class="email" id="email" placeholder="请输入邮件" required=""/>
+            <input type="password" id="Password" name="Password" class="password" placeholder="请输入密码" required=""/>
+            <input type="password" id="Repeated" name="Password" class="password" placeholder="请重复密码" required=""/>
+            <input type="text" name="checkCode"id="checkCode" placeholder="在此输入接收到的验证码" required=""/>
+            <input id="sendCheckCode" type="button" class="layui-btn layui-btn-normal"  value="点击获取验证码">
+            <input  type="button"id="reg" value="立即注册">
         </form>
+        <script>
+            $(function () {
+                var GenerateCode;
+                $("#sendCheckCode").on("click", function () {
+
+
+                    var userName=$("#Name").val();
+                    var userMail=$("#email").val();
+
+                    var userPassword=$("#Password").val();
+
+                    var userRepeat=$("#Repeated").val();
+                    if (userPassword!=userRepeat) {
+                        alert("两次输入密码不一致");
+                    }
+
+                    $.ajax({
+                            type: "POST",
+                            url: "/Register",
+                            dataType: "json",
+                            data: {
+                                "userName": userName,
+                                "userPassword": userPassword,
+                                "userEmail": userMail
+                            },success:function (code) {
+                                 GenerateCode=code;
+                                 alert("验证码发送成功");}
+                    })
+
+
+    $("#reg").on("click",function () {
+        var inputCheckCode=$("#checkCode").val();
+        if (inputCheckCode==GenerateCode){
+            $.ajax({
+                url:"/activate",
+                type:"get",
+                data:{
+                    "userName":userName
+                },
+                async:false,
+                success:function () {
+                    alert("注册成功",function () {
+                    window.location.href="login.jsp";
+                    });
+                }
+            })
+        }
+
+    })
+    })});
+
+        </script>
     </div>
 </div>
 </body>

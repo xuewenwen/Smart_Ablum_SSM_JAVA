@@ -1,24 +1,32 @@
 package com.imooc.demo.bo;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
 import java.util.Date;
-import javax.persistence.*;
 //user实体类
+
 public class User {
 
     private int userId;
     private String userName;
+    public int getUserCode() {
+        return userCode;
+    }
+
     private String userPassword;
     private String userEmail;
     private int userStatus;
     private int userSize;
     private Date userRegisterTime;
     private Date userLastLoginTime;
+    private int userCode;
 
-    public User(String userName,String userPassword,String userEmail){
+    public User(String userName, String userPassword, String userEmail,int userStatus,int userSize,Date userRegisterTime,Date userLastLoginTime, int userCode){
         this.userName=userName;
         this.userPassword=userPassword;
         this.userEmail=userEmail;
+        this.userSize=userSize;
+        this.userStatus=userStatus;
+        this.userCode = userCode;
+        this.userRegisterTime=userRegisterTime;
+        this.userLastLoginTime=userLastLoginTime;
     }
 
     public int getUserId() {
