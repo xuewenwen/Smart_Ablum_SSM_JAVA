@@ -16,26 +16,5 @@ import java.util.Map;
 
 @Controller
 public class UserController {
-    @Autowired
-    private UserService userService;
 
-    @RequestMapping("/admin/show")
-    public String listUser(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception{
-        List<Map<String,Object>> list=userService.userSelectAll();
-        model.addAttribute("user",list);
-       return "/admin/show3";
-    }
-
-    @RequestMapping("/admin/selectById")
-    public String selectUserById(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception{
-        Integer id = null;
-        try {
-            id= Integer.parseInt(request.getParameter("id"));
-        } catch (NumberFormatException e) {
-            return "";
-        }
-        Map<String,Object> map=userService.selectUserById(id);
-        model.addAttribute("user",map);
-        return "/admin/searchResult";
-    }
 }

@@ -31,4 +31,6 @@ public class RecycleDaoTest {
         recycleDao.deletePictureById(id);
     }
 
+
+
 }

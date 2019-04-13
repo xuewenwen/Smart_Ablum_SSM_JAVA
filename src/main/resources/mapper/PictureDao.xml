@@ -10,17 +10,38 @@
 			AND picture.album_id=album.album_id AND album.user_id=`user`.user_id
 			AND tag.tag_name=#{tagName} AND picture.picture_status=1 AND `user`.user_name=#{id}
     </select>
-    <select id="getPicture" resultType="com.imooc.demo.bo.Picture" parameterType="int">
-        select * from picture where picture_id=#{pictureId}
-    </select>
+    <!--<select id="getPicture" resultType="com.imooc.demo.bo.Picture" parameterType="int">-->
+        <!--select * from picture where picture_id=#{pictureId}-->
+    <!--</select>-->
 
-    <select id="listPhoto" resultType="com.imooc.demo.bo.Picture" parameterType="int">
-        select * from picture where user_id=#{userId}
-    </select>
+    <!--<select id="listPhoto" resultType="com.imooc.demo.bo.Picture" parameterType="int">-->
+        <!--select * from picture where user_id=#{userId}-->
+    <!--</select>-->
 
     <insert id="insertPicture" useGeneratedKeys="true" keyProperty="pictureId" keyColumn="picture_id" parameterType="com.imooc.demo.bo.Picture">
         insert into picture (album_id,picture_name,picture_create_time,picture_url,picture_tag,picture_size,picture_status,picture_thumbnaill,picture_description)
         values ( #{picture.albumId},#{picture.pictureName},#{picture.pictureCreateTime},#{picture.pictureUrl},#{picture.pictureTag},#{picture.pictureSize},#{picture.pictureStatus},#{picture.pictureThumbnail},#{picture.pictureDescription})
+    </insert>
+
+    <!--照片显示-->
+    <select id="listPicture" resultType="com.imooc.demo.bo.Picture">
+        SELECT picture_id,picture_url
+        FROM picture
+        WHERE album_id=#{id} and picture_status=1
+    </select>
+    <!--照片删除-->
+    <!--1.先将照片的status设为0-->
+    <update id="updatePictureStatus">
+        UPDATE picture
+        SET picture_status=0
+        WHERE picture_id=#{id}
+    </update>
+    <!--2.在回收站中增加记录-->
+    <insert id="insertRecycle" useGeneratedKeys="true" keyProperty="recycleId"
+            keyColumn="recycle_id" parameterType="com.imooc.demo.bo.RecycleSite">
+        insert into
+        recycle_site(picture_id,user_id,pic_delete_time)
+        VALUES(#{recycle.pictureId},#{recycle.userId},#{recycle.pictureDeleteTime})
     </insert>
 
 </mapper>
