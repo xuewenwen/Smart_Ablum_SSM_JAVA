@@ -48,7 +48,7 @@
     <div class="signin-agile">
         <h2>登录
         </h2>
-        <form action="login" method="post">
+        <form action="login" method="post" id="loginForm" >
             <input type="text" name="username" class="name" placeholder="用户名/邮箱" required="">
             <input type="password" name="userpassword" class="password" placeholder="密码" required="">
             <ul>
@@ -57,7 +57,7 @@
                     <label for="brand1"><span></span>记住密码</label>
                 </li>
             </ul>
-            <a href="#">忘记密码?</a><br>
+            <a href="forgetPassword.jsp">忘记密码?</a><br>
             <div class="clear"></div>
             <input type="submit" value="登录">
         </form>
@@ -112,34 +112,40 @@
                                 "userName": userName,
                                 "userPassword": userPassword,
                                 "userEmail": userMail
-                            },success:function (code) {
-                                 GenerateCode=code;
-                                 alert("验证码发送成功");}
+                            },
+                        success:function (code) {
+                                GenerateCode=code;
+                                    if (code==2){ //等于2说明账号已经存在了
+                                     alert("这个邮箱注册过啦，想找回账号请点击找回密码哦(#^.^#)");
+                                    }else
+                                        {
+                                            alert("验证码发送成功噜 *´∀`)")
+                                        }
+                            }
+
                     })
+                })
 
 
-    $("#reg").on("click",function () {
-        var inputCheckCode=$("#checkCode").val();
-        if (inputCheckCode==GenerateCode){
-            $.ajax({
-                url:"/activate",
-                type:"get",
-                data:{
-                    "userName":userName
-                },
-                async:false,
-                success:function () {
-                    alert("注册成功",function () {
-                    window.location.href="login.jsp";
-                    });
-                }
-            })
-        }
-
-    })
-    })});
-
-        </script>
+        $("#reg").on("click",function (){
+                        var userName=$("#Name").val();
+                        var inputCheckCode=$("#checkCode").val();
+                        if (inputCheckCode==GenerateCode){
+                            $.ajax({
+                                url:"/activate",
+                                type:"get",
+                                data:{
+                                    "userName":userName
+                                },
+                                async:false,
+                                success:function () {
+                                    alert("注册成功")
+                                    window.location.href="login.jsp";}
+                            })
+                        }
+                    });}
+            )
+                   </script>
     </div>
 </div>
 </body>

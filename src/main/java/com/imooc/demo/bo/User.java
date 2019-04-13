@@ -6,9 +6,7 @@ public class User {
 
     private int userId;
     private String userName;
-    public int getUserCode() {
-        return userCode;
-    }
+
 
     private String userPassword;
     private String userEmail;
@@ -29,6 +27,10 @@ public class User {
         this.userLastLoginTime=userLastLoginTime;
     }
 
+    public User(){}
+    public int getUserCode() {
+        return userCode;
+    }
     public int getUserId() {
         return userId;
     }

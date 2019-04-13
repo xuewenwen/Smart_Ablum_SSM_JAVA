@@ -63,4 +63,12 @@ public class UserServiceImpl implements UserService {
     public void SaveUser(User user)throws Exception{
             userDao.insertUser(user);
     }
-}
+    @Override
+    public boolean checkAccountByEmail(String email){
+        User user = userDao.queryUserByEmail(email);
+        if(user!=null){
+            return true;
+        }
+        else{
+            return false;}
+}}

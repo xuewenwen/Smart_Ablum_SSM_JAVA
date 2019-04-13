@@ -11,7 +11,7 @@ public interface UserService {
     public List<Map<String,Object>> userSelectAll()throws Exception;
     public Map<String,Object> selectUserById(Integer id) throws Exception;
     public void sendSimpleMail(String to,String title,String content) throws Exception;
-//    public void Register(String username, String password, String email);
-//    public void processRegister(String email);
     public void activate(String name);
+    public boolean checkAccountByEmail(String email);
+
 }

@@ -26,6 +26,9 @@
         select * from user where user_name=#{userName}
     </select>
 
+    <select id="queryUserByEmail" resultType="com.imooc.demo.bo.User">
+        select * from user where user_email=#{userEmail}
+    </select>
     <insert id="insertUser" useGeneratedKeys="true" keyProperty="userId">
         insert into user(user_name,user_password,user_email,user_status,user_size,
 		user_register_time,user_last_login_time,user_code)
