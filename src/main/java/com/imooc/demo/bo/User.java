@@ -26,9 +26,6 @@ public class User {
         this.userRegisterTime=userRegisterTime;
         this.userLastLoginTime=userLastLoginTime;
     }
-    public User(){
-
-    }
 
     public User(){}
     public int getUserCode() {

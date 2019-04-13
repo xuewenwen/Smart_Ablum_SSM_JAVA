@@ -57,7 +57,7 @@
                     <label for="brand1"><span></span>记住密码</label>
                 </li>
             </ul>
-            <a href="forgetPassword.jsp">忘记密码?</a><br>
+            <a href="RetrievePassword.jsp">忘记密码?</a><br>
             <div class="clear"></div>
             <input type="submit" value="登录">
         </form>
