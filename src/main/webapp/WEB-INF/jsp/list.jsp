@@ -55,8 +55,51 @@
         <input type="text" class="form-control" style="height: 30px;width:auto;display: inline-block;">
         <button class="btn btn-primary" type="button"
           style="height: 30px; line-height: 30px; padding: 0 12px;">搜索!</button>
-          <button class="btn btn-primary" type="button"
-          style="height: 30px; line-height: 30px; padding: 0 12px;">创建相册</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal_2"
+                data-target=".bs-example-modal-sm" style="height: 30px; line-height: 30px; padding: 0 12px;">创建相册</button>
+
+        <!-- 创建相册 Modal -->
+        <script>
+
+            $(".modal-backdrop").remove();
+
+        </script>
+
+        <div class="modal fade" id="myModal_2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-backdrop" role="document">
+            <div class="modal-dialog" style="width:600px">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                          aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="exampleModalLabel">相册创建</h4>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div>
+                      <label for="recipient-name" class="control-label" style="">相册名:</label>
+                      <input type="text" class="form-control" id="recipient-name" placeholder="相册名">
+                    </div>
+                    <div class="form-group">
+                      <label for="message-text" class="control-label">相册描述：</label>
+                      <textarea class="form-control" id="message-text" style="height: 100px"
+                                placeholder="描述....."></textarea>
+                    </div>
+
+                    <div>
+                      <label for="message-text" class="control-label">相册封面：</label>
+                      <input type="file" name="file" id="file" class="inputfile" style="width:100%;height:40px" />
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                  <button type="button" class="btn btn-primary">确定</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
     
       </div>
       <ul class="nav navbar-nav navbar-right">
@@ -162,7 +205,6 @@
           </div>
           <!-- End: Sidebar Collapse Button -->
 
-      </div>
       <!-- End: Sidebar Left Content -->
 
     </aside>
