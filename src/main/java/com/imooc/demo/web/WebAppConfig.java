@@ -19,7 +19,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 //        registry.addInterceptor(new InterceptorConfig()).addPathPatterns("/**").excludePathPatterns("index");
 
         //就是这个
-        registry.addInterceptor(new InterceptorConfig()).addPathPatterns("/**").excludePathPatterns("/index","/login");
+        registry.addInterceptor(new InterceptorConfig()).addPathPatterns("/**").excludePathPatterns("/index","/login","/admin/login");
     }
 
     private class InterceptorConfig implements HandlerInterceptor {
@@ -33,6 +33,9 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
              //通过seesion来判断你是否登陆成功
             HttpSession session = httpServletRequest.getSession();
             if (session.getAttribute("user") != null) {
+                return true;
+            }
+            else if(session.getAttribute("admin")!=null){
                 return true;
             }
             httpServletResponse.sendRedirect("/login");

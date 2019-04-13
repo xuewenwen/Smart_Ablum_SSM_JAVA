@@ -15,13 +15,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Theme CSS -->
-  <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">
+  <link rel="stylesheet" type="text/css" href="/assets/skin/default_skin/css/theme.css">
 
   <!-- Admin Forms CSS -->
-  <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.css">
+  <link rel="stylesheet" type="text/css" href="/assets/admin-tools/admin-forms/css/admin-forms.css">
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="assets/img/favicon.ico">
+  <link rel="shortcut icon" href="/assets/img/favicon.ico">
   
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -29,11 +29,53 @@
   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
   <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 <![endif]-->
-  <link href="../css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous">
-  <link href="../themes/explorer-fas/theme.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/themes/explorer-fas/theme.css" media="all" rel="stylesheet" type="text/css" />
 
   <script src="/js/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $("#delete1").hide();
+      //$(".picture").parent().show();
+      $("#delete").click(function(){
+        $(".picture").parent().show();
+        $("#delete1").show();
+      });
+    });
+
+  </script>
+  <%--<script>--%>
+    <%--$(document).ready(function(){--%>
+      <%--$(".picture").parent().show();--%>
+    <%--});--%>
+
+  <%--</script>--%>
+  <script>
+    function fun() {
+      var obj = document.getElementsByName("picture");
+      var check_val = [];
+      for(var k in obj){
+        if(obj[k].checked)
+          check_val.push(obj[k].value);
+      }
+      var str = check_val.join(",");
+      $.ajax({
+        type:"POST",
+        url:"/picture/delete",
+        contentType:false,
+        dataType:"text",
+        data:str,
+        success: function(data){
+          list();
+          console.log(data);
+        },
+        error:function () {
+          alert("错误");
+        }
+      });
+    }
+  </script>
 </head>
 
 <body class="admin-validation-page" data-spy="scroll" data-target="#nav-spy" data-offset="200">
@@ -62,7 +104,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown menu-merge">
           <a href="#" class="dropdown-toggle fw600 p15" data-toggle="dropdown">
-            <img src="assets/img/avatars/5.jpg" alt="avatar" class="mw30 br64">
+            <img src="/assets/img/avatars/5.jpg" alt="avatar" class="mw30 br64">
             <span class="hidden-xs pl15"> 薛剑文 </span>
             <span class="caret caret-tp hidden-xs"></span>
           </a>
@@ -100,7 +142,7 @@
           <div class="sidebar-widget author-widget">
             <div class="media">
               <a class="media-left" href="#">
-                <img src="assets/img/avatars/3.jpg" class="img-responsive">
+                <img src="/assets/img/avatars/3.jpg" class="img-responsive">
               </a>
               <div class="media-body">
                 <div class="media-author">薛剑文</div>
@@ -144,7 +186,7 @@
             </a>
           </li>
           <li>
-            <a href="/recycle/recycle">
+            <a href="">
               <span class="fa fa-calendar"></span>
               <span class="sidebar-title">回收站</span>
             </a>
@@ -194,7 +236,7 @@
                       <button type="button" class="btn btn-default light ">
                         <i class="fa fa-refresh"></i>
                       </button>
-                      <button type="button" class="btn btn-default light">
+                      <button type="button" class="btn btn-default light" id="delete">
                         <i class="fa fa-trash"></i>
                       </button>
                       <button type="button" class="btn btn-default light" data-toggle="modal" data-target="#myModal">
@@ -250,7 +292,7 @@
                 function list() {
                   $.ajax({
                     type:"GET",
-                    url:"/albumList",
+                    url:"/picture/pictureList/${albumId}",
                     success: function(html){
                       $("#list").html(html);
                     },
@@ -269,6 +311,7 @@
                 </div>
               <!-- end: .admin-form -->
             </div>
+              <input type="button" onclick="fun()" value="删除" id="delete1">
             <!-- end: .tray-center -->
       </section>
       <!-- End: Content -->
@@ -321,33 +364,33 @@
   </style>
 
   <!-- jQuery -->
-  <script src="vendor/jquery/jquery-1.11.1.min.js"></script>
-  <script src="vendor/jquery/jquery_ui/jquery-ui.min.js"></script>
+  <script src="/vendor/jquery/jquery-1.11.1.min.js"></script>
+  <script src="/vendor/jquery/jquery_ui/jquery-ui.min.js"></script>
 
   <!-- jQuery Validate Plugin-->
-  <script src="assets/admin-tools/admin-forms/js/jquery.validate.min.js"></script>
+  <script src="/assets/admin-tools/admin-forms/js/jquery.validate.min.js"></script>
 
   <!-- jQuery Validate Addon -->
-  <script src="assets/admin-tools/admin-forms/js/additional-methods.min.js"></script>
+  <script src="/assets/admin-tools/admin-forms/js/additional-methods.min.js"></script>
 
   <!-- AdminForms JS -->
-  <script src="assets/admin-tools/admin-forms/js/jquery-ui-datepicker.min.js"></script>
+  <script src="/assets/admin-tools/admin-forms/js/jquery-ui-datepicker.min.js"></script>
 
   <!-- Theme Javascript -->
-  <script src="assets/js/utility/utility.js"></script>
-  <script src="assets/js/demo/demo.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script src="/assets/js/utility/utility.js"></script>
+  <script src="/assets/js/demo/demo.js"></script>
+  <script src="/assets/js/main.js"></script>
   <!-- END: PAGE SCRIPTS -->
-  <script type="text/javascript" src="js/pages.js"></script>
-  <script type="text/javascript" src="js/items.js"></script>
+  <script type="text/javascript" src="/js/pages.js"></script>
+  <script type="text/javascript" src="/js/items.js"></script>
   <!-- END: PAGE SCRIPTS -->
-  <script src="../js/plugins/piexif.js" type="text/javascript"></script>
-  <script src="../js/plugins/sortable.js" type="text/javascript"></script>
-  <script src="../js/fileinput.js" type="text/javascript"></script>
-  <script src="../js/locales/fr.js" type="text/javascript"></script>
-  <script src="../js/locales/es.js" type="text/javascript"></script>
-  <script src="../themes/fas/theme.js" type="text/javascript"></script>
-  <script src="../themes/explorer-fas/theme.js" type="text/javascript"></script>
+  <script src="/js/plugins/piexif.js" type="text/javascript"></script>
+  <script src="/js/plugins/sortable.js" type="text/javascript"></script>
+  <script src="/js/fileinput.js" type="text/javascript"></script>
+  <script src="/js/locales/fr.js" type="text/javascript"></script>
+  <script src="/js/locales/es.js" type="text/javascript"></script>
+  <script src="/themes/fas/theme.js" type="text/javascript"></script>
+  <script src="/themes/explorer-fas/theme.js" type="text/javascript"></script>
   <script>
    
     $("#file-0a").fileinput({

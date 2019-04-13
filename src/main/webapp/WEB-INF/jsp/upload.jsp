@@ -52,6 +52,7 @@
         maxFileCount: 4, //表示允许同时上传的最大文件个数
         minFileCount: 0,	//最少文件
         validateInitialCount:false//异步上传返回结果处理
+
     }).on('fileuploaded', function(event, data, previewId, index) {
         // alert(JSON.stringify(data));
         var res_arr = data.response.words_result;

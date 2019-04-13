@@ -1,6 +1,7 @@
 package com.imooc.demo.service.impl;
 
 import com.imooc.demo.bo.Picture;
+import com.imooc.demo.bo.RecycleSite;
 import com.imooc.demo.dao.PictureDao;
 import com.imooc.demo.service.PictureService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,15 +15,6 @@ public class PictureServiceImpl implements PictureService {
     @Autowired
     PictureDao pictureDao;
 
-    @Override
-    public Picture getPicture(int pictureId) throws Exception {
-       return pictureDao.getPicture(pictureId);
-    }
-
-    @Override
-    public List<Picture> listPicture(int userId) throws Exception {
-        return pictureDao.listPicture(userId);
-    }
 
     @Override
     public void insertPicture(Picture picture) throws Throwable {
@@ -32,6 +24,17 @@ public class PictureServiceImpl implements PictureService {
     @Override
     public List<String> selectUrlByTagName(String tagName,Integer id) {
         return pictureDao.selectUrlByTagName(tagName,id);
+    }
+
+    @Override
+    public List<Picture> listPicture(Integer id) throws Exception {
+        return pictureDao.listPicture(id);
+    }
+
+    @Override
+    public void deletePicture(Integer id, RecycleSite recycleSite) throws Exception {
+        pictureDao.updatePictureStatus(id);
+        pictureDao.insertRecycle(recycleSite);
     }
 
 }

@@ -6,6 +6,7 @@ public class RecycleSite {
     private int recycleId;
     private int pictureId;
     private int userId;
+    private Date pictureDeleteTime;
 
     public int getRecycleId() {
         return recycleId;
@@ -39,7 +40,7 @@ public class RecycleSite {
         this.pictureDeleteTime = pictureDeleteTime;
     }
 
-    private Date pictureDeleteTime;
+
 
     @Override
     public String toString() {
