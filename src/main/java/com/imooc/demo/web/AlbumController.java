@@ -22,9 +22,9 @@ public class AlbumController {
     @Autowired
     private AlbumService albumService;
 
-    @RequestMapping("/list1")
+    @RequestMapping("/list")
     public String list(ModelMap model, HttpServletRequest request, HttpServletResponse response )throws Exception {
-        return "list1";
+        return "list";
     }
     @RequestMapping("/albumList")
     public String listAlbum(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception{

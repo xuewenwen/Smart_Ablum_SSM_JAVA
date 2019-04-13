@@ -28,11 +28,11 @@ public class GlobalController {
         return "redirect:list";
     }
 
-    @RequestMapping("/list")
-    public  String intoHome(){
-
-            return "list";
-
-    }
+//    @RequestMapping("/list")
+//    public  String intoHome(){
+//
+//            return "list";
+//
+//    }
 
 }
