@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 @Controller
 public class PictureController {
@@ -40,17 +41,35 @@ public class PictureController {
         String fileType = "";
         String realFileName;
         if (file != null) {
-            String fileName2 = file.getName();
-            String filePath = "D:\\smaralbum\\src\\main\\resources\\static" +"\\images\\upload\\" + id + "\\";
-            //String filePath = request.getServletContext().getRealPath("static")+"D:\\smaralbum\\src\\main\\resources\\static" +"\\images\\upload\\" + id + "\\";
+            String fileName2 = file.getOriginalFilename();
+            String picName=fileName2;
+            String extName="";
+
+            int pos = fileName2.lastIndexOf(".");
+
+            if (pos > -1) {
+                extName = fileName2.substring(pos);
+                picName = fileName2.substring(0, pos);
+            }
+
+            String picPath = "/images/upload/"+id+"/";
+
+            String picFileName = UUID.randomUUID().toString() + extName;
+
+            String basePath = this.getClass().getResource("/").getPath()+"/static/";
+
+            //文件路径
+            String filePath = basePath+picPath;
+
             File targetFile = new File(filePath);
             if (!targetFile.exists()) {
                 targetFile.mkdirs();
             }
-            fileType = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
-            fileName = filePath + System.nanoTime() + fileName2 + Math.random() + fileType;
-            realFileName = fileName.substring(fileName.lastIndexOf(File.separator) + 1);
-            File dest = new File(fileName);
+            //存储的图片路径
+            String picturePath = basePath+picPath+picFileName;
+            //数据库的访问路径
+            fileName=picPath+picFileName;
+            File dest = new File(picturePath);
             try {
                 file.transferTo(dest);
             } catch (IOException e) {
@@ -64,15 +83,15 @@ public class PictureController {
             picture.setPictureSize((int) dest.length());
             picture.setPictureStatus(1);
             picture.setPictureUrl(fileName);
-            picture.setPictureName(realFileName);
+            picture.setPictureName(picFileName);
 
             pictureService.insertPicture(picture);
 
             //获取照片的id
-            int pictureId = pictureService.selectPictureId(realFileName);
+            int pictureId = pictureService.selectPictureId(picFileName);
 
             //保存tag值,使用百度ai
-            tagService.Ai(fileName,pictureId);
+            tagService.Ai(picturePath,pictureId);
             result.put("code", 0);
             result.put("msg", "创建成功！");
             return result;
