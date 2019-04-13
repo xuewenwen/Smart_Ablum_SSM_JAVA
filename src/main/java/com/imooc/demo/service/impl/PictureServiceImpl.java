@@ -37,4 +37,9 @@ public class PictureServiceImpl implements PictureService {
         pictureDao.insertRecycle(recycleSite);
     }
 
+    @Override
+    public Integer selectPictureId(String name) throws Exception {
+        return pictureDao.selectPictureId(name);
+    }
+
 }

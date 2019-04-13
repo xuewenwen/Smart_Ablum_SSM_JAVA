@@ -10,13 +10,6 @@
 			AND picture.album_id=album.album_id AND album.user_id=`user`.user_id
 			AND tag.tag_name=#{tagName} AND picture.picture_status=1 AND `user`.user_name=#{id}
     </select>
-    <!--<select id="getPicture" resultType="com.imooc.demo.bo.Picture" parameterType="int">-->
-        <!--select * from picture where picture_id=#{pictureId}-->
-    <!--</select>-->
-
-    <!--<select id="listPhoto" resultType="com.imooc.demo.bo.Picture" parameterType="int">-->
-        <!--select * from picture where user_id=#{userId}-->
-    <!--</select>-->
 
     <insert id="insertPicture" useGeneratedKeys="true" keyProperty="pictureId" keyColumn="picture_id" parameterType="com.imooc.demo.bo.Picture">
         insert into picture (album_id,picture_name,picture_create_time,picture_url,picture_tag,picture_size,picture_status,picture_thumbnaill,picture_description)
@@ -43,5 +36,12 @@
         recycle_site(picture_id,user_id,pic_delete_time)
         VALUES(#{recycle.pictureId},#{recycle.userId},#{recycle.pictureDeleteTime})
     </insert>
+
+    <!--通过图片名找到图片id-->
+    <select id="selectPictureId" resultType="java.lang.Integer">
+        SELECT picture_id
+        FROM picture
+        WHERE picture_name=#{name}
+    </select>
 
 </mapper>

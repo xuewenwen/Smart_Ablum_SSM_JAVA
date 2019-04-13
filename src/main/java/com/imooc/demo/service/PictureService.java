@@ -14,4 +14,5 @@ public interface PictureService {
     public List<String> selectUrlByTagName(String tagName,Integer id);
     public List<Picture> listPicture(Integer id) throws Exception;
     public void deletePicture(Integer id, RecycleSite recycleSite) throws Exception;
+    public Integer selectPictureId(String name) throws Exception;
 }

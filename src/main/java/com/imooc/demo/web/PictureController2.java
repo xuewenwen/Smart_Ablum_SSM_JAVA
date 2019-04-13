@@ -24,10 +24,8 @@ public class PictureController2 {
     PictureService pictureService;
 
     @RequestMapping(value="/picture/search")
-    //   @ResponseBody
     public String Search(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception{
         return "/picture/search";
-        //return model;
     }
     @RequestMapping("/picture/search/{tagName}")
     public String selectUrlByTagName(@PathVariable String tagName, ModelMap model, HttpServletRequest request, HttpServletResponse response){
@@ -47,8 +45,9 @@ public class PictureController2 {
         return "/picture/show";
     }
     @RequestMapping("/picture/pictureList/{albumId}")
-    public String list(@PathVariable String albumId, ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String list(@PathVariable String albumId, ModelMap model, HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
         Integer id = Integer.parseInt(albumId);
+        session.setAttribute("album",id);
         List<Picture> picture = pictureService.listPicture(id);
         model.addAttribute("pic",picture);
         return "/picture/pictureList";

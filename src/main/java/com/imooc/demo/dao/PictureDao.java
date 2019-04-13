@@ -20,4 +20,6 @@ public interface PictureDao {
     public void updatePictureStatus(@Param("id")Integer id) throws Exception;
 
     public void insertRecycle(@Param("recycle")RecycleSite recycleSite) throws Exception;
+
+    public Integer selectPictureId(@Param("name")String name) throws Exception;
 }
