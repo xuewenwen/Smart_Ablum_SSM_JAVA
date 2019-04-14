@@ -9,7 +9,7 @@ public class Album {
     private Date albumCreateTime;
     private String albumCover;
     private int userId;
-    private String albumDescribtion;
+    private String albumDescription;
     private int albumNumOfPic;
     public int getAlbumNumOfPic() {
         return albumNumOfPic;
@@ -61,11 +61,11 @@ public class Album {
     }
 
     public String getAlbumDescription() {
-        return albumDescribtion;
+        return albumDescription;
     }
 
     public void setAlbumDescription(String albumDescription) {
-        this.albumDescribtion = albumDescription;
+        this.albumDescription = albumDescription;
     }
 
     @Override
@@ -76,7 +76,7 @@ public class Album {
                 ", albumCreateTime=" + albumCreateTime +
                 ", albumCover='" + albumCover + '\'' +
                 ", userId=" + userId +
-                ", albumDescribtion='" + albumDescribtion + '\'' +
+                ", albumDescription='" + albumDescription + '\'' +
                 ", albumNumOfPic=" + albumNumOfPic +
                 '}';
     }
