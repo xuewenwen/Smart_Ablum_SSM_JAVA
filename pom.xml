@@ -151,7 +151,14 @@
             <version>9.0.16</version>
         </dependency>
 
-    </dependencies>
+		<!--pageHelper依赖-->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+
+	</dependencies>
 
 	<build>
 		<plugins>

@@ -22,4 +22,6 @@ public interface PictureDao {
     public void insertRecycle(@Param("recycle")RecycleSite recycleSite) throws Exception;
 
     public Integer selectPictureId(@Param("name")String name) throws Exception;
+
+    public Integer listPictureCount(@Param("id")Integer id) throws Exception;
 }

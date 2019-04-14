@@ -36,6 +36,7 @@ public class PictureController {
         User user=(User)session.getAttribute("user");
         int id = user.getUserId();
         int albumId = (int)session.getAttribute("album");
+
         String fileName = "";//files[0].getSize();
         String msg = "";
         String fileType = "";
@@ -78,7 +79,7 @@ public class PictureController {
                 return result;
             }
             Picture picture = new Picture();
-            picture.setAlbumId(albumId);//暂用，值从cookie获取
+            picture.setAlbumId(albumId);
             picture.setPictureCreateTime(new Date());
             picture.setPictureSize((int) dest.length());
             picture.setPictureStatus(1);
