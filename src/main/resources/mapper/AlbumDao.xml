@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.imooc.demo.dao.AlbumDao">
     <select id="selectAlbumByUserId" resultType="com.imooc.demo.bo.Album">
-        SELECT album_name,album_cover,album_id
+        SELECT album_name,album_cover,album_id,album_describtion
         FROM album
         WHERE album.user_id=#{id}
     </select>
@@ -24,51 +24,10 @@
 		#{userId},
 		#{albumCover})
 	</insert>
-
-    <!--<select id="selectAlbumByName" resultType="com.imooc.demo.bo.Album">-->
-		<!--SELECT area_id, area_name,-->
-		<!--priority, create_time, last_edit_time-->
-		<!--FROM tb_area-->
-		<!--ORDER BY priority-->
-		<!--DESC-->
-	<!--</select>-->
-    <!--<select id="selectAlbumById" resultType="com.imooc.demo.bo.Album">-->
-		<!--SELECT area_id, area_name,-->
-		<!--priority, create_time, last_edit_time-->
-		<!--FROM tb_area-->
-		<!--WHERE-->
-		<!--area_id=#{areaId}-->
-	<!--</select>-->
-    <!--<insert id="insertAlbum" useGeneratedKeys="true" keyProperty="areaId"-->
-            <!--keyColumn="area_id" parameterType="com.imooc.demo.bo.Album">-->
-		<!--INSERT INTO-->
-		<!--tb_area(area_name,priority,-->
-		<!--create_time,last_edit_time)-->
-		<!--VALUES-->
-		<!--(#{areaName},#{priority},-->
-		<!--#{createTime},#{lastEditTime})-->
-	<!--</insert>-->
-
-
-
-
-
-    <!--&lt;!&ndash;以下全更新了&ndash;&gt;-->
-    <!--<update id="updateAlbum" parameterType="com.imooc.demo.bo.Album">-->
-        <!--update album-->
-        <!--<set>-->
-            <!--<if test="Album_name != null">Album_name=#{Album_name},</if>-->
-            <!--<if test="Album_id != null">Album_name=#{Album_id},</if>-->
-
-        <!--</set>-->
-        <!--where Album_id=#{Album_id}-->
-    <!--</update>-->
-
-    <!--<delete id="deleteAlbumByName">-->
-		<!--DELETE FROM-->
-		<!--Album-->
-		<!--WHERE-->
-		<!--Album_name =-->
-		<!--#{Album_name}-->
-	<!--</delete>-->
+	<!--根据相册id查找相册名-->
+	<select id="selectAlbumName" resultType="java.lang.String">
+		SELECT album_name
+		FROM album
+		WHERE album_id=#{id}
+	</select>
 </mapper>

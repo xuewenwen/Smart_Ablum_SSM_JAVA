@@ -1,5 +1,6 @@
 package com.imooc.demo.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.imooc.demo.bo.Picture;
 import com.imooc.demo.bo.RecycleSite;
 import com.imooc.demo.dao.PictureDao;
@@ -40,6 +41,16 @@ public class PictureServiceImpl implements PictureService {
     @Override
     public Integer selectPictureId(String name) throws Exception {
         return pictureDao.selectPictureId(name);
+    }
+
+    @Override
+    public List<Picture> listPictureByPage(int currentPage, int pageSize,int id) throws Exception {
+//        //设置分页信息，分别是当前页数和每页显示的总记录数【记住：必须在mapper接口中的方法执行之前设置该分页信息】
+//        PageHelper.startPage(currentPage, pageSize);
+//        List<Picture> picturesList = pictureDao.listPicture(id);
+//        //int count = pictureDao.listPictureCount().
+
+        return null;
     }
 
 }

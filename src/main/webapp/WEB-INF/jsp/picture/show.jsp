@@ -37,7 +37,6 @@
   <script>
     $(document).ready(function(){
       $("#delete1").hide();
-      //$(".picture").parent().show();
       $("#delete").click(function(){
         $(".picture").parent().show();
         $("#delete1").show();
@@ -45,12 +44,6 @@
     });
 
   </script>
-  <%--<script>--%>
-    <%--$(document).ready(function(){--%>
-      <%--$(".picture").parent().show();--%>
-    <%--});--%>
-
-  <%--</script>--%>
   <script>
     function fun() {
       var obj = document.getElementsByName("picture");
@@ -220,7 +213,7 @@
 
           <!-- Begin: Content Header -->
           <div class="content-header">
-            <h2> 我的相册</h2>
+            <h2> ${name}</h2>
             <p class="lead"></p>
           </div>
           <!-- message listing panel -->

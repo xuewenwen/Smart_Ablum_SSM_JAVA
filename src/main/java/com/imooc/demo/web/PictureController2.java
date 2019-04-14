@@ -4,6 +4,7 @@ import com.imooc.demo.bo.Album;
 import com.imooc.demo.bo.Picture;
 import com.imooc.demo.bo.RecycleSite;
 import com.imooc.demo.bo.User;
+import com.imooc.demo.service.AlbumService;
 import com.imooc.demo.service.PictureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,8 @@ import java.util.List;
 public class PictureController2 {
     @Autowired
     PictureService pictureService;
+    @Autowired
+    AlbumService albumService;
 
     @RequestMapping(value="/picture/search")
     public String Search(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -41,6 +44,8 @@ public class PictureController2 {
     @RequestMapping("/list/{albumId}")
     public String listPicture(@PathVariable String albumId, ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception {
         Integer id = Integer.parseInt(albumId);
+        String albumName = albumService.selectAlbumName(id);
+        model.addAttribute("name",albumName);
         model.addAttribute("id",id);
         return "/picture/show";
     }
@@ -68,6 +73,10 @@ public class PictureController2 {
             recycleSite.setPictureDeleteTime(new Date());
             pictureService.deletePicture(j,recycleSite);
         }
+    }
+    @RequestMapping("/lisS")
+    public String a(){
+        return "/lisS";
     }
 
 }
