@@ -1,5 +1,6 @@
 package com.imooc.demo.bo;
 
+import javax.xml.crypto.Data;
 import java.util.Date;
 
 public class Album {
@@ -63,8 +64,8 @@ public class Album {
         return albumDescription;
     }
 
-    public void setAlbumDescription(String albumDescribtion) {
-        this.albumDescription = albumDescribtion;
+    public void setAlbumDescription(String albumDescription) {
+        this.albumDescription = albumDescription;
     }
 
     @Override

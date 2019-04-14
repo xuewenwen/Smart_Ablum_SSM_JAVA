@@ -250,7 +250,9 @@ aria-labelledby="myModalLabel" >
 
           </div>
           <!-- End: Sidebar Collapse Button -->
-
+        </ul>
+      </div>
+    </aside>
       </div>
       <!-- End: Sidebar Left Content -->
 

@@ -52,11 +52,11 @@ public class AlbumController {
     @RequestMapping(value="/album/create", method = RequestMethod.POST)
     @ResponseBody
     public Map insertAlbum(
-                                             HttpSession httpSession,
-                                             HttpServletRequest request
-                                             ,@RequestParam(value = "file_data") MultipartFile file
-                                            ,@RequestParam(value = "albumName") String albumName
-                                            ,@RequestParam(value = "albumDescription") String albumDescription)throws Exception
+                           HttpSession httpSession
+                            ,HttpServletRequest request
+                          ,@RequestParam(value = "file_data") MultipartFile file
+                          ,@RequestParam(value = "albumName") String albumName
+                          ,@RequestParam(value = "albumDescription") String albumDescription)throws Exception
     {
 
         Album album = new Album();
