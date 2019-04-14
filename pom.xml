@@ -36,7 +36,12 @@
 			<artifactId>javax.servlet-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-
+		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.12</version>
+		</dependency>
 		<!-- JSTL (JSP standard Tag Library) JSP 标准标签库 -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
