@@ -16,23 +16,22 @@
 </head>
 <body>
 <div>
-        <p>名称：<input type="text" id="pictureName"></p>
-        <p>相册名：<input type="text" id="AlbumId"></p>
-        <p>描述<input type="text" id="pictureDescription"></p>
-        <p>状态：<input type="text" id="pictureStatus"></p>
+
+        <p>相册名：<input type="text" id="albumName"></p>
+        <p>相册描述：<input type="text" id="albumDescription"></p>
 
     <%--<p><form id="uploadForm" enctype="multipart/form-data">文件：<input id="file" type="file" name="file"></form></p>--%>
 
     <%--<form id="uploadForm" enctype="multipart/form-data">
     <input id="file" multiple="multiple" type="file" datatype="file">
     </form>--%>
-
+    <label>相册封面</label>
     <form method="post" <%--action="/multipleSave"--%> enctype="multipart/form-data" id="uploadForm">
-        <input name="file" type="file" datatype="file" id="file" multiple><br>
+        <input name="file_data" type="file" datatype="file" id="file_data" multiple><br>
     </form>
 
 
-    <p>  <input type="button" value="确认上传" id="btnUpload"></p>
+    <p>  <input type="button" value="上传照片" id="btnUpload"></p>
         <p><input type="button" value="确认信息" id="btnSave"></p>
 </div>
 <script>
@@ -97,27 +96,31 @@
 
 
         $("#btnUpload").on("click", function (){
+
+
+            var albumName = $("#albumName").val();
+            var albumDescription = $("#albumDescription").val();
            // var formdata=new FormData($('#file'));
            var formdata=new FormData($('#uploadForm')[0]);//可传送二进制文件，即上传文件
             //new FormData的参数是一个DOM对象，而非jQuery对象
-            alert(formdata);
+            alert(formdata.info);
+            formdata.append("albumName",albumName);
+            formdata.append("albumDescription",albumDescription);
+
             $.ajax({
                 type:"POST",
-
-
-                url:"/multipleSave",
-              // url:"/testuploadimg",
-
-
+                url:"/album/create",
+                // url:"/album/create",
                dataType:"json",
-             //  cache:false,
+               cache:false,
                 processData:false,//取消格式化数据
-                contentType:false,
+               contentType:false,
                // async: false,
                 data:formdata,
-                success:function (result) {
-                 //   $("#btnSave").removeClass("Saving");
-                   // $("#btnSave").val("Save");
+                success:function () {
+                    alert("成功");
+                    $("#btnSave").removeClass("Saving");
+                    $("#btnSave").val("Save");
 
                     if (result.code == 0) {
                         alert(result.msg);
@@ -131,10 +134,7 @@
                     alert(data.status+"::"+data.info);
                 }
             })
-
-
         })
-
     })
 </script>
 </body>

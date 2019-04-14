@@ -60,12 +60,12 @@ public class Album {
         this.userId = userId;
     }
 
-    public String getAlbumDescribtion() {
+    public String getAlbumDescription() {
         return albumDescribtion;
     }
 
-    public void setAlbumDescribtion(String albumDescribtion) {
-        this.albumDescribtion = albumDescribtion;
+    public void setAlbumDescription(String albumDescription) {
+        this.albumDescribtion = albumDescription;
     }
 
     @Override

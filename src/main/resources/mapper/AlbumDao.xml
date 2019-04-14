@@ -13,14 +13,16 @@
 		INSERT INTO
 		album
 		(album_name,
-		album_describtion,
+		album_description,
 		album_create_time,
-		user_id)
+		user_id,
+		album_cover)
 		VALUES
 		(#{albumName}
-		,#{albumDescribtion},
+		,#{albumDescription},
 		#{albumCreateTime},
-		#{userId})
+		#{userId},
+		#{albumCover})
 	</insert>
 
     <!--<select id="selectAlbumByName" resultType="com.imooc.demo.bo.Album">-->

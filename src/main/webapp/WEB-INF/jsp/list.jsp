@@ -67,7 +67,7 @@
 
         <div class="modal fade" id="myModal_2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-backdrop" role="document">
-            <div class="modal-dialog" style="width:600px">
+            <div class="modal-dialog" style="width:500px;height: 20%;">
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
@@ -88,13 +88,17 @@
 
                     <div>
                       <label for="message-text" class="control-label">相册封面：</label>
-                      <input type="file" name="file" id="file" class="inputfile" style="width:100%;height:40px" />
+
+                      <form id="uploadForm" enctype="multipart/form-data">
+                          <input type="file" name="file_data" id="file_data" <%--class="inputfile"--%> <%--style="width:100%;height:40px"--%> multiple/>
+                      </form>
+
                     </div>
                   </form>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                  <button type="button" class="btn btn-primary">确定</button>
+                  <button type="button" class="btn btn-primary" id="asure">确定</button>
                 </div>
               </div>
             </div>
@@ -206,7 +210,8 @@
           <!-- End: Sidebar Collapse Button -->
 
       <!-- End: Sidebar Left Content -->
-
+        </ul>
+      </div>
     </aside>
 
     <!-- Start: Content-Wrapper -->
@@ -312,6 +317,9 @@
               <!-- end: .admin-form -->
             </div>
             <!-- end: .tray-center -->
+            </div>
+          </div>
+        </div>
       </section>
       <!-- End: Content -->
 
@@ -415,6 +423,57 @@
         }
         // console.log(JSON.stringify(data));
     });
+
+
+    $(function () {
+      $("#asure").on("click", function (){
+
+        if ($("#asure").hasClass("Saving")) {
+          return;
+        }
+
+        $("#asure").addClass("Saving");
+        $("#asure").val("Saving");
+
+        // var formdata=new FormData($('#file'));
+        var formdata=new FormData($('#uploadForm')[0]);//可传送二进制文件，即上传文件
+        if(formdata==null){
+          alert("没有文件")
+        }else
+        {
+          alert("有文件");
+        }
+
+        //new FormData的参数是一个DOM对象，而非jQuery对象
+      //  alert("1111");
+        $.ajax({
+
+          type:"POST",
+          url:"/ocr",
+          dataType:"json",
+          processData:false,//取消格式化数据
+          contentType:false,
+          //  cache:false,
+          // async: false,
+          data:formdata,
+          success:function () {
+            //   $("#btnSave").removeClass("Saving");
+            // $("#btnSave").val("Save");
+
+            if (result.code == 0) {
+              alert(result.msg);
+            } else {
+              alert("上传失败");
+            }
+          },
+          error:function () {
+            // $("#btnSave").removeClass("Saving");
+            //  $("#btnSave").val("Save");
+            alert(data.status+"::"+data.info);
+          }
+        })
+      })
+    })
 </script>
 </body>
 </html>
