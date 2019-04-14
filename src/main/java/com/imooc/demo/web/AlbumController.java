@@ -1,5 +1,6 @@
 package com.imooc.demo.web;
 
+import com.github.pagehelper.PageHelper;
 import com.imooc.demo.bo.Album;
 import com.imooc.demo.bo.User;
 import com.imooc.demo.service.AlbumService;
@@ -31,6 +32,8 @@ public class AlbumController {
         HttpSession session = request.getSession();
         User user=(User)session.getAttribute("user");
         int id = user.getUserId();
+       // PageHelper.startPage()
+
         List<Album> list = albumService.selectAlbumByUserId(id);
         model.addAttribute("album",list);
         return "/albumList";

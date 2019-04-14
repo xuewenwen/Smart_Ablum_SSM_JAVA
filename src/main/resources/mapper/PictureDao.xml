@@ -18,7 +18,12 @@
 
     <!--照片显示-->
     <select id="listPicture" resultType="com.imooc.demo.bo.Picture">
-        SELECT picture_id,picture_url
+        SELECT picture_id,picture_url,picture_name
+        FROM picture
+        WHERE album_id=#{id} and picture_status=1
+    </select>
+    <select id="listPictureCount" resultType="java.lang.Integer">
+        SELECT count(*)
         FROM picture
         WHERE album_id=#{id} and picture_status=1
     </select>
@@ -43,5 +48,6 @@
         FROM picture
         WHERE picture_name=#{name}
     </select>
+
 
 </mapper>

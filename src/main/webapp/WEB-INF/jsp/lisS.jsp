@@ -3,8 +3,6 @@
 <html>
 
 
-<!-- Mirrored from admindesigns.com/demos/absolute/1.1/admin_forms-validation.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 06 Aug 2015 02:56:15 GMT -->
-
 <head>
   <!-- Meta, title, CSS, favicons, etc. -->
   <meta charset="utf-8">
@@ -22,7 +20,7 @@
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="assets/img/favicon.ico">
-  
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -41,6 +39,7 @@
   <div id="main">
 
     <!-- Start: Header -->
+
     <header class="navbar navbar-fixed-top navbar-shadow" style="text-align: center">
       <div class="navbar-branding">
         <a class="navbar-brand" href="dashboard.html">
@@ -54,10 +53,102 @@
         <input type="text" class="form-control" style="height: 30px;width:auto;display: inline-block;">
         <button class="btn btn-primary" type="button"
           style="height: 30px; line-height: 30px; padding: 0 12px;">搜索!</button>
-          <button class="btn btn-primary" type="button"
-          style="height: 30px; line-height: 30px; padding: 0 12px;">创建相册</button>
-    
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal_2"
+          data-target=".bs-example-modal-sm" style="height: 30px; line-height: 30px; padding: 0 12px;">创建相册</button>
+
+
+          <!-- 轮播图 start-->
+                
+          <script>
+
+            $(".modal-backdrop").remove();
+  
+          </script>     
+<div class="modal fade bs-example-modal-lg" id="myModal8" tabindex="-1" role="dialog"
+aria-labelledby="myModalLabel" >
+<div class="modal-backdrop" role="document">
+  <div class="modal-dialog" style="width:600px">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">相片查看</h4>
       </div>
+  <!-- 指示符 -->
+ 
+<div id="myCarousel" class="carousel slide">
+	<!-- 轮播（Carousel）指标 -->
+	<ol class="carousel-indicators">
+		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		<li data-target="#myCarousel" data-slide-to="1"></li>
+		<li data-target="#myCarousel" data-slide-to="2"></li>
+	</ol>   
+	<!-- 轮播（Carousel）项目 -->
+  <div class="carousel-inner">
+		<div class="item active">
+			<img src="http://static.runoob.com/images/mix/img_fjords_wide.jpg" alt="First slide">
+			<div class="carousel-caption">标题 1</div>
+		</div>
+		<div class="item">
+			<img src="C:/Users/Administrator/Desktop/11111" alt="Second slide">
+			<div class="carousel-caption">标题 2</div>
+		</div>
+		<div class="item">
+			<img src="http://static.runoob.com/images/mix/img_mountains_wide.jpg" alt="Third slide">
+			<div class="carousel-caption">标题 3</div>
+		</div>
+	</div>
+	<!-- 轮播（Carousel）导航 -->
+	<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+	    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+	    <span class="sr-only">Previous</span>
+	</a>
+	<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+	    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+	    <span class="sr-only">Next</span>
+	</a>
+</div> 
+<!-- 轮播图end -->
+
+        <!-- 创建相册 Modal -->
+        <script>
+
+          $(".modal-backdrop").remove();
+
+        </script>
+
+        <div class="modal fade" id="myModal_2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-backdrop" role="document">
+            <div class="modal-dialog" style="width:600px">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                      aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="exampleModalLabel">相册创建</h4>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div>
+                      <label for="recipient-name" class="control-label" style="">相册名:</label>
+                      <input type="text" class="form-control" id="recipient-name" placeholder="相册名">
+                    </div>
+                    <div class="form-group">
+                      <label for="message-text" class="control-label">相册描述：</label>
+                      <textarea class="form-control" id="message-text" style="height: 100px"
+                        placeholder="描述....."></textarea>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                  <button type="button" class="btn btn-primary">确定</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 创建相册 Modal -->
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown menu-merge">
           <a href="#" class="dropdown-toggle fw600 p15" data-toggle="dropdown">
@@ -111,12 +202,11 @@
           </div>
 
 
+
           <!-- Sidebar Widget - Search (hidden) -->
           <div class="sidebar-widget search-widget hidden">
             <div class="input-group">
-              <span class="input-group-addon">
-                <i class="fa fa-search"></i>
-              </span>
+
               <input type="text" id="sidebar-search" class="form-control" placeholder="Search...">
             </div>
           </div>
@@ -216,7 +306,9 @@
               </div>
               <!--  hide-->
               <!-- Modal -->
-              <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+              <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog"
+                aria-labelledby="myModalLabel">
                 <div class="modal-dialog  modal-lg" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -228,11 +320,11 @@
                       <form enctype="multipart/form-data">
                         <br>
                         <div class="file-loading">
-                          <input id="file-0a" class="file" type="file" multiple data-min-file-count="1"
-                            data-theme="fas" style="width:unset;">
+                          <input id="file-0a" class="file" type="file" multiple data-min-file-count="1" data-theme="fas"
+                            style="width:unset;">
                         </div>
                         <br>
-                  
+
                         <button type="reset" class="btn btn-primaryy">重置</button>
                       </form>
                     </div>
@@ -243,12 +335,24 @@
                   </div>
                 </div>
               </div>
+
               <!-- message listings table -->
 
               <div class="panel-body pn">
                 <div class="row">
+                  <div class="col-xs-6 col-md-3"  data-toggle="modal" data-target="#myModal8">
+                    <a href="#" class="thumbnail" style="text-align:center;">
+                      <img src="assets/img/avatars/3.jpg" alt="...">
+                    </a>
+                  </div>
                   <div class="col-xs-6 col-md-3">
-                    <a href="#" class="thumbnail">
+                    <a href="#" class="thumbnail" style="text-align:center;"> 
+                      <img src="assets/img/avatars/3.jpg" alt="...">
+                      SSA
+                    </a>
+                  </div>
+                  <div class="col-xs-6 col-md-3">
+                    <a href="#" class="thumbnail" style="text-align:center;">
                       <img src="assets/img/avatars/3.jpg" alt="...">
                     </a>
                   </div>
@@ -259,18 +363,7 @@
                     </a>
                   </div>
                   <div class="col-xs-6 col-md-3">
-                    <a href="#" class="thumbnail">
-                      <img src="assets/img/avatars/3.jpg" alt="...">
-                    </a>
-                  </div>
-                  <div class="col-xs-6 col-md-3">
-                    <a href="#" class="thumbnail" style="text-align:center;">
-                      <img src="assets/img/avatars/3.jpg" alt="...">
-                      SSA
-                    </a>
-                  </div>
-                  <div class="col-xs-6 col-md-3">
-                    <a href="#" class="thumbnail">
+                    <a href="#" class="thumbnail" style="text-align:center;"> 
                       <img src="assets/img/avatars/3.jpg" alt="...">
                     </a>
                   </div>
@@ -367,31 +460,33 @@
   <script src="../js/locales/es.js" type="text/javascript"></script>
   <script src="../themes/fas/theme.js" type="text/javascript"></script>
   <script src="../themes/explorer-fas/theme.js" type="text/javascript"></script>
+  
   <script>
-   
+
     $("#file-0a").fileinput({
-        uploadUrl: '/ocr', //你必须在这里设置一个有效的URL，否则你会得到一个错误
-        uploadAsync: true, //AJAX设置同步，异步的上传方式 （同步）
-        allowedFileExtensions: ['jpg', 'png', 'gif'],//文件类型
-        showUpload: true, //是否显示上传按钮
-        //browseClass: "btn btn-primary", //按钮样式
-        showRemove : true, //显示移除按钮
-        dropZoneEnabled: true,//是否显示拖拽区域
-        overwriteInitial: false,
-        //maxFileSize:0,//单位为kb，如果为0表示不限制文件大小
-        maxFilesNum: 10,
-        maxFileCount: 5, //表示允许同时上传的最大文件个数
-        minFileCount: 0,	//最少文件
-        validateInitialCount:false//异步上传返回结果处理
-    }).on('fileuploaded', function(event, data, previewId, index) {
-        // alert(JSON.stringify(data));
-        var res_arr = data.response.words_result;
-        for(var key in res_arr){
-            console.log(res_arr[key].words);
-            $('#res').append(res_arr[key].words + "<br/>");
-        }
-        // console.log(JSON.stringify(data));
+      uploadUrl: '/ocr', //你必须在这里设置一个有效的URL，否则你会得到一个错误
+      uploadAsync: true, //AJAX设置同步，异步的上传方式 （同步）
+      allowedFileExtensions: ['jpg', 'png', 'gif'],//文件类型
+      showUpload: true, //是否显示上传按钮
+      //browseClass: "btn btn-primary", //按钮样式
+      showRemove: true, //显示移除按钮
+      dropZoneEnabled: true,//是否显示拖拽区域
+      overwriteInitial: false,
+      //maxFileSize:0,//单位为kb，如果为0表示不限制文件大小
+      maxFilesNum: 10,
+      maxFileCount: 5, //表示允许同时上传的最大文件个数
+      minFileCount: 0,	//最少文件
+      validateInitialCount: false//异步上传返回结果处理
+    }).on('fileuploaded', function (event, data, previewId, index) {
+      // alert(JSON.stringify(data));
+      var res_arr = data.response.words_result;
+      for (var key in res_arr) {
+        console.log(res_arr[key].words);
+        $('#res').append(res_arr[key].words + "<br/>");
+      }
+      // console.log(JSON.stringify(data));
     });
-</script>
+  </script>
 </body>
+
 </html>

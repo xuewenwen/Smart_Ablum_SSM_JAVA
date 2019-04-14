@@ -15,4 +15,6 @@ public interface PictureService {
     public List<Picture> listPicture(Integer id) throws Exception;
     public void deletePicture(Integer id, RecycleSite recycleSite) throws Exception;
     public Integer selectPictureId(String name) throws Exception;
+    //分页显示图片
+    public List<Picture> listPictureByPage(int currentPage,int pageSize,int id)throws Exception;
 }
