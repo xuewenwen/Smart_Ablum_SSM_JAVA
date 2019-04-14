@@ -11,12 +11,11 @@ import org.springframework.stereotype.Service;
 public class GloBalImp implements GlobalService {
     @Autowired
     public UserDao userDao;
-    @Autowired
-    Md5Utils md5Utils;
+
     @Override
     public User login(String userEmail, String userpassword) {
         User user = userDao.queryUserByEmail(userEmail);
-        if (user != null && user.getUserPassword().equals(md5Utils.getStrrMD5(userpassword))) {
+        if (user != null && user.getUserPassword().equals(Md5Utils.getStrrMD5(userpassword))) {
             return user;
         }
         return null;

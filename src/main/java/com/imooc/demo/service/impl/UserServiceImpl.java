@@ -29,8 +29,7 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private HttpServletRequest request;
-    @Autowired
-    public Md5Utils md5Utils;
+
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -66,7 +65,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void SaveUser(User user)throws Exception{
             String psw=user.getUserPassword();
-            String saltPsw=md5Utils.getStrrMD5(psw);//密码经过md5加密后再保存进数据库
+            String saltPsw=Md5Utils.getStrrMD5(psw);//密码经过md5加密后再保存进数据库
             user.setUserPassword(saltPsw);
             userDao.insertUser(user);
     }
@@ -89,7 +88,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updateUserPasswordByEmail(String userEmail,String userPassword){
         User user=userDao.queryUserByEmail(userEmail);//得到了要修改密码的那个对象
-        String psw=md5Utils.getStrrMD5(userPassword);//加密后保存在数据库
+        String psw=Md5Utils.getStrrMD5(userPassword);//加密后保存在数据库
         user.setUserPassword(psw);
         userDao.updateUser(user);
     };

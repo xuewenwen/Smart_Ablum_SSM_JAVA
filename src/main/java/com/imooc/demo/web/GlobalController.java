@@ -14,8 +14,6 @@ import javax.servlet.http.HttpSession;
 public class GlobalController {
    @Autowired
     private GlobalService globalService;
-   @Autowired
-   private Md5Utils md5Utils;
     @RequestMapping("to_login")
     public String toLogin(){
                return "login";
