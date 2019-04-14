@@ -1,12 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: nekoh
-  Date: 2019/4/13
-  Time: 16:09
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
 <html>
 
 <!-- Mirrored from admindesigns.com/demos/absolute/1.1/pages_login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 06 Aug 2015 02:55:38 GMT -->
@@ -21,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Theme CSS -->
-    <link rel="stylesheet" type="text/css/css" href="assets/skin/default_skin/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">
 
     <!-- Admin Forms CSS -->
     <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.css">
@@ -37,6 +29,7 @@
 </head>
 
 <body class="external-page external-alt sb-l-c sb-r-c">
+
 
 <!-- Start: Main -->
 <div id="main" class="animated fadeIn">
@@ -60,44 +53,12 @@
                         <div class="panel-body bg-light p25 pb15">
 
 
-                            <!-- Username Input -->
-                            <div class="section">
-                                <label for="username" class="field-label text-muted fs18 mb10">用户名</label>
-                                <label for="username" class="field prepend-icon">
-                                    <input type="text" name="username" id="username" class="gui-input" placeholder="请输入用户名...">
-                                    <label for="username" class="field-icon">
-                                        <i class="fa fa-user"></i>
-                                    </label>
-                                </label>
-                            </div>
-
-                            <!-- Password Input -->
-                            <div class="section">
-                                <label for="username" class="field-label text-muted fs18 mb10">密码</label>
-                                <label for="password" class="field prepend-icon">
-                                    <input type="password" name="password" id="password" class="gui-input" placeholder="请输入密码...">
-                                    <label for="password" class="field-icon">
-                                        <i class="fa fa-lock"></i>
-                                    </label>
-                                </label>
-                            </div>
-
-                            <!-- Password forget -->
-                            <div class="section">
-                                <label for="username" class="field-label text-muted fs18 mb10">确认密码</label>
-                                <label for="password" class="field prepend-icon">
-                                    <input type="password" name="password" id="password_1" class="gui-input" placeholder="请再次输入密码...">
-                                    <label for="password" class="field-icon">
-                                        <i class="fa fa-lock"></i>
-                                    </label>
-                                </label>
-                            </div>
-
                             <!-- Email Input -->
                             <div class="section">
                                 <label for="username" class="field-label text-muted fs18 mb10">邮箱</label>
                                 <label for="email" class="field prepend-icon">
-                                    <input type="email" name="email" id="email" class="gui-input" placeholder="请输入邮箱..." style="width: 80%"> <button type="button" class="btn btn-primary" >点击发送</button>
+                                    <input type="email" name="email" id="email" class="gui-input" placeholder="请输入邮箱..."
+                                           style="width: 80%"> <button type="button" class="btn btn-primary">点击发送</button>
                                     <label for="email" class="field-icon">
                                         <i class="fa fa-lock"></i>
                                     </label>
@@ -116,22 +77,52 @@
                                 </label>
                             </div>
 
-                        </div>
+                            <div>
+                                <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal"
+                                        data-target="#Modal">点击验证</button>
 
-                        <div class="panel-footer clearfix">
-                            <button type="submit" class="button btn-primary mr10 pull-right">登陆</button>
-                            <label class="switch ib switch-primary mt10">
-                                <input type="checkbox" name="remember" id="remember" checked>
-                            </label>
-                        </div>
+                                <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                                        aria-hidden="true">&times;</span></button>
 
+                                                <!-- Password Input -->
+                                                <div class="section">
+                                                    <label for="username" class="field-label text-muted fs18 mb10">密码</label>
+                                                    <label for="password" class="field prepend-icon">
+                                                        <input type="password" name="password" id="password" class="gui-input"
+                                                               placeholder="请输入密码...">
+                                                        <label for="password" class="field-icon">
+                                                            <i class="fa fa-lock"></i>
+                                                        </label>
+                                                    </label>
+                                                </div>
+
+                                                <!-- Password forget -->
+                                                <div class="section">
+                                                    <label for="username" class="field-label text-muted fs18 mb10">确认密码</label>
+                                                    <label for="password" class="field prepend-icon">
+                                                        <input type="password" name="password" id="password_1" class="gui-input"
+                                                               placeholder="请再次输入密码...">
+                                                        <label for="password" class="field-icon">
+                                                            <i class="fa fa-lock"></i>
+                                                        </label>
+                                                    </label>
+                                                    <div class="modal-footer" style="background-color: white">
+                                                        <button type="button" class="btn btn-primary" style="margin-top:3%">确认修改</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </form>
                 </div>
-
-
-
             </div>
-
         </section>
         <!-- End: Content -->
 

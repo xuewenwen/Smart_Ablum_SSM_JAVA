@@ -9,7 +9,6 @@ import static org.apache.commons.codec.digest.DigestUtils.md5Hex;
 /**
  * MD5加密解密工具类*/
 public class Md5Utils {
-public Md5Utils md5Utils;
 
     public static String getStrrMD5(String password) {
 
