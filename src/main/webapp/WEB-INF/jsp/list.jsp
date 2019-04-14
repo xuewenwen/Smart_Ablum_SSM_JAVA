@@ -206,7 +206,8 @@
           <!-- End: Sidebar Collapse Button -->
 
       <!-- End: Sidebar Left Content -->
-
+        </ul>
+      </div>
     </aside>
 
     <!-- Start: Content-Wrapper -->
@@ -311,7 +312,11 @@
                 </div>
               <!-- end: .admin-form -->
             </div>
+
             <!-- end: .tray-center -->
+            </div>
+          </div>
+        </div>
       </section>
       <!-- End: Content -->
 
