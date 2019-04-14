@@ -19,7 +19,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 //        registry.addInterceptor(new InterceptorConfig()).addPathPatterns("/**").excludePathPatterns("index");
 
         //就是这个
-        registry.addInterceptor(new InterceptorConfig()).addPathPatterns("/**").excludePathPatterns("/index","/login","/admin/login","/RetrievePassword");
+        registry.addInterceptor(new InterceptorConfig()).addPathPatterns("/**").excludePathPatterns("/index","/login","/admin/login","/retrievepassword");
     }
 
     private class InterceptorConfig implements HandlerInterceptor {
