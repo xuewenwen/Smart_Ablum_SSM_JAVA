@@ -5,6 +5,7 @@ import com.imooc.demo.bo.Picture;
 import com.imooc.demo.bo.RecycleSite;
 import com.imooc.demo.dao.PictureDao;
 import com.imooc.demo.service.PictureService;
+import com.imooc.demo.utils.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,12 +46,13 @@ public class PictureServiceImpl implements PictureService {
 
     @Override
     public List<Picture> listPictureByPage(int currentPage, int pageSize,int id) throws Exception {
-//        //设置分页信息，分别是当前页数和每页显示的总记录数【记住：必须在mapper接口中的方法执行之前设置该分页信息】
-//        PageHelper.startPage(currentPage, pageSize);
-//        List<Picture> picturesList = pictureDao.listPicture(id);
-//        //int count = pictureDao.listPictureCount().
-
-        return null;
+        //设置分页信息，分别是当前页数和每页显示的总记录数【记住：必须在mapper接口中的方法执行之前设置该分页信息】
+        PageHelper.startPage(currentPage, pageSize);
+        List<Picture> picturesList = pictureDao.listPicture(id);
+        int count = pictureDao.listPictureCount(id);
+        PageBean<Picture> pageData = new PageBean<>(currentPage, pageSize, count);
+        pageData.setItems(picturesList);
+        return pageData.getItems();
     }
 
 }

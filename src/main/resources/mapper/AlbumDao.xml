@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.imooc.demo.dao.AlbumDao">
     <select id="selectAlbumByUserId" resultType="com.imooc.demo.bo.Album">
-        SELECT album_name,album_cover,album_id,album_describtion
+        SELECT album_name,album_cover,album_id,album_description
         FROM album
         WHERE album.user_id=#{id}
     </select>

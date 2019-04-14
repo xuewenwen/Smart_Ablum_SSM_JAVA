@@ -12,6 +12,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -77,6 +78,20 @@ public class PictureController2 {
     @RequestMapping("/lisS")
     public String a(){
         return "/lisS";
+    }
+
+    /**
+     * 商品分页功能(集成mybatis的分页插件pageHelper实现)
+     *
+     * @param currentPage    :当前页数
+     * @param pageSize        :每页显示的总记录数
+     * @return
+     */
+    @RequestMapping("/itemsPage")
+    //@ResponseBody
+    //int currentPage,int pageSize
+    public List<Picture> itemsPage() throws Exception {
+        return pictureService.listPictureByPage(1, 10,1);
     }
 
 }
