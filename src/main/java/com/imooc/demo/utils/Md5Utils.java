@@ -1,59 +1,16 @@
 package com.imooc.demo.utils;
 
-import org.apache.commons.codec.binary.Hex;
-
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 
+import static org.apache.commons.codec.digest.DigestUtils.md5Hex;
 
+
+/**
+ * MD5加密解密工具类*/
 public class Md5Utils {
+public Md5Utils md5Utils;
 
-    public static String getStrMD5(String inStr) {
-        // 获取MD5实例
-        MessageDigest md5 = null;
-        try {
-            md5 = MessageDigest.getInstance("MD5");
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-            System.out.println(e.toString());
-            return "";
-        }
-
-        // 将加密字符串转换为字符数组
-        char[] charArray = inStr.toCharArray();
-        byte[] byteArray = new byte[charArray.length];
-
-        // 开始加密
-        for (int i = 0; i < charArray.length; i++)
-            byteArray[i] = (byte) charArray[i];
-        byte[] digest = md5.digest(byteArray);
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < digest.length; i++) {
-            int var = digest[i] & 0xff;
-            if (var < 16)
-                sb.append("0");
-            sb.append(Integer.toHexString(var));
-        }
-        return sb.toString();
-    }
-
-    /**
-     * 普通MD5加密 02
-     * <p>
-     *
-     * @Title : getStrrMD5
-     *        </p>
-     *        <p>
-     * @Description : TODO
-     *              </p>
-     *              <p>
-     * @Author : HuaZai
-     *         </p>
-     *         <p>
-     * @Date : 2017年12月27日 上午11:18:39
-     *       </p>
-     */
     public static String getStrrMD5(String password) {
 
         char hexDigits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
@@ -77,22 +34,7 @@ public class Md5Utils {
         }
     }
 
-    /**
-     * MD5双重解密
-     * <p>
-     *
-     * @Title : getconvertMD5
-     *        </p>
-     *        <p>
-     * @Description : TODO
-     *              </p>
-     *              <p>
-     * @Author : HuaZai
-     *         </p>
-     *         <p>
-     * @Date : 2017年12月26日 下午3:34:17
-     *       </p>
-     */
+    //MD5双重解密
     public static String getconvertMD5(String inStr) {
         char[] charArray = inStr.toCharArray();
         for (int i = 0; i < charArray.length; i++) {
@@ -102,51 +44,8 @@ public class Md5Utils {
         return str;
     }
 
-    /**
-     * 使用Apache的Hex类实现Hex(16进制字符串和)和字节数组的互转
-     * <p>
-     *
-     * @Title : md5Hex
-     *        </p>
-     *        <p>
-     * @Description : TODO
-     *              </p>
-     *              <p>
-     * @Author : HuaZai
-     *         </p>
-     *         <p>
-     * @Date : 2017年12月27日 上午11:28:25
-     *       </p>
-     */
-    @SuppressWarnings("unused")
-    private static String md5Hex(String str) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] digest = md.digest(str.getBytes());
-            return new String(new Hex().encode(digest));
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e.toString());
-            return "";
-        }
-    }
 
-    /**
-     * 加盐MD5加密
-     * <p>
-     *
-     * @Title : getSaltMD5
-     *        </p>
-     *        <p>
-     * @Description : TODO
-     *              </p>
-     *              <p>
-     * @Author : HuaZai
-     *         </p>
-     *         <p>
-     * @Date : 2017年12月27日 上午11:21:00
-     *       </p>
-     */
+ //加盐MD5加密
     public static String getSaltMD5(String password) {
         // 生成一个16位的随机数
         Random random = new Random();
@@ -171,22 +70,7 @@ public class Md5Utils {
         return String.valueOf(cs);
     }
 
-    /**
-     * 验证加盐后是否和原文一致
-     * <p>
-     *
-     * @Title : verifyMD5
-     *        </p>
-     *        <p>
-     * @Description : TODO
-     *              </p>
-     *              <p>
-     * @Author : HuaZai
-     *         </p>
-     *         <p>
-     * @Date : 2017年12月27日 下午2:22:22
-     *       </p>
-     */
+    //验证加盐后是否和原文一致
     public static boolean getSaltverifyMD5(String password, String md5str) {
         char[] cs1 = new char[32];
         char[] cs2 = new char[16];

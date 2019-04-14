@@ -26,6 +26,7 @@ public class User {
     }
 
     public User(){}
+    public void setUserCode(int usercheckCode){this.userCode=usercheckCode;}
     public int getUserCode() {
         return userCode;
     }

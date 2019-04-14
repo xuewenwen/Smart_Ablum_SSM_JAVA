@@ -49,7 +49,7 @@
         <h2>登录
         </h2>
         <form action="login" method="post" id="loginForm" >
-            <input type="text" name="username" class="name" placeholder="用户名/邮箱" required="">
+            <input type="text" name="userEmail" class="name" placeholder="用户名/邮箱" required="">
             <input type="password" name="userpassword" class="password" placeholder="密码" required="">
             <ul>
                 <li>
@@ -57,7 +57,7 @@
                     <label for="brand1"><span></span>记住密码</label>
                 </li>
             </ul>
-            <a href="/RetrievePassword">忘记密码?</a><br>
+            <a href="/retrievepassword">忘记密码?</a><br>
             <div class="clear"></div>
             <input type="submit" value="登录">
         </form>
@@ -137,7 +137,7 @@
                                 },
                                 async:false,
                                 success:function () {
-                                    alert("注册成功")
+                                    alert("注册成功啦")
                                     window.location.href="login.jsp";}
                             })
                         }

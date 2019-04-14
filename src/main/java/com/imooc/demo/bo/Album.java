@@ -1,6 +1,5 @@
 package com.imooc.demo.bo;
 
-import javax.xml.crypto.Data;
 import java.util.Date;
 
 public class Album {
@@ -9,7 +8,7 @@ public class Album {
     private Date albumCreateTime;
     private String albumCover;
     private int userId;
-    private String albumDescribtion;
+    private String albumDescription;
     private int albumNumOfPic;
     public int getAlbumNumOfPic() {
         return albumNumOfPic;
@@ -60,12 +59,12 @@ public class Album {
         this.userId = userId;
     }
 
-    public String getAlbumDescribtion() {
-        return albumDescribtion;
+    public String getAlbumDescription() {
+        return albumDescription;
     }
 
-    public void setAlbumDescribtion(String albumDescribtion) {
-        this.albumDescribtion = albumDescribtion;
+    public void setAlbumDescription(String albumDescribtion) {
+        this.albumDescription = albumDescribtion;
     }
 
     @Override
@@ -76,7 +75,7 @@ public class Album {
                 ", albumCreateTime=" + albumCreateTime +
                 ", albumCover='" + albumCover + '\'' +
                 ", userId=" + userId +
-                ", albumDescribtion='" + albumDescribtion + '\'' +
+                ", albumDescribtion='" + albumDescription + '\'' +
                 ", albumNumOfPic=" + albumNumOfPic +
                 '}';
     }
