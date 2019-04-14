@@ -38,12 +38,32 @@
     </insert>
     <update id="updateUser" parameterType="com.imooc.demo.bo.User">
         update user
-       <set>
+        <set>
             <if test="userName != null">user_name=#{userName},</if>
             <if test="userPassword != null">user_password=#{userPassword},</if>
             <if test="userEmail != null">user_email=#{userEmail}</if>
+            <if test="userSize!=null">user_size=#{userSize},</if>
+            <if test="userLastLoginTime != null">user_last_login_time=#{userLastLoginTime},</if>
+            <if test="userCode!=null">user_code=#{userCode},</if>
+        </set>
+    </update>
+    <update id="updateUserReturnUser" parameterType="com.imooc.demo.bo.User" >
+        update user
+       <set>
+            <if test="userName != null">user_name=#{userName},</if>
+            <if test="userPassword != null">user_password=#{userPassword},</if>
+            <if test="userSize!=null">user_size=#{userSize},</if>
+            <if test="userLastLoginTime != null">user_last_login_time=#{userLastLoginTime},</if>
+            <if test="userCode!=null">user_code=#{userCode},</if>
         </set>
         where user_id=#{userId}
+    </update>
+    <update id="updateUserPasswordByEmail" parameterType="com.imooc.demo.bo.User">
+        update user
+        <set>
+            <if test="userPassword != null">user_password=#{userPassword}</if>
+        </set>
+        where user_email=#{userEmail}
     </update>
     <update id="activateUserByName" parameterType="int" >
         update user

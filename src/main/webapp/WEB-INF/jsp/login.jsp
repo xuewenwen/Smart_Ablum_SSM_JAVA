@@ -49,7 +49,7 @@
         <h2>登录
         </h2>
         <form action="login" method="post" id="loginForm" >
-            <input type="text" name="username" class="name" placeholder="用户名/邮箱" required="">
+            <input type="text" name="userEmail" class="name" placeholder="用户名/邮箱" required="">
             <input type="password" name="userpassword" class="password" placeholder="密码" required="">
             <ul>
                 <li>
@@ -57,7 +57,7 @@
                     <label for="brand1"><span></span>记住密码</label>
                 </li>
             </ul>
-            <a href="RetrievePassword.jsp">忘记密码?</a><br>
+            <a href="/retrievepassword">忘记密码?</a><br>
             <div class="clear"></div>
             <input type="submit" value="登录">
         </form>
@@ -79,14 +79,14 @@
     <div id="small-dialog" class="mfp-hide book-form">
         <h3>注册橘猫智能相册 </h3>
         <form action="#" method="post" id="RegForm">
-            <input type="text" id ="Name" name="Name" placeholder="请输入用户名" required=""/>
             <%--required里面放对象，对象里封装方法--%>
+            <input type="text" id ="Name" name="Name" placeholder="请输入用户名" required=""/>
             <input type="text" name="Email" class="email" id="email" placeholder="请输入邮件" required=""/>
             <input type="password" id="Password" name="Password" class="password" placeholder="请输入密码" required=""/>
             <input type="password" id="Repeated" name="Password" class="password" placeholder="请重复密码" required=""/>
-            <input type="text" name="checkCode"id="checkCode" placeholder="在此输入接收到的验证码" required=""/>
+            <input type="text" name="checkCode" id="checkCode" placeholder="在此输入接收到的验证码" required=""/>
             <input id="sendCheckCode" type="button" class="layui-btn layui-btn-normal"  value="点击获取验证码">
-            <input  type="button"id="reg" value="立即注册">
+            <input id="reg" type="button" value="立即注册">
         </form>
         <script>
             $(function () {
@@ -125,11 +125,9 @@
 
                     })
                 })
-
-
-        $("#reg").on("click",function (){
+                $("#reg").on("click",function (){
                         var userName=$("#Name").val();
-                        var inputCheckCode=$("#checkCode").val();
+                        var inputCheckCode=$("#checkCode").val();//用户输入的验证码
                         if (inputCheckCode==GenerateCode){
                             $.ajax({
                                 url:"/activate",
@@ -139,11 +137,12 @@
                                 },
                                 async:false,
                                 success:function () {
-                                    alert("注册成功")
+                                    alert("注册成功啦")
                                     window.location.href="login.jsp";}
                             })
                         }
-                    });}
+                    });
+            }
             )
                    </script>
     </div>

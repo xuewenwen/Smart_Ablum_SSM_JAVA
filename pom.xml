@@ -36,7 +36,12 @@
 			<artifactId>javax.servlet-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-
+		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.12</version>
+		</dependency>
 		<!-- JSTL (JSP standard Tag Library) JSP 标准标签库 -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -124,6 +129,10 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.boot</groupId>-->
+			<!--<artifactId>spring-boot-starter-thymeleaf</artifactId>-->
+		<!--</dependency>-->
 
 		<!--百度ai-->
 		<dependency>
@@ -136,6 +145,11 @@
 			<artifactId>java-sdk</artifactId>
 			<version>4.9.0</version>
 		</dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>9.0.16</version>
+        </dependency>
 
 		<!--pageHelper依赖-->
 		<dependency>

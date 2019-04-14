@@ -6,8 +6,6 @@ public class User {
 
     private int userId;
     private String userName;
-
-
     private String userPassword;
     private String userEmail;
     private int userStatus;
@@ -28,6 +26,7 @@ public class User {
     }
 
     public User(){}
+    public void setUserCode(int usercheckCode){this.userCode=usercheckCode;}
     public int getUserCode() {
         return userCode;
     }

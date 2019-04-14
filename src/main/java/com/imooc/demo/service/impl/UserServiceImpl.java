@@ -3,6 +3,7 @@ package com.imooc.demo.service.impl;
 import com.imooc.demo.bo.User;
 import com.imooc.demo.dao.UserDao;
 import com.imooc.demo.service.UserService;
+import com.imooc.demo.utils.Md5Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -27,6 +29,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private HttpServletRequest request;
+    @Autowired
+    public Md5Utils md5Utils;
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -61,6 +65,9 @@ public class UserServiceImpl implements UserService {
     }
     @Override
     public void SaveUser(User user)throws Exception{
+            String psw=user.getUserPassword();
+            String saltPsw=md5Utils.getStrrMD5(psw);//密码经过md5加密后再保存进数据库
+            user.setUserPassword(saltPsw);
             userDao.insertUser(user);
     }
     @Override
@@ -71,4 +78,31 @@ public class UserServiceImpl implements UserService {
         }
         else{
             return false;}
-}}
+}
+
+    @Override
+    public void updateCheckCodeByEmail(String email,int userCheckCode){
+        User user=userDao.queryUserByEmail(email);
+        user.setUserCode(userCheckCode);
+    };
+
+    @Override
+    public void updateUserPasswordByEmail(String userEmail,String userPassword){
+        User user=userDao.queryUserByEmail(userEmail);//得到了要修改密码的那个对象
+        String psw=md5Utils.getStrrMD5(userPassword);//加密后保存在数据库
+        user.setUserPassword(psw);
+        userDao.updateUser(user);
+    };
+     @Override
+     public void updateUserInfoByEmail(String userEmail,String userName){
+         User user=userDao.queryUserByEmail(userEmail);//得到了要修改名字的那个对象
+         user.setUserName(userName);
+         userDao.updateUser(user);
+     }
+     @Override
+     public void updateUserLastLoginTime(String userEmail, Date userLastLoginTime){
+         User user=userDao.queryUserByEmail(userEmail);
+         user.setUserLastLoginTime(userLastLoginTime);
+         userDao.updateUser(user);
+     }
+}

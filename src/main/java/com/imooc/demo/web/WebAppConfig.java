@@ -19,7 +19,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 //        registry.addInterceptor(new InterceptorConfig()).addPathPatterns("/**").excludePathPatterns("index");
 
         //就是这个
-        registry.addInterceptor(new InterceptorConfig()).addPathPatterns("/**").excludePathPatterns("/index","/login","/admin/login");
+        registry.addInterceptor(new InterceptorConfig()).addPathPatterns("/**").excludePathPatterns("/index","/login","/admin/login","/retrievepassword");
     }
 
     private class InterceptorConfig implements HandlerInterceptor {
@@ -27,7 +27,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
         public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
             String url = httpServletRequest.getRequestURI();
             //拦截！判断是否是LOGIN 其他的登录后才能访问
-            if (url.toLowerCase().indexOf("login") >= 0 || url.toLowerCase().indexOf("register")>0 || url.toLowerCase().indexOf("activate")>0) {
+            if (url.toLowerCase().indexOf("login") >= 0 || url.toLowerCase().indexOf("register")>0 || url.toLowerCase().indexOf("activate")>0||url.toLowerCase().indexOf("retrievepassword")>0) {
                 return true;
             }
              //通过seesion来判断你是否登陆成功
