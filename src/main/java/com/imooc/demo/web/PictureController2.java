@@ -9,10 +9,7 @@ import com.imooc.demo.service.PictureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -50,14 +47,7 @@ public class PictureController2 {
         model.addAttribute("id",id);
         return "/picture/show";
     }
-    @RequestMapping("/picture/pictureList/{albumId}")
-    public String list(@PathVariable String albumId, ModelMap model, HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
-        Integer id = Integer.parseInt(albumId);
-        session.setAttribute("album",id);
-        List<Picture> picture = pictureService.listPicture(id);
-        model.addAttribute("pic",picture);
-        return "/picture/pictureList";
-    }
+
 
     //将照片删除，并将其放到回收站中
     @RequestMapping("/picture/delete")
@@ -80,18 +70,26 @@ public class PictureController2 {
         return "/lisS";
     }
 
-    /**
-     * 商品分页功能(集成mybatis的分页插件pageHelper实现)
-     *
-     * @param currentPage    :当前页数
-     * @param pageSize        :每页显示的总记录数
-     * @return
-     */
-    @RequestMapping("/itemsPage")
-    //@ResponseBody
+    @RequestMapping("/picture/pictureList/{albumId}")
     //int currentPage,int pageSize
-    public List<Picture> itemsPage() throws Exception {
-        return pictureService.listPictureByPage(1, 10,1);
+    public String itemsPage(@PathVariable String albumId, @RequestParam("currentPage") String currentPage, HttpServletRequest request, ModelMap model) throws Exception {
+        int current = Integer.parseInt(currentPage);
+        //id是相册id
+        Integer id = Integer.parseInt(albumId);
+        //一页最多显示20张
+        int pageSize = 2;
+        List<Picture> picture = pictureService.listPictureByPage(current, pageSize,id);
+        model.addAttribute("pic",picture);
+        return "/picture/pictureList";
     }
+
+    //    @RequestMapping("/picture/pictureList/{albumId}")
+//    public String list(@PathVariable String albumId, ModelMap model, HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
+//        Integer id = Integer.parseInt(albumId);
+//        session.setAttribute("album",id);
+//        List<Picture> picture = pictureService.listPicture(id);
+//        model.addAttribute("pic",picture);
+//        return "/picture/pictureList";
+//    }
 
 }

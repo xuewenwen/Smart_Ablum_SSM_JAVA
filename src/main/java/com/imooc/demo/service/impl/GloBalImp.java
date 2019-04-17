@@ -15,10 +15,12 @@ public class GloBalImp implements GlobalService {
     @Override
     public User login(String userEmail, String userpassword) {
         User user = userDao.queryUserByEmail(userEmail);
-        if (user != null && user.getUserPassword().equals(Md5Utils.getStrrMD5(userpassword))) {
+        if (user != null && user.getUserPassword().equals(userpassword)) {
             return user;
         }
-        return null;
+        else {
+            return null;
+        }
     }
 
     @Override

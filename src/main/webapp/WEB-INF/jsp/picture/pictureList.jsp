@@ -65,7 +65,6 @@
             var picIndex=$(this).attr("pic_index");
             $(".item").removeClass("active");
             $(".item:eq("+picIndex+")").addClass("active");
-
         })
     })
 </script>
