@@ -1,4 +1,4 @@
-package com.imooc.demo.utils;
+package com.imooc.demo.Util;
 
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.name.Rename;
@@ -27,11 +27,11 @@ public class ImagUtil {
      * 生成缩略图到指定的目录
      *
      * @param path  目录
-     * @param file 要生成缩略图的文件列表
+     * @param files 要生成缩略图的文件列表
      * @throws IOException
      */
-    public static String generateThumbnail2Directory(String path, String file) throws IOException {
-        return generateThumbnail2Directory(DEFAULT_SCALE, path, file);
+    public static List<String> generateThumbnail2Directory(String path, String... files) throws IOException {
+        return generateThumbnail2Directory(DEFAULT_SCALE, path, files);
     }
 
     /**
@@ -39,17 +39,22 @@ public class ImagUtil {
      *
      * @param scale    图片缩放率
      * @param pathname 缩略图保存目录
-     * @param file    要生成缩略图的文件列表
+     * @param files    要生成缩略图的文件列表
      * @throws IOException
      */
-    public static String generateThumbnail2Directory(double scale, String pathname, String file) throws IOException {
-        Thumbnails.of(file)
+    public static List<String> generateThumbnail2Directory(double scale, String pathname, String... files) throws IOException {
+        File path = new File(pathname);
+        if(!path.exists()) path.mkdirs();
+        Thumbnails.of(files)
                 // 图片缩放率，不能和size()一起使用
                 .scale(scale)
                 // 缩略图保存目录,该目录需存在，否则报错
-                .toFiles(new File(pathname), Rename.SUFFIX_HYPHEN_THUMBNAIL);
-            String path = appendSuffix(file, SUFFIX);
-        return path;
+                .toFiles(path, Rename.SUFFIX_HYPHEN_THUMBNAIL);
+        List<String> list = new ArrayList<>(files.length);
+        for (String file : files) {
+            list.add(appendSuffix(file, SUFFIX));
+        }
+        return list;
     }
 
     /**

@@ -2,13 +2,15 @@ package com.imooc.demo;
 
 import com.github.pagehelper.PageHelper;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.aspectj.EnableSpringConfigured;
 
 import java.util.Properties;
-
+//@EnableAutoConfiguration
 @SpringBootApplication//开启组件扫描和自动配置的注解
 public class DemoApplication extends SpringBootServletInitializer {
 

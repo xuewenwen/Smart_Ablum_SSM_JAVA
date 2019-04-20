@@ -1,10 +1,12 @@
 package com.imooc.demo.web;
 
 import com.github.pagehelper.PageHelper;
+import com.imooc.demo.Util.ImagUtil;
 import com.imooc.demo.bo.Album;
 import com.imooc.demo.bo.User;
 import com.imooc.demo.service.AlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -17,11 +19,17 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
-
+@EnableAutoConfiguration
 @Controller
 public class AlbumController {
     @Autowired
     private AlbumService albumService;
+
+    @RequestMapping("/srcAdd")
+    public String srcAdd(){
+        return "srcAdd";
+    }
+
 
     @RequestMapping("/insert")
     public String insert(ModelMap model, HttpServletRequest request, HttpServletResponse response )throws Exception {
@@ -63,8 +71,10 @@ public class AlbumController {
         Map<String, Object> result = new HashMap<String, Object>();
         HttpSession session = request.getSession();
         User user=(User)session.getAttribute("user");
-        int id = user.getUserId();
-        int albumId = (int)session.getAttribute("album");
+        //int id = user.getUserId();
+        int id = 1;
+        //int albumId = (int)session.getAttribute("album");
+        int albumId = 1;
 
         String fileName = "";//files[0].getSize();
         String msg = "";
@@ -84,7 +94,8 @@ public class AlbumController {
 
             String picPath = "/images/"+"cover"+"/" + id + "/";
 
-            String picFileName = UUID.randomUUID().toString() + extName;
+            String StrUUID = UUID.randomUUID().toString();
+            String picFileName = StrUUID + extName;
 
             String basePath = this.getClass().getResource("/").getPath() + "/static/";
 
@@ -97,12 +108,14 @@ public class AlbumController {
             }
             //存储的图片路径
             String picturePath = basePath + picPath + picFileName;
+            String coverPath = basePath + picPath + StrUUID + "thumbNail"+extName;
             //数据库的访问路径
             fileName = picPath + picFileName;
             album.setAlbumCover(fileName);
             File dest = new File(picturePath);
             try {
                 file.transferTo(dest);
+                ImagUtil.generateThumbnail2Directory(0.5,coverPath,picturePath);
             } catch (IOException e) {
                 e.printStackTrace();
                 result.put("msg", "IOException e");
@@ -110,11 +123,12 @@ public class AlbumController {
             }
 
         }
-        album.setAlbumId(albumId);//从session中获取
+        album.setAlbumId(1);//从session中获取
         album.setAlbumCreateTime(new Date());
         album.setAlbumName(albumName);
         album.setAlbumDescription(albumDescription);
-        album.setUserId(id);
+        album.setUserId(1);
+        //
         albumService.insertAlbum(album);
 
 
