@@ -49,6 +49,7 @@ public class ImagUtil {
                 // 缩略图保存目录,该目录需存在，否则报错
                 .toFiles(new File(pathname), Rename.SUFFIX_HYPHEN_THUMBNAIL);
             String path = appendSuffix(file, SUFFIX);
+            //。。。
         return path;
     }
 
