@@ -26,4 +26,9 @@ public class AlbumServiceImpl implements AlbumService {
         return albumDao.selectAlbumName(id);
     }
 
+    @Override
+    public void updateAlbumNum(Integer id) {
+        albumDao.updateNum(id);
+    }
+
 }

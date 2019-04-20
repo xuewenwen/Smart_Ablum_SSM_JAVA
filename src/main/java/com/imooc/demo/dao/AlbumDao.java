@@ -13,4 +13,6 @@ public interface AlbumDao {
    public int insertAlbum(Album album);
 
    public String selectAlbumName(@Param("id")Integer id);
+
+   public void updateNum(@Param("id")Integer id);
 }

@@ -104,4 +104,9 @@ public class UserServiceImpl implements UserService {
          user.setUserLastLoginTime(userLastLoginTime);
          userDao.updateUser(user);
      }
+
+    @Override
+    public void updateSize(Long size, Integer id) {
+        userDao.updateSize(size,id);
+    }
 }

@@ -1,6 +1,7 @@
 package com.imooc.demo.service;
 
 import com.imooc.demo.bo.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
 import java.util.List;
@@ -18,4 +19,6 @@ public interface UserService {
     public void updateUserInfoByEmail(String userEmail,String userName);
     public void updateUserPasswordByEmail(String userEmail,String userPassword);
     public void updateUserLastLoginTime(String userEmail, Date userLastLoginTime);
+
+    public void updateSize(Long size,Integer id);
 }

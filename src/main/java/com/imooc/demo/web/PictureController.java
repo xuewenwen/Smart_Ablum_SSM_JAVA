@@ -1,11 +1,9 @@
 package com.imooc.demo.web;
 
+import com.imooc.demo.service.*;
 import com.imooc.demo.utils.ImagUtil;
 import com.imooc.demo.bo.Picture;
 import com.imooc.demo.bo.User;
-import com.imooc.demo.service.PictureService;
-import com.imooc.demo.service.TagService;
-import com.imooc.demo.service.ThreadExecute;
 import com.imooc.demo.service.impl.ThreadExecuteImpl;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +31,10 @@ public class PictureController {
     private TagService tagService;
     @Autowired
     private ThreadExecute threadExecute;
+    @Autowired
+    private AlbumService albumService;
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = "/ocr", method = RequestMethod.POST)
     @ResponseBody
@@ -121,13 +123,19 @@ public class PictureController {
 
             pictureService.insertPicture(picture);
 
+            //相册的照片数加1
+            albumService.updateAlbumNum(albumId);
+            //更新用户的空间大小
+            Long size = dest.length();
+            userService.updateSize(size,id);
+
             //获取照片的id
             int pictureId = pictureService.selectPictureId(picFileName);
 
 //            //保存tag值,使用百度ai
 //            tagService.Ai(picturePath,pictureId);
             //保存百度ai中的tag值，使用线程池的方法
-        //    threadExecute.Execute(picturePath,pictureId);
+            threadExecute.Execute(picturePath,pictureId);
             result.put("code", 0);
             result.put("msg", "创建成功！");
             return result;

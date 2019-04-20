@@ -65,6 +65,8 @@ public class TagServiceImpl implements TagService {
             String w = "";
             JSONObject js = new JSONObject(result);
             JSONArray jsonArray = js.getJSONArray("result");
+//            while (int j=0;j<5;j++){
+
             for (int i = 0; i < jsonArray.length(); i++) {
                 double score = jsonArray.getJSONObject(i).getDouble("score");
                 String keyword = jsonArray.getJSONObject(i).getString("keyword");

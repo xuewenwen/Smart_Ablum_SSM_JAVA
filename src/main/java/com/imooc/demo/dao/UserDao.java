@@ -2,7 +2,9 @@ package com.imooc.demo.dao;
 
 import com.imooc.demo.bo.User;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +23,8 @@ public interface UserDao {
     void updateUserPasswordByEmail(String email,String password);//通过邮箱给改密码
     void updateUserInfo(String email);
     void updateUser(User user);//更新一个user对象不返回
+
+    void updateSize(@Param("size") Long size, @Param("userId")Integer id);//更新已使用的空间
 
 
 }

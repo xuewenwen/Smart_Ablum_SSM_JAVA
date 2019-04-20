@@ -8,4 +8,6 @@ public interface AlbumService {
     public List<Album> selectAlbumByUserId(Integer id) throws Exception;
     public int insertAlbum(Album album) throws Exception;
     public String selectAlbumName(Integer id);
+    //修改相册数量
+    public void updateAlbumNum(Integer id);
 }
