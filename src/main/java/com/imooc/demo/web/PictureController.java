@@ -97,7 +97,7 @@ public class PictureController {
                 //保存该图片
                 file.transferTo(dest);
                 //保存缩略图的原图片路径
-                file.transferTo(pictureThumbnail);
+                //file.transferTo(pictureThumbnail);
                 //存储的缩略图路径
                 thumbnailPicPath = ImagUtil.generateThumbnail2Directory(thumbnailFilePath,thumbnailPicturePath);
             } catch (IOException e) {
