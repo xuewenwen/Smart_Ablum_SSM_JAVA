@@ -99,14 +99,17 @@ public class PictureController {
                 //保存缩略图的原图片路径
                 //file.transferTo(pictureThumbnail);
                 //存储的缩略图路径
-                thumbnailPicPath = ImagUtil.generateThumbnail2Directory(thumbnailFilePath,thumbnailPicturePath);
+                thumbnailPicPath = ImagUtil.generateThumbnail2Directory(thumbnailFilePath,picturePath);
             } catch (IOException e) {
                 e.printStackTrace();
                 result.put("msg", "IOException e");
                 return result;
             }
             //在数据库存储的缩略图的详细路径
-            String thumbnail = StringUtils.substringAfter(thumbnailPicPath,"/static/");
+            //这步是将从imageutil中获取的路径值的图片名获取下来
+            String thumbnail = StringUtils.substringAfter(thumbnailPicPath,"/"+id+"/");
+            //数据库的完整路径
+            String thumbnailPicture = thumbnailPath+thumbnail;
             Picture picture = new Picture();
             picture.setAlbumId(albumId);
             picture.setPictureCreateTime(new Date());
@@ -114,7 +117,7 @@ public class PictureController {
             picture.setPictureStatus(1);
             picture.setPictureUrl(fileName);
             picture.setPictureName(picFileName);
-            picture.setPictureThumbnail(thumbnail);
+            picture.setPictureThumbnail(thumbnailPicture);
 
             pictureService.insertPicture(picture);
 
@@ -124,7 +127,7 @@ public class PictureController {
 //            //保存tag值,使用百度ai
 //            tagService.Ai(picturePath,pictureId);
             //保存百度ai中的tag值，使用线程池的方法
-            threadExecute.Execute(picturePath,pictureId);
+        //    threadExecute.Execute(picturePath,pictureId);
             result.put("code", 0);
             result.put("msg", "创建成功！");
             return result;

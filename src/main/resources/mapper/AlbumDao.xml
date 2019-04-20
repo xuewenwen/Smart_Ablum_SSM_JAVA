@@ -30,4 +30,5 @@
 		FROM album
 		WHERE album_id=#{id}
 	</select>
+
 </mapper>
