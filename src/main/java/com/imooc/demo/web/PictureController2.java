@@ -78,7 +78,7 @@ public class PictureController2 {
         Integer id = Integer.parseInt(albumId);
         session.setAttribute("album",id);
         //一页最多显示20张
-        int pageSize = 2;
+        int pageSize = 10;
         List<Picture> picture = pictureService.listPictureByPage(current, pageSize,id);
         model.addAttribute("pic",picture);
         return "/picture/pictureList";
