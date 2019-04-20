@@ -62,11 +62,9 @@ public class AlbumController {
         Album album = new Album();
         Map<String, Object> result = new HashMap<String, Object>();
         HttpSession session = request.getSession();
-        /*User user=(User)session.getAttribute("user");
-        int id = user.getUserId();*/
-        int id = 1;
-        //int albumId = (int)session.getAttribute("album");
-        int albumId = 1;
+        User user=(User)session.getAttribute("user");
+        int id = user.getUserId();
+        int albumId = (int)session.getAttribute("album");
 
         String fileName = "";//files[0].getSize();
         String msg = "";
@@ -112,12 +110,11 @@ public class AlbumController {
             }
 
         }
-        album.setAlbumId(1);//从session中获取
+        album.setAlbumId(albumId);//从session中获取
         album.setAlbumCreateTime(new Date());
         album.setAlbumName(albumName);
         album.setAlbumDescription(albumDescription);
-        album.setUserId(1);
-        //
+        album.setUserId(id);
         albumService.insertAlbum(album);
 
 

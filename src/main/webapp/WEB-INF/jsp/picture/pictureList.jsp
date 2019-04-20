@@ -9,7 +9,7 @@
                     <input type="checkbox" value="${pic.pictureId}" class="picture" name="picture">
                     <span class="checkbox mn"></span>
                 </label>
-                <img src="${pic.pictureUrl}" alt="..." >
+                <img src="${pic.pictureThumbnail}" alt="..." >
             </a>
         </div>
 </c:forEach>

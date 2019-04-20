@@ -72,10 +72,11 @@ public class PictureController2 {
 
     @RequestMapping("/picture/pictureList/{albumId}")
     //int currentPage,int pageSize
-    public String itemsPage(@PathVariable String albumId, @RequestParam("currentPage") String currentPage, HttpServletRequest request, ModelMap model) throws Exception {
+    public String itemsPage(@PathVariable String albumId, @RequestParam("currentPage") String currentPage, HttpServletRequest request, ModelMap model,HttpSession session) throws Exception {
         int current = Integer.parseInt(currentPage);
         //id是相册id
         Integer id = Integer.parseInt(albumId);
+        session.setAttribute("album",id);
         //一页最多显示20张
         int pageSize = 2;
         List<Picture> picture = pictureService.listPictureByPage(current, pageSize,id);
@@ -83,13 +84,5 @@ public class PictureController2 {
         return "/picture/pictureList";
     }
 
-    //    @RequestMapping("/picture/pictureList/{albumId}")
-//    public String list(@PathVariable String albumId, ModelMap model, HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
-//        Integer id = Integer.parseInt(albumId);
-//        session.setAttribute("album",id);
-//        List<Picture> picture = pictureService.listPicture(id);
-//        model.addAttribute("pic",picture);
-//        return "/picture/pictureList";
-//    }
 
 }

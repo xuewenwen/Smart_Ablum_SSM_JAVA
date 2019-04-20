@@ -109,7 +109,7 @@ public class Picture {
                 ", pictureTag='" + pictureTag + '\'' +
                 ", pictureSize=" + pictureSize +
                 ", pictureStatus=" + pictureStatus +
-                ", pictureThumbnaill='" + pictureThumbnail + '\'' +
+                ", pictureThumbnail='" + pictureThumbnail + '\'' +
                 ", pictureDescribtion='" + pictureDescription + '\'' +
                 '}';
     }
