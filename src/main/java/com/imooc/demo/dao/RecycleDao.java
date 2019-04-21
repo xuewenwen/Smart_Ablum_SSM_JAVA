@@ -1,5 +1,6 @@
 package com.imooc.demo.dao;
 
+import com.imooc.demo.bo.RecycleSite;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -17,4 +18,8 @@ public interface RecycleDao {
     public Integer selectRecyclePictureId(@Param("id") Integer id) throws Exception;
 
     public void deletePictureById(@Param("id") Integer id) throws Exception;
+
+    public Map<String,Object> selectPicAlbum(@Param("id") Integer id);
+
+    public List<RecycleSite> selectDay();
 }

@@ -24,4 +24,6 @@ public interface PictureDao {
     public Integer selectPictureId(@Param("name")String name) throws Exception;
 
     public Integer listPictureCount(@Param("id")Integer id) throws Exception;
+
+    public Long selectPicSize(@Param("id")Integer id);
 }

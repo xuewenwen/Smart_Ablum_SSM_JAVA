@@ -30,6 +30,11 @@ public class RecycleDaoTest {
         recycleDao.deleteRecycleById(6);
         recycleDao.deletePictureById(id);
     }
+    @Test
+    public void test1(){
+        Map<String,Object> map = recycleDao.selectPicAlbum(60);
+        System.out.println(map);
+    }
 
 
 

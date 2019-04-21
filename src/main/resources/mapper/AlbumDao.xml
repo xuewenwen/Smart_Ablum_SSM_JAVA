@@ -36,5 +36,11 @@
 		set album_num_of_pic=album_num_of_pic+1
 		where album_id=#{id}
 	</select>
+	<!--修改照片数量，删除照片时-->
+	<select id="updateMinusNum" parameterType="java.lang.Integer">
+		update album
+		set album_num_of_pic=album_num_of_pic-1
+		where album_id=#{id}
+	</select>
 
 </mapper>

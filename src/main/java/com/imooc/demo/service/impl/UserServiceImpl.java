@@ -109,4 +109,9 @@ public class UserServiceImpl implements UserService {
     public void updateSize(Long size, Integer id) {
         userDao.updateSize(size,id);
     }
+
+    @Override
+    public void updateMinusSize(Long size, Integer id) {
+        userDao.updateMinusSize(size,id);
+    }
 }

@@ -10,7 +10,11 @@ public interface RecycleService {
 
     //将照片移回原来相册
     public void updatePictureStatus(Integer id) throws Exception;
+    public Map<String,Object> selectPicAlbum(Integer id);
 
     //彻底删除
-    public void deleteRecycleById(Integer id) throws Exception;
+    public void deleteRecycleById(Integer id,Integer userId) throws Exception;
+
+    //删除时间大于30天的照片
+    public void deletePic30day();
 }

@@ -31,4 +31,9 @@ public class AlbumServiceImpl implements AlbumService {
         albumDao.updateNum(id);
     }
 
+    @Override
+    public void updateMinusNum(Integer id) {
+        albumDao.updateMinusNum(id);
+    }
+
 }

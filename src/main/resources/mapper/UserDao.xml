@@ -85,4 +85,10 @@
         set user_size=user_size+#{size}
         where user_id=#{userId}
     </update>
+    <!--删除照片，减少用户容量-->
+    <update id="updateMinusSize">
+        update user
+        set user_size=user_size-#{size}
+        where user_id=#{userId}
+    </update>
 </mapper>

@@ -28,7 +28,6 @@ public class ThreadExecuteImpl implements ThreadExecute {
                     //获得许可
                     JOB_SEMAPHORE.acquire();
                     TagService tagService= (TagService) springUtil.getBean(TagServiceImpl.class);
-//                    TagService tagService = new TagServiceImpl();
                     tagService.Ai(p,i);
                 } catch (InterruptedException e) {
                     e.printStackTrace();

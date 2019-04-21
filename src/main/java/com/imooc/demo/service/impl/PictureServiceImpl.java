@@ -68,6 +68,10 @@ public class PictureServiceImpl implements PictureService {
         return pageData.getItems();
     }
 
+    @Override
+    public Long selectPicSize(Integer id) {
+        return pictureDao.selectPicSize(id);
+    }
 
 
 }

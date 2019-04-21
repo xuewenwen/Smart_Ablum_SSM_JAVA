@@ -21,4 +21,6 @@ public interface UserService {
     public void updateUserLastLoginTime(String userEmail, Date userLastLoginTime);
 
     public void updateSize(Long size,Integer id);
+
+    public void updateMinusSize(Long size,Integer id);
 }
