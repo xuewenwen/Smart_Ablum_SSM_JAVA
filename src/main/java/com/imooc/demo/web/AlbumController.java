@@ -5,6 +5,7 @@ import com.imooc.demo.bo.Picture;
 import com.imooc.demo.bo.User;
 import com.imooc.demo.service.AlbumService;
 import com.imooc.demo.service.PictureService;
+import com.imooc.demo.service.UserService;
 import com.imooc.demo.utils.ImagUtil;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,9 @@ public class AlbumController {
     @Autowired
     private AlbumService albumService;
 
+    @Autowired
+    private UserService userService;
+
     @RequestMapping("/srcAdd")
     public String srcAdd(){
         return "srcAdd";
@@ -44,6 +48,17 @@ public class AlbumController {
 
     @RequestMapping("/list")
     public String list(ModelMap model, HttpServletRequest request, HttpServletResponse response )throws Exception {
+        HttpSession session = request.getSession();
+        User user=(User)session.getAttribute("user");
+        int userId = user.getUserId();
+        User user1 = userService.selectByUserId(userId);
+        Long size = user1.getUserSize();
+        //固定大小 5G
+        Long FIXSIZE = 5*1024*1024*1024L;
+        //所占的比列
+        float sizeper = (float) (size/FIXSIZE);
+        model.addAttribute("userId",userId);
+        model.addAttribute("sizePer",sizeper);
         return "list";
     }
     @RequestMapping("/albumList")
@@ -51,8 +66,6 @@ public class AlbumController {
         HttpSession session = request.getSession();
         User user=(User)session.getAttribute("user");
         int id = user.getUserId();
-       // PageHelper.startPage()
-
         List<Album> list = albumService.selectAlbumByUserId(id);
         model.addAttribute("album",list);
         return "/albumList";
@@ -77,7 +90,6 @@ public class AlbumController {
         HttpSession session = request.getSession();
         User user=(User)session.getAttribute("user");
         int id = user.getUserId();
-//        int albumId = (int)session.getAttribute("album");
         int userId = ((User)session.getAttribute("user")).getUserId();
 
         boolean upFlag = true;

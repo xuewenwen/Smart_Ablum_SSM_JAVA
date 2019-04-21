@@ -26,7 +26,13 @@ public interface UserDao {
 
     void updateSize(@Param("size") Long size, @Param("userId")Integer id);//更新已使用的空间
 
-    void updateMinusSize(@Param("size") Long size, @Param("userId")Integer id);//更新空间
+    void updateMinusSize(@Param("size") Long size, @Param("userId")Integer id);//更新减少的空间
+
+    List<User> selectAll();  //查找所有的用户信息
+
+    void updateSizeByJob(@Param("size") Long size, @Param("userId")Integer id);
+
+    User selectByUserId(@Param("id")Integer id);
 
 
 }

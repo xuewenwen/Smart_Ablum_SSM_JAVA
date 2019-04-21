@@ -42,5 +42,18 @@
 		set album_num_of_pic=album_num_of_pic-1
 		where album_id=#{id}
 	</select>
+	<!--查找该用户的所有的相册信息-->
+	<select id="selectByUserId" resultType="com.imooc.demo.bo.Album">
+		SELECT *
+		FROM album
+		WHERE user_id=#{id}
+	</select>
+
+	<!--更新相册的数量-->
+	<update id="updateAlbumNum">
+		UPDATE album
+		SET album_num_of_pic=#{num}
+		WHERE album_id=#{id}
+	</update>
 
 </mapper>

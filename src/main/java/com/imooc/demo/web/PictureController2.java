@@ -68,10 +68,6 @@ public class PictureController2 {
             albumService.updateMinusNum(albumId);
         }
     }
-    @RequestMapping("/lisS")
-    public String a(){
-        return "/lisS";
-    }
 
     @RequestMapping("/picture/pictureList/{albumId}")
     //int currentPage,int pageSize
