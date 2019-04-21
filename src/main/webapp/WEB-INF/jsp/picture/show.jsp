@@ -84,7 +84,7 @@
       <div style="display: inline-block;
       height: 60px;
       line-height: 60px;">
-        
+
     
       </div>
       <ul class="nav navbar-nav navbar-right">
