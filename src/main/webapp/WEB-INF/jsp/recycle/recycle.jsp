@@ -259,12 +259,12 @@
                   <div class="hidden-xs hidden-sm col-md-3">
                     <div class="btn-group">
                       <!--返回-->
-                      <input type="button" class="btn btn-default light " onclick="fun()">
-                        <i class="fa fa-refresh"></i>
+                      <input type="button" class="btn btn-default light " onclick="fun()" value="移回">
+
                       </input>
                       <!--删除-->
-                      <input type="button" class="btn btn-default light" onclick="fun1()">
-                        <i class="fa fa-trash"></i>
+                      <input type="button" class="btn btn-default light" onclick="fun1()" value="彻底删除">
+
                       </input>
                     
                     </div>

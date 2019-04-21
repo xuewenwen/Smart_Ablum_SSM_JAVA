@@ -302,24 +302,25 @@
 										href=""></a></li>
 
 										<li id="menu-item-256" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-256"><a
-											href="login" style="font-size:27px">登陆</a></li>
+											href="login" style="font-size:27px">登陆/注册</a></li>
 								<li id="menu-item-256" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-256"><a
-										href="login" style="font-size:27px">注册</a></li>
+										href="retrievepassword" style="font-size:27px">忘记密码</a></li>
 							</ul>
+
 						</nav>
 						<div class="clearfix"></div>
 					</div><!-- ./header-inner -->
-
 
 					<a href="" class="menu-icon"><i class="fa fa-bars"></i></a>
 					<div class="clearfix"></div>
 				</div><!-- ./container -->
 			</div>
-		</div> <!-- ./menu-bar-wrapper -->
+		</div>
+
+		<!-- ./menu-bar-wrapper -->
 	</header>
+
 	<!-- End Header -->
-
-
 	<script type="text/javascript" src="../ts/jquery.form.min.js.下载"></script>
 	<script type="text/javascript">
 		/* <![CDATA[ */

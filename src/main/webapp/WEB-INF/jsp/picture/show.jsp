@@ -327,7 +327,7 @@
                 </div>
               <!-- end: .admin-form -->
             </div>
-              <input type="button" onclick="fun()" value="删除" id="delete1">
+              <input type="button" class="btn btn-primary btn-lg active" onclick="fun()" value="删除" id="delete1">
             <!-- end: .tray-center -->
       </section>
       <!-- End: Content -->

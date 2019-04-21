@@ -55,7 +55,7 @@
 
                             <!-- Email Input -->
                             <div class="section">
-                                <label for="username" class="field-label text-muted fs18 mb10">邮箱</label>
+                                <label for="email" class="field-label text-muted fs18 mb10">邮箱</label>
                                 <label for="email" class="field prepend-icon">
                                     <input type="email" name="email" id="email" class="gui-input" placeholder="请输入邮箱..."
                                            style="width: 80%"> <button type="button" class="btn btn-primary">点击发送</button>
@@ -68,7 +68,7 @@
 
                             <!-- captcha Input -->
                             <div class="section">
-                                <label for="username" class="field-label text-muted fs18 mb10">验证码</label>
+                                <label for="captcha" class="field-label text-muted fs18 mb10">验证码</label>
                                 <label for="captcha" class="field prepend-icon">
                                     <input type="captcha" name="captcha" id="captcha" class="gui-input" placeholder="请输入验证码...">
                                     <label for="captcha" class="field-icon">
@@ -90,7 +90,7 @@
 
                                                 <!-- Password Input -->
                                                 <div class="section">
-                                                    <label for="username" class="field-label text-muted fs18 mb10">密码</label>
+                                                    <label for="password" class="field-label text-muted fs18 mb10">密码</label>
                                                     <label for="password" class="field prepend-icon">
                                                         <input type="password" name="password" id="password" class="gui-input"
                                                                placeholder="请输入密码...">
@@ -102,7 +102,7 @@
 
                                                 <!-- Password forget -->
                                                 <div class="section">
-                                                    <label for="username" class="field-label text-muted fs18 mb10">确认密码</label>
+                                                    <label for="password" class="field-label text-muted fs18 mb10">确认密码</label>
                                                     <label for="password" class="field prepend-icon">
                                                         <input type="password" name="password" id="password_1" class="gui-input"
                                                                placeholder="请再次输入密码...">
