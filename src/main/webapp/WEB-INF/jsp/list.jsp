@@ -243,26 +243,11 @@
                 <div class="row">
                   <div class="hidden-xs hidden-sm col-md-3">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-default light ">
-                        <i class="fa fa-refresh"></i>
-                      </button>
-                      <button type="button" class="btn btn-default light">
-                        <i class="fa fa-trash"></i>
-                      </button>
-                      <button type="button" class="btn btn-default light" data-toggle="modal" data-target="#myModal">
-                        <i class="fa fa-plus"></i>
-                      </button>
+
                     </div>
                   </div>
                   <div class="col-xs-12 col-md-9 text-right">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-default light">
-                        <i class="fa fa-chevron-left"></i>
-                      </button>
-                      <button type="button " class="btn btn-default light">
-                        <i class="fa fa-chevron-right"></i>
-
-                      </button>
                     </div>
                   </div>
                 </div>

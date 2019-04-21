@@ -84,11 +84,7 @@
       <div style="display: inline-block;
       height: 60px;
       line-height: 60px;">
-        <input type="text" class="form-control" style="height: 30px;width:auto;display: inline-block;">
-        <button class="btn btn-primary" type="button"
-          style="height: 30px; line-height: 30px; padding: 0 12px;">搜索!</button>
-          <button class="btn btn-primary" type="button"
-          style="height: 30px; line-height: 30px; padding: 0 12px;">创建相册</button>
+        
     
       </div>
       <ul class="nav navbar-nav navbar-right">
