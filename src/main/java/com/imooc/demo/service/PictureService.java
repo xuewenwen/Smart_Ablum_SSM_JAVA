@@ -19,4 +19,6 @@ public interface PictureService {
     public List<Picture> listPictureByPage(int currentPage,int pageSize,int id)throws Exception;
 
     public Long selectPicSize(Integer id);
+
+    public void updateMessageByJob() throws Exception;  //通过定时任务判断数据库存储的值与计算出来的值是否相同
 }
