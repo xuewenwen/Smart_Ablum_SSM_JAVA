@@ -136,11 +136,6 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
-		<!--<dependency>-->
-			<!--<groupId>org.springframework.boot</groupId>-->
-			<!--<artifactId>spring-boot-starter-thymeleaf</artifactId>-->
-		<!--</dependency>-->
-
 		<!--百度ai-->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
@@ -152,11 +147,6 @@
 			<artifactId>java-sdk</artifactId>
 			<version>4.9.0</version>
 		</dependency>
-        <!--<dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-core</artifactId>
-            <version>9.0.16</version>
-        </dependency>-->
 
 		<!--pageHelper依赖-->
 		<dependency>
@@ -170,6 +160,17 @@
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 			<version>2.6</version>
+		</dependency>
+
+		<!-- quartz定时器 -->
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>2.2.1</version>
+		</dependency>
+		<dependency><!-- 该依赖必加，里面有sping对schedule的支持 -->
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
 		</dependency>
 
 	</dependencies>

@@ -17,4 +17,6 @@ public interface PictureService {
     public Integer selectPictureId(String name) throws Exception;
     //分页显示图片
     public List<Picture> listPictureByPage(int currentPage,int pageSize,int id)throws Exception;
+
+    public Long selectPicSize(Integer id);
 }

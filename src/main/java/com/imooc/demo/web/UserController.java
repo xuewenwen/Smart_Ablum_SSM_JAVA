@@ -47,7 +47,7 @@ public class UserController {
 
         int userCode = new Random().nextInt(899999) + 100000;
         int userStatus=0;
-        int userSize=0;
+        Long userSize=0L;
         Date userRegisterTime=new Date();
         Date userLastLoginTime=new Date();
         int errorCode=2;

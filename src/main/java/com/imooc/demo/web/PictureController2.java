@@ -24,6 +24,7 @@ public class PictureController2 {
     @Autowired
     AlbumService albumService;
 
+
     @RequestMapping(value="/picture/search")
     public String Search(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception{
         return "/picture/search";
@@ -56,6 +57,7 @@ public class PictureController2 {
         HttpSession session = request.getSession();
         User user=(User)session.getAttribute("user");
         int id = user.getUserId();
+        int albumId = (int)session.getAttribute("album");
         for(int i=0;i<arr.length;i++){
             int j =Integer.parseInt(arr[i]);
             RecycleSite recycleSite = new RecycleSite();
@@ -63,6 +65,7 @@ public class PictureController2 {
             recycleSite.setPictureId(j);
             recycleSite.setPictureDeleteTime(new Date());
             pictureService.deletePicture(j,recycleSite);
+            albumService.updateMinusNum(albumId);
         }
     }
     @RequestMapping("/lisS")

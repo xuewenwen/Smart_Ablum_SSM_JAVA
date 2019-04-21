@@ -32,11 +32,27 @@
         FROM recycle_site
         WHERE recycle_id=#{id}
     </select>
+    <!--通过回收站的id查找到picture里面的album的id-->
+    <select id="selectPicAlbum" parameterType="java.lang.Integer" resultType="java.util.HashMap">
+        SELECT album_id
+        from picture
+        WHERE picture.picture_id=(
+            SELECT recycle_site.picture_id
+            FROM recycle_site
+            WHERE recycle_site.recycle_id=#{id}
+        )
+    </select>
 
     <delete id="deletePictureById">
         DELETE FROM picture
         WHERE picture.picture_id=#{id}
     </delete>
+    <!--查找删除的天数大于30天的回收站id-->
+    <select id="selectDay" resultType="com.imooc.demo.bo.RecycleSite">
+        SELECT recycle_id,user_id
+        from recycle_site
+        WHERE datediff(pic_delete_time,NOW())>=-30
+    </select>
 
 
 

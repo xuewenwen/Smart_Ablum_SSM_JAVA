@@ -1,4 +1,5 @@
 package com.imooc.demo.bo;
+import java.math.BigInteger;
 import java.util.Date;
 //user实体类
 
@@ -9,12 +10,12 @@ public class User {
     private String userPassword;
     private String userEmail;
     private int userStatus;
-    private int userSize;
+    private Long userSize;
     private Date userRegisterTime;
     private Date userLastLoginTime;
     private int userCode;
 
-    public User(String userName, String userPassword, String userEmail,int userStatus,int userSize,Date userRegisterTime,Date userLastLoginTime, int userCode){
+    public User(String userName, String userPassword, String userEmail,int userStatus,Long userSize,Date userRegisterTime,Date userLastLoginTime, int userCode){
         this.userName=userName;
         this.userPassword=userPassword;
         this.userEmail=userEmail;
@@ -70,11 +71,11 @@ public class User {
         this.userStatus = userStatus;
     }
 
-    public int getUserSize() {
+    public Long getUserSize() {
         return userSize;
     }
 
-    public void setUserSize(int userSize) {
+    public void setUserSize(Long userSize) {
         this.userSize = userSize;
     }
 

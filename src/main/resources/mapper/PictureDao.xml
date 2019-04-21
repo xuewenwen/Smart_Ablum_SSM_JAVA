@@ -41,12 +41,21 @@
         recycle_site(picture_id,user_id,pic_delete_time)
         VALUES(#{recycle.pictureId},#{recycle.userId},#{recycle.pictureDeleteTime})
     </insert>
+    <!--3.将相册统计的数量减1,放进albumdao中-->
+
 
     <!--通过图片名找到图片id-->
     <select id="selectPictureId" resultType="java.lang.Integer">
         SELECT picture_id
         FROM picture
         WHERE picture_name=#{name}
+    </select>
+
+    <!--通过图片id查找照片大小-->
+    <select id="selectPicSize" resultType="java.lang.Long">
+        SELECT picture_size
+        from picture
+        where picture_id=#{id}
     </select>
 
 

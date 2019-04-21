@@ -65,18 +65,23 @@ public class TagServiceImpl implements TagService {
             String w = "";
             JSONObject js = new JSONObject(result);
             JSONArray jsonArray = js.getJSONArray("result");
-            for (int i = 0; i < jsonArray.length(); i++) {
-                double score = jsonArray.getJSONObject(i).getDouble("score");
-                String keyword = jsonArray.getJSONObject(i).getString("keyword");
-                if (score > 0.3) {
-                    insertTag(keyword, id);
+            int j=0;
+            while (j<5){
+                if(!js.has("error_msg")) {
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        double score = jsonArray.getJSONObject(i).getDouble("score");
+                        String keyword = jsonArray.getJSONObject(i).getString("keyword");
+                        if (score > 0.3) {
+                            insertTag(keyword, id);
+                        }
+                    }
+                    break;
                 }
+                    j++;
             }
-            //return w;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //return "失败";
     }
 
 }
