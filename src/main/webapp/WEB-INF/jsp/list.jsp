@@ -52,9 +52,20 @@
       <div style="display: inline-block;
       height: 60px;
       line-height: 60px;">
-        <input type="text" class="form-control" style="height: 30px;width:auto;display: inline-block;">
-        <button class="btn btn-primary" type="button"
-          style="height: 30px; line-height: 30px; padding: 0 12px;">搜索!</button>
+        <input type="text" class="form-control" style="height: 30px;width:auto;display: inline-block;" id="tagName">
+          <script>
+              function judgment() {
+                  var a=document.getElementById("tagName").value;
+                  if(a!=null && a!="" ){
+                      window.location.href = "/picture/search/"+a;
+                  }
+                  else {
+                      alert("输入异常");
+                  }
+              }
+          </script>
+        <input  class="btn btn-primary" type="button"
+          style="height: 30px; line-height: 30px; padding: 0 12px;" value="搜索!" onclick="judgment()"></input>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal_2"
                 data-target=".bs-example-modal-sm" style="height: 30px; line-height: 30px; padding: 0 12px;">创建相册</button>
 
@@ -75,24 +86,20 @@
                   <h4 class="modal-title" id="exampleModalLabel">相册创建</h4>
                 </div>
                 <div class="modal-body">
-                  <form>
+                  <label for="albumDescription" class="control-label">相册封面：</label>
+                  <form id="uploadForm" enctype="multipart/form-data">
+                    <input type="file" name="file_data" id="file_data" <%--class="inputfile"--%> datatype="file"/>
                     <div>
-                      <label for="recipient-name" class="control-label" style="">相册名:</label>
-                      <input type="text" class="form-control" id="recipient-name" placeholder="相册名">
+                      <label for="albumName" class="control-label" style="">相册名:</label>
+                      <input type="text" class="form-control" id="albumName" placeholder="相册名">
                     </div>
                     <div class="form-group">
-                      <label for="message-text" class="control-label">相册描述：</label>
-                      <textarea class="form-control" id="message-text" style="height: 100px"
+                      <label for="albumDescription" class="control-label">相册描述：</label>
+                      <textarea class="form-control" id="albumDescription" style="height: 100px"
                                 placeholder="描述....."></textarea>
                     </div>
 
                     <div>
-                      <label for="message-text" class="control-label">相册封面：</label>
-
-                      <form id="uploadForm" enctype="multipart/form-data">
-                          <input type="file" name="file_data" id="file_data" <%--class="inputfile"--%> <%--style="width:100%;height:40px"--%> multiple/>
-                      </form>
-
                     </div>
                   </form>
                 </div>
@@ -179,9 +186,7 @@
             <a href="#">
               <span class="glyphicon glyphicon-book"></span>
               <span class="sidebar-title">全部相片</span>
-              <span class="sidebar-title-tray">
-                <span class="label label-xs bg-primary">New</span>
-              </span>
+
             </a>
           </li>
           <li class="active">
@@ -390,32 +395,6 @@
   <script src="../themes/fas/theme.js" type="text/javascript"></script>
   <script src="../themes/explorer-fas/theme.js" type="text/javascript"></script>
   <script>
-   
-    $("#file-0a").fileinput({
-        uploadUrl: '/ocr', //你必须在这里设置一个有效的URL，否则你会得到一个错误
-        uploadAsync: true, //AJAX设置同步，异步的上传方式 （同步）
-        allowedFileExtensions: ['jpg', 'png', 'gif'],//文件类型
-        showUpload: true, //是否显示上传按钮
-        //browseClass: "btn btn-primary", //按钮样式
-        showRemove : true, //显示移除按钮
-        dropZoneEnabled: true,//是否显示拖拽区域
-        overwriteInitial: false,
-        //maxFileSize:0,//单位为kb，如果为0表示不限制文件大小
-        maxFilesNum: 10,
-        maxFileCount: 5, //表示允许同时上传的最大文件个数
-        minFileCount: 0,	//最少文件
-        validateInitialCount:false//异步上传返回结果处理
-    }).on('fileuploaded', function(event, data, previewId, index) {
-        // alert(JSON.stringify(data));
-        var res_arr = data.response.words_result;
-        for(var key in res_arr){
-            console.log(res_arr[key].words);
-            $('#res').append(res_arr[key].words + "<br/>");
-        }
-        // console.log(JSON.stringify(data));
-    });
-
-
     $(function () {
       $("#asure").on("click", function (){
 
@@ -428,33 +407,30 @@
 
         // var formdata=new FormData($('#file'));
         var formdata=new FormData($('#uploadForm')[0]);//可传送二进制文件，即上传文件
-        if(formdata==null){
-          alert("没有文件")
-        }else
-        {
-          alert("有文件");
-        }
+        var albumName = $("#albumName").val();
+        var albumDescription = $("#albumDescription").val();
 
-        //new FormData的参数是一个DOM对象，而非jQuery对象
-      //  alert("1111");
+        formdata.append("albumName",albumName);
+        formdata.append("albumDescription",albumDescription);
+
         $.ajax({
 
           type:"POST",
-          url:"/ocr",
+          url:"/uploadCover",
           dataType:"json",
           processData:false,//取消格式化数据
           contentType:false,
           //  cache:false,
           // async: false,
           data:formdata,
-          success:function () {
+          success:function (result) {
             //   $("#btnSave").removeClass("Saving");
             // $("#btnSave").val("Save");
 
             if (result.code == 0) {
               alert(result.msg);
             } else {
-              alert("上传失败");
+              alert(result.msg);
             }
           },
           error:function () {
@@ -465,6 +441,6 @@
         })
       })
     })
-</script>
+  </script>
 </body>
 </html>

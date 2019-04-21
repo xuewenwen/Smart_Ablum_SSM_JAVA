@@ -32,6 +32,10 @@ public class RecycleController {
 
     @RequestMapping("/recycle/recycle")
     public String showAllRecyclePicture(ModelMap model, HttpServletRequest request, HttpServletResponse response )throws Exception {
+        HttpSession session = request.getSession();
+        User user=(User)session.getAttribute("user");
+        int id = user.getUserId();
+        model.addAttribute("userId",id);
         return "/recycle/recycle";
     }
 
