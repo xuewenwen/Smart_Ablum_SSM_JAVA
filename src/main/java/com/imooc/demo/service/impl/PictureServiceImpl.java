@@ -1,9 +1,13 @@
 package com.imooc.demo.service.impl;
 
 import com.github.pagehelper.PageHelper;
+import com.imooc.demo.bo.Album;
 import com.imooc.demo.bo.Picture;
 import com.imooc.demo.bo.RecycleSite;
+import com.imooc.demo.bo.User;
+import com.imooc.demo.dao.AlbumDao;
 import com.imooc.demo.dao.PictureDao;
+import com.imooc.demo.dao.UserDao;
 import com.imooc.demo.service.PictureService;
 import com.imooc.demo.utils.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +20,10 @@ public class PictureServiceImpl implements PictureService {
 
     @Autowired
     PictureDao pictureDao;
+    @Autowired
+    UserDao userDao;
+    @Autowired
+    AlbumDao albumDao;
 
 
     @Override
@@ -71,6 +79,45 @@ public class PictureServiceImpl implements PictureService {
     @Override
     public Long selectPicSize(Integer id) {
         return pictureDao.selectPicSize(id);
+    }
+
+    @Override
+    public void updateMessageByJob() throws Exception {
+        //查找所有的用户信息
+        List<User> list = userDao.selectAll();
+        for(User user:list){
+            int userId = user.getUserId();
+            //通过用户id查找该用户所有的相册信息
+            List<Album> albumList = albumDao.selectByUserId(userId);
+            //用来做容量统计的
+            Long size = 0L;
+            for(Album album:albumList){
+                int albumId = album.getAlbumId();
+                //数据库中存储的原有的数量
+                int albumCount = album.getAlbumNumOfPic();
+                if(albumCount==0){
+                    continue;
+                }
+                //统计所有的照片数
+                int count = pictureDao.selectPicNumByAlbumId(albumId);
+
+                //判断两者是否相同
+                if(count != albumCount){
+                    //不同，则替换
+                    albumDao.updateAlbumNum(count,albumId);
+                }
+                //相同，则继续判断容量是否相同,这边先做统计
+                    Long albumSize = pictureDao.selectPicSizeByAlbumId(albumId);
+                    size = size + albumSize;
+            }
+            //用户表中原有的容量数
+            Long userSize = user.getUserSize();
+            //若不同，则替换
+            if(userSize!=size){
+                userDao.updateSizeByJob(size,userId);
+            }
+
+        }
     }
 
 

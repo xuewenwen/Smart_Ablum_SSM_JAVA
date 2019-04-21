@@ -17,4 +17,8 @@ public interface AlbumDao {
    public void updateNum(@Param("id")Integer id);
 
    public void updateMinusNum(@Param("id")Integer id);
+
+   public List<Album> selectByUserId(@Param("id")Integer id);
+
+   public void updateAlbumNum(@Param("num")Integer num,@Param("id")Integer id);
 }

@@ -58,5 +58,23 @@
         where picture_id=#{id}
     </select>
 
+    <!--统计该相册中所有照片的容量-->
+    <select id="selectPicSizeByAlbumId" resultType="java.lang.Long">
+        SELECT sum(picture_size)
+        FROM picture
+        where album_id=#{id}
+        GROUP BY album_id
+    </select>
+
+    <!--统计照片数量-->
+    <select id="selectPicNumByAlbumId" resultType="java.lang.Integer">
+        SELECT count(picture_id)
+        FROM picture
+        where album_id=#{id}
+        GROUP BY album_id
+    </select>
+
+
+
 
 </mapper>
