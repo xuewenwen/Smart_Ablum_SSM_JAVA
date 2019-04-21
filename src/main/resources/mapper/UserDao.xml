@@ -104,4 +104,11 @@
         set user_size=#{size}
         where user_id=#{userId}
     </update>
+
+    <!--查找该用户的详细信息-->
+    <select id="selectByUserId" resultType="com.imooc.demo.bo.User">
+        SELECT *
+        FROM user
+        WHERE user_id = #{id}
+    </select>
 </mapper>

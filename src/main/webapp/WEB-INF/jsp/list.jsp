@@ -110,7 +110,7 @@
         <li class="dropdown menu-merge">
           <a href="#" class="dropdown-toggle fw600 p15" data-toggle="dropdown">
             <img src="assets/img/avatars/5.jpg" alt="avatar" class="mw30 br64">
-            <span class="hidden-xs pl15"> 薛剑文 </span>
+            <span class="hidden-xs pl15"> ${userId} </span>
             <span class="caret caret-tp hidden-xs"></span>
           </a>
           <ul class="dropdown-menu list-group dropdown-persist w250" role="menu">
@@ -150,7 +150,7 @@
                 <img src="assets/img/avatars/3.jpg" class="img-responsive">
               </a>
               <div class="media-body">
-                <div class="media-author">薛剑文</div>
+                <div class="media-author">${userId}</div>
                 <div class="media-links">
                   <a href="pages_login.html">退出</a>
                 </div>
@@ -212,8 +212,8 @@
       <!-- End: Sidebar Left Content -->
         </ul>
         <div class="progress">
-          <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;" style="margin-top:2000px">
-            60%
+          <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${sizePer}; min-width: 2em;" style="margin-top:2000px">
+            ${sizePer}
           </div>
         </div>
       </div>

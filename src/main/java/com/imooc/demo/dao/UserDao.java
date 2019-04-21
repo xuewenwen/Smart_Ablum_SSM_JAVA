@@ -32,5 +32,7 @@ public interface UserDao {
 
     void updateSizeByJob(@Param("size") Long size, @Param("userId")Integer id);
 
+    User selectByUserId(@Param("id")Integer id);
+
 
 }
