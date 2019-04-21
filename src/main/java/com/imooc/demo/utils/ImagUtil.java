@@ -53,6 +53,17 @@ public class ImagUtil {
         return path;
     }
 
+    public static String generateThumbnail2Directory(double width,double height, String pathname, String file) throws IOException {
+        Thumbnails.of(file)
+                // 图片缩放率，不能和size()一起使用
+                .scale(width,height)
+                // 缩略图保存目录,该目录需存在，否则报错
+                .toFiles(new File(pathname), Rename.SUFFIX_HYPHEN_THUMBNAIL);
+        String path = appendSuffix(file, SUFFIX);
+        //。。。
+        return path;
+    }
+
     /**
      * 将指定目录下所有图片生成缩略图
      *
