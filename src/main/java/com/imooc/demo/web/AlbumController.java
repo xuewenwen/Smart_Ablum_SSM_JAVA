@@ -1,14 +1,15 @@
 package com.imooc.demo.web;
 
-import com.github.pagehelper.PageHelper;
-import com.imooc.demo.Util.ImagUtil;
 import com.imooc.demo.bo.Album;
+import com.imooc.demo.bo.Picture;
 import com.imooc.demo.bo.User;
 import com.imooc.demo.service.AlbumService;
+import com.imooc.demo.service.PictureService;
+import com.imooc.demo.utils.ImagUtil;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,12 +17,17 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.*;
 @EnableAutoConfiguration
 @Controller
 public class AlbumController {
+    @Autowired
+    private PictureService pictureService;
+
     @Autowired
     private AlbumService albumService;
 
@@ -56,25 +62,39 @@ public class AlbumController {
         return "/album/create";
     }
 
+    @RequestMapping("/down")
+    public String download(){
+        return "download";
+    }
 
-    @RequestMapping(value="/album/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/uploadCover", method = RequestMethod.POST)
     @ResponseBody
-    public Map insertAlbum(
-                           HttpSession httpSession
-                            ,HttpServletRequest request
-                          ,@RequestParam(value = "file_data") MultipartFile file
-                          ,@RequestParam(value = "albumName") String albumName
-                          ,@RequestParam(value = "albumDescription") String albumDescription)throws Exception
-    {
-
-        Album album = new Album();
+    public Map ocr(@RequestParam(value = "file_data") MultipartFile file, HttpServletRequest request
+            ,@RequestParam(value = "albumName") String albumName
+            ,@RequestParam(value = "albumDescription") String albumDescription
+                ) throws Throwable {
         Map<String, Object> result = new HashMap<String, Object>();
         HttpSession session = request.getSession();
         User user=(User)session.getAttribute("user");
-        //int id = user.getUserId();
-        int id = 1;
-        //int albumId = (int)session.getAttribute("album");
-        int albumId = 1;
+        int id = user.getUserId();
+//        int albumId = (int)session.getAttribute("album");
+        int userId = ((User)session.getAttribute("user")).getUserId();
+
+        boolean upFlag = true;
+
+        List<Album> albums = albumService.selectAlbumByUserId(userId);
+        boolean flag = false;
+        for (Album alb :
+             albums) {
+            if(alb.getAlbumName().equals(albumName)){
+                flag = true;break;
+            }
+        }
+        if(flag==true) {
+            result.put("msg", "这个相册已经存在了！");
+            return result;
+        }
+
 
         String fileName = "";//files[0].getSize();
         String msg = "";
@@ -82,8 +102,8 @@ public class AlbumController {
         String realFileName;
         if (file != null) {
             String fileName2 = file.getOriginalFilename();
-            String picName = fileName2;
-            String extName = "";
+            String picName=fileName2;
+            String extName="";
 
             int pos = fileName2.lastIndexOf(".");
 
@@ -92,48 +112,85 @@ public class AlbumController {
                 picName = fileName2.substring(0, pos);
             }
 
-            String picPath = "/images/"+"cover"+"/" + id + "/";
+            String picPath = "/images/upload/"+id+"/";
 
-            String StrUUID = UUID.randomUUID().toString();
-            String picFileName = StrUUID + extName;
+            //存放缩略图的路径
+            String thumbnailPath = "/images/upload/"+id+"/thumbnail"+"/";
 
-            String basePath = this.getClass().getResource("/").getPath() + "/static/";
+            String picFileName = UUID.randomUUID().toString() + extName;
+
+            String basePath = this.getClass().getResource("/").getPath()+"/static/";
 
             //文件路径
-            String filePath = basePath + picPath;
+            String filePath = basePath+picPath;
+            //缩略图文件的路径
+            String thumbnailFilePath=basePath+thumbnailPath;
 
             File targetFile = new File(filePath);
             if (!targetFile.exists()) {
                 targetFile.mkdirs();
             }
+            //创建缩略图文件夹
+            File thumbnailFile = new File(thumbnailFilePath);
+            if(!thumbnailFile.exists()){
+                thumbnailFile.mkdirs();
+            }
             //存储的图片路径
-            String picturePath = basePath + picPath + picFileName;
-            String coverPath = basePath + picPath + StrUUID + "thumbNail"+extName;
+            String picturePath = basePath+picPath+picFileName;
+
+            //将该照片存储到thumbnail路径下，缩略图的工具类会将其覆盖重命名
+            String thumbnailPicturePath = basePath+thumbnailPath+picFileName;
+
             //数据库的访问路径
-            fileName = picPath + picFileName;
-            album.setAlbumCover(fileName);
+            fileName=picPath+picFileName;
             File dest = new File(picturePath);
+            File pictureThumbnail = new File(thumbnailPicturePath);
+            String thumbnailPicPath = "";
             try {
+                //保存该图片
                 file.transferTo(dest);
-                ImagUtil.generateThumbnail2Directory(0.5,coverPath,picturePath);
             } catch (IOException e) {
-                e.printStackTrace();
-                result.put("msg", "IOException e");
-                return result;
+               // e.printStackTrace();
+             //   result.put("msg", "FileUploadException e");
+             //   return result;
+                upFlag = false;
             }
 
+            Album album = new Album();
+            if(file==null){
+                album.setAlbumCover("/images/upload/pretermission/1.png");
+            }
+            album.setAlbumDescription(albumDescription);
+            album.setAlbumCreateTime(new Date());
+            album.setUserId(userId);
+            album.setAlbumName(albumName);
+            album.setAlbumNumOfPic(0);
+            album.setAlbumCover(fileName);
+
+            try{
+                albumService.insertAlbum(album);
+            }catch (SQLException e){
+                e.printStackTrace();
+                result.put("msg", "数据库错误！");
+            }
+
+
+//            //保存tag值,使用百度ai
+//            tagService.Ai(picturePath,pictureId);
+            //保存百度ai中的tag值，使用线程池的方法
+            //    threadExecute.Execute(picturePath,pictureId);
+            result.put("code", 0);
+            if(upFlag == false)
+                result.put("msg", "确定不需要照片吗！");
+            result.put("msg", "创建成功！");
+            return result;
+
+        } else {
+            result.put("msg", "Unable to upload. File is empty.");
+            return result;
         }
-        album.setAlbumId(1);//从session中获取
-        album.setAlbumCreateTime(new Date());
-        album.setAlbumName(albumName);
-        album.setAlbumDescription(albumDescription);
-        album.setUserId(1);
-        //
-        albumService.insertAlbum(album);
 
-
-        result.put("code", 0);
-        result.put("msg", "创建成功！");
-        return result;
     }
+
+
 }

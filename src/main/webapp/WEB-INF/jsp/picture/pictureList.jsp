@@ -9,7 +9,16 @@
                     <input type="checkbox" value="${pic.pictureId}" class="picture" name="picture">
                     <span class="checkbox mn"></span>
                 </label>
-                <img src="${pic.pictureThumbnail}" alt="..." >
+                <div>
+                <img src="${pic.pictureThumbnail}" alt="..." id="look">
+                <style>
+                    #look{
+                        weight:200px;
+                        height:150px;
+                        border:1px solid #CCCCCC;
+                    }
+                </style>
+        </div>
             </a>
         </div>
 </c:forEach>
@@ -39,7 +48,7 @@
                     <div class="carousel-inner">
                         <c:forEach items="${pic}" var="pic1" varStatus="picIndex">
                             <div class='item <c:if test="${picIndex.index == 0}">active</c:if>'>
-                                <img src="${pic1.pictureUrl}" alt="First slide">
+                               <center><img src="${pic1.pictureUrl}" alt="First slide" style="text-align: center"></center>
                             </div>
 
                         </c:forEach>

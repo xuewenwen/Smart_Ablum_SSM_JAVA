@@ -32,4 +32,9 @@ public class UserDaoTest {
 //        System.out.println(user);
 //    }
 
+    @Test
+    public void test(){
+        double x1 = 10;double x2 = 11;
+        System.out.println(x1/x2);
+    }
 }

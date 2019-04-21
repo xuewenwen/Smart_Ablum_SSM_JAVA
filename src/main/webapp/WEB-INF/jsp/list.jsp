@@ -75,23 +75,22 @@
                   <h4 class="modal-title" id="exampleModalLabel">相册创建</h4>
                 </div>
                 <div class="modal-body">
-                  <form>
+                  <form id="uploadForm" enctype="multipart/form-data">
+                    <input type="file" name="file_data" id="file_data" <%--class="inputfile"--%> datatype="file" multiple/>
                     <div>
-                      <label for="recipient-name" class="control-label" style="">相册名:</label>
-                      <input type="text" class="form-control" id="recipient-name" placeholder="相册名">
+                      <label for="albumName" class="control-label" style="">相册名:</label>
+                      <input type="text" class="form-control" id="albumName" placeholder="相册名">
                     </div>
                     <div class="form-group">
-                      <label for="message-text" class="control-label">相册描述：</label>
-                      <textarea class="form-control" id="message-text" style="height: 100px"
+                      <label for="albumDescription" class="control-label">相册描述：</label>
+                      <textarea class="form-control" id="albumDescription" style="height: 100px"
                                 placeholder="描述....."></textarea>
                     </div>
 
                     <div>
-                      <label for="message-text" class="control-label">相册封面：</label>
+                      <label for="albumDescription" class="control-label">相册封面：</label>
 
-                      <form id="uploadForm" enctype="multipart/form-data">
-                          <input type="file" name="file_data" id="file_data" <%--class="inputfile"--%> <%--style="width:100%;height:40px"--%> multiple/>
-                      </form>
+
 
                     </div>
                   </form>
@@ -438,33 +437,30 @@
 
         // var formdata=new FormData($('#file'));
         var formdata=new FormData($('#uploadForm')[0]);//可传送二进制文件，即上传文件
-        if(formdata==null){
-          alert("没有文件")
-        }else
-        {
-          alert("有文件");
-        }
+        var albumName = $("#albumName").val();
+        var albumDescription = $("#albumDescription").val();
 
-        //new FormData的参数是一个DOM对象，而非jQuery对象
-      //  alert("1111");
+        formdata.append("albumName",albumName);
+        formdata.append("albumDescription",albumDescription);
+
         $.ajax({
 
           type:"POST",
-          url:"/ocr",
+          url:"/uploadCover",
           dataType:"json",
           processData:false,//取消格式化数据
           contentType:false,
           //  cache:false,
           // async: false,
           data:formdata,
-          success:function () {
+          success:function (result) {
             //   $("#btnSave").removeClass("Saving");
             // $("#btnSave").val("Save");
 
             if (result.code == 0) {
               alert(result.msg);
             } else {
-              alert("上传失败");
+              alert(result.msg);
             }
           },
           error:function () {
