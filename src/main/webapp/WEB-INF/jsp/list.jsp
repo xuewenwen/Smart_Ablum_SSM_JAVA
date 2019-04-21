@@ -1,4 +1,4 @@
-﻿5<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 
@@ -52,20 +52,9 @@
       <div style="display: inline-block;
       height: 60px;
       line-height: 60px;">
-        <input type="text" class="form-control" style="height: 30px;width:auto;display: inline-block;" id="tagName">
-          <script>
-              function judgment() {
-                  var a=document.getElementById("tagName").value;
-                  if(a!=null && a!="" ){
-                      window.location.href = "/picture/search/"+a;
-                  }
-                  else {
-                      alert("输入异常");
-                  }
-              }
-          </script>
-        <input  class="btn btn-primary" type="button"
-          style="height: 30px; line-height: 30px; padding: 0 12px;" value="搜索!" onclick="judgment()"></input>
+        <input type="text" class="form-control" style="height: 30px;width:auto;display: inline-block;">
+        <button class="btn btn-primary" type="button"
+          style="height: 30px; line-height: 30px; padding: 0 12px;">搜索!</button>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal_2"
                 data-target=".bs-example-modal-sm" style="height: 30px; line-height: 30px; padding: 0 12px;">创建相册</button>
 
@@ -86,7 +75,7 @@
                   <h4 class="modal-title" id="exampleModalLabel">相册创建</h4>
                 </div>
                 <div class="modal-body">
-                  <label for="albumDescription" class="control-label">相册封面：</label>
+                    <label for="albumDescription" class="control-label">相册封面：</label>
                   <form id="uploadForm" enctype="multipart/form-data">
                     <input type="file" name="file_data" id="file_data" <%--class="inputfile"--%> datatype="file"/>
                     <div>
@@ -100,6 +89,10 @@
                     </div>
 
                     <div>
+
+
+
+
                     </div>
                   </form>
                 </div>
@@ -117,7 +110,7 @@
         <li class="dropdown menu-merge">
           <a href="#" class="dropdown-toggle fw600 p15" data-toggle="dropdown">
             <img src="assets/img/avatars/5.jpg" alt="avatar" class="mw30 br64">
-            <span class="hidden-xs pl15"> ${userId} </span>
+            <span class="hidden-xs pl15"> 薛剑文 </span>
             <span class="caret caret-tp hidden-xs"></span>
           </a>
           <ul class="dropdown-menu list-group dropdown-persist w250" role="menu">
@@ -132,7 +125,7 @@
                 <span class="fa fa-gear"></span> 设置密码 </a>
             </li>
             <li class="dropdown-footer">
-              <a href="/exit" class="">
+              <a href="#" class="">
                 <span class="fa fa-power-off pr5"></span> 退出 </a>
             </li>
           </ul>
@@ -157,9 +150,9 @@
                 <img src="assets/img/avatars/3.jpg" class="img-responsive">
               </a>
               <div class="media-body">
-                <div class="media-author">${userId}</div>
+                <div class="media-author">薛剑文</div>
                 <div class="media-links">
-                  <a href="/exit">退出</a>
+                  <a href="pages_login.html">退出</a>
                 </div>
               </div>
             </div>
@@ -186,7 +179,9 @@
             <a href="#">
               <span class="glyphicon glyphicon-book"></span>
               <span class="sidebar-title">全部相片</span>
-
+              <span class="sidebar-title-tray">
+                <span class="label label-xs bg-primary">New</span>
+              </span>
             </a>
           </li>
           <li class="active">
@@ -216,11 +211,6 @@
 
       <!-- End: Sidebar Left Content -->
         </ul>
-        <div class="progress">
-          <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${sizePer}; min-width: 2em;" style="margin-top:2000px">
-            ${sizePer}
-          </div>
-        </div>
       </div>
     </aside>
 
@@ -248,11 +238,26 @@
                 <div class="row">
                   <div class="hidden-xs hidden-sm col-md-3">
                     <div class="btn-group">
-
+                      <button type="button" class="btn btn-default light ">
+                        <i class="fa fa-refresh"></i>
+                      </button>
+                      <button type="button" class="btn btn-default light">
+                        <i class="fa fa-trash"></i>
+                      </button>
+                      <button type="button" class="btn btn-default light" data-toggle="modal" data-target="#myModal">
+                        <i class="fa fa-plus"></i>
+                      </button>
                     </div>
                   </div>
                   <div class="col-xs-12 col-md-9 text-right">
                     <div class="btn-group">
+                      <button type="button" class="btn btn-default light">
+                        <i class="fa fa-chevron-left"></i>
+                      </button>
+                      <button type="button " class="btn btn-default light">
+                        <i class="fa fa-chevron-right"></i>
+
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -395,6 +400,32 @@
   <script src="../themes/fas/theme.js" type="text/javascript"></script>
   <script src="../themes/explorer-fas/theme.js" type="text/javascript"></script>
   <script>
+   
+    $("#file-0a").fileinput({
+        uploadUrl: '/ocr', //你必须在这里设置一个有效的URL，否则你会得到一个错误
+        uploadAsync: true, //AJAX设置同步，异步的上传方式 （同步）
+        allowedFileExtensions: ['jpg', 'png', 'gif'],//文件类型
+        showUpload: true, //是否显示上传按钮
+        //browseClass: "btn btn-primary", //按钮样式
+        showRemove : true, //显示移除按钮
+        dropZoneEnabled: true,//是否显示拖拽区域
+        overwriteInitial: false,
+        //maxFileSize:0,//单位为kb，如果为0表示不限制文件大小
+        maxFilesNum: 10,
+        maxFileCount: 5, //表示允许同时上传的最大文件个数
+        minFileCount: 0,	//最少文件
+        validateInitialCount:false//异步上传返回结果处理
+    }).on('fileuploaded', function(event, data, previewId, index) {
+        // alert(JSON.stringify(data));
+        var res_arr = data.response.words_result;
+        for(var key in res_arr){
+            console.log(res_arr[key].words);
+            $('#res').append(res_arr[key].words + "<br/>");
+        }
+        // console.log(JSON.stringify(data));
+    });
+
+
     $(function () {
       $("#asure").on("click", function (){
 
@@ -441,6 +472,6 @@
         })
       })
     })
-  </script>
+</script>
 </body>
 </html>
