@@ -47,7 +47,7 @@
                     if (result.code == 0) {
                         alert(result.msg);
                     } else {
-                        alert("上传失败");
+                        alert(result.msg);
                     }
                 },
                 error:function () {
