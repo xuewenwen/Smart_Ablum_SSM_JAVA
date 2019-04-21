@@ -26,6 +26,12 @@ public class AlbumDaoTest {
     }
 
     @Test
+    public void test211(){
+        albumDao.modifyURL("111",102,1);
+        System.out.print("111111111111111111111111111111111111111");
+    }
+
+    @Test
     public  void test1 (){
         Album album = new Album();
         album.setAlbumCover("11111");

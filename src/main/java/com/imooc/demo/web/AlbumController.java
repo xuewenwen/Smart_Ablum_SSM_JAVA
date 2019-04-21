@@ -80,6 +80,91 @@ public class AlbumController {
         return "download";
     }
 
+
+    @RequestMapping(value = "/modify", method = RequestMethod.POST)
+    @ResponseBody
+    public Map ocr(@RequestParam(value = "file_data") MultipartFile file, HttpServletRequest request){
+        String fileName = "";//files[0].getSize();
+        String msg = "";
+        String fileType = "";
+        String realFileName;
+        HttpSession session = request.getSession();
+        User user=(User)session.getAttribute("user");
+        int id = user.getUserId();
+        int albumId = (int)session.getAttribute("album");
+        Map<String, Object> result = new HashMap<String, Object>();
+        /*HttpSession session = request.getSession();
+        User user=(User)session.getAttribute("user");
+        int albumId = (int)session.getAttribute("album");
+        int userId = user.getUserId();*/
+
+
+        if (!file.isEmpty()) {
+            String fileName2 = file.getOriginalFilename();
+            String picName = fileName2;
+            String extName = "";
+
+            int pos = fileName2.lastIndexOf(".");
+
+            if (pos > -1) {
+                extName = fileName2.substring(pos);
+                picName = fileName2.substring(0, pos);
+            }
+
+            String picPath = "/images/upload/" + id + "/";
+
+            //存放缩略图的路径
+            String thumbnailPath = "/images/upload/" + id + "/thumbnail" + "/";
+
+            String picFileName = UUID.randomUUID().toString() + extName;
+
+            String basePath = this.getClass().getResource("/").getPath() + "/static/";
+
+            //文件路径
+            String filePath = basePath + picPath;
+            //缩略图文件的路径
+            String thumbnailFilePath = basePath + thumbnailPath;
+
+            File targetFile = new File(filePath);
+            if (!targetFile.exists()) {
+                targetFile.mkdirs();
+            }
+            //创建缩略图文件夹
+            File thumbnailFile = new File(thumbnailFilePath);
+            if (!thumbnailFile.exists()) {
+                thumbnailFile.mkdirs();
+            }
+            //存储的图片路径
+            String picturePath = basePath + picPath + picFileName;
+
+            //将该照片存储到thumbnail路径下，缩略图的工具类会将其覆盖重命名
+            String thumbnailPicturePath = basePath + thumbnailPath + picFileName;
+
+            //数据库的访问路径
+            fileName = picPath + picFileName;
+            File dest = new File(picturePath);
+            File pictureThumbnail = new File(thumbnailPicturePath);
+            String thumbnailPicPath = "";
+            try {
+                //保存该图片
+                file.transferTo(dest);
+            } catch (IOException e) {
+                 e.printStackTrace();
+                   result.put("msg", "FileUploadException e");
+                   return result;
+            }
+        }
+
+
+
+        albumService.modifyURL(fileName,albumId,id);
+        result.put("code",0);
+        result.put("msg","成功");
+        return result;
+    }
+
+
+
     @RequestMapping(value = "/uploadCover", method = RequestMethod.POST)
     @ResponseBody
     public Map ocr(@RequestParam(value = "file_data") MultipartFile file, HttpServletRequest request

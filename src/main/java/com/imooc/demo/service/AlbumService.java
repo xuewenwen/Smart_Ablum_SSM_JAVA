@@ -13,4 +13,6 @@ public interface AlbumService {
     public void updateAlbumNum(Integer id);
     //修改相册数量 减
     public void updateMinusNum(Integer id);
+
+    public void  modifyURL(String albumCover, Integer albumId,Integer userId);
 }

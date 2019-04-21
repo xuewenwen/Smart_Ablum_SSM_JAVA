@@ -38,9 +38,6 @@
         $(".picture").parent().show();
         $("#delete1").show();
       });
-      $("#delete1").click(function () {
-        $("#delete1").hide();
-      })
     });
 
   </script>
@@ -87,10 +84,41 @@
       <div style="display: inline-block;
       height: 60px;
       line-height: 60px;">
-
-    
+        <input type="text" class="form-control" style="height: 30px;width:auto;display: inline-block;">
+        <button class="btn btn-primary" type="button"
+          style="height: 30px; line-height: 30px; padding: 0 12px;">搜索!</button>
+        <button class="btn btn-primary" type="button" id="change" style="height: 30px; line-height: 30px; padding: 0 12px;">修改封面</button>
+          <button class="btn btn-primary" type="button" id="modify"
+          style="height: 30px; line-height: 30px; padding: 0 12px;" hidden="hidden">确认</button>
+        <form id="uploadForm" enctype="multipart/form-data" hidden="hidden">
+          <input type="file" name="file_data" id="file_data" <%--class="inputfile"--%> datatype="file"/>
+        </form>
       </div>
-
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown menu-merge">
+          <a href="#" class="dropdown-toggle fw600 p15" data-toggle="dropdown">
+            <img src="/assets/img/avatars/5.jpg" alt="avatar" class="mw30 br64">
+            <span class="hidden-xs pl15"> 薛剑文 </span>
+            <span class="caret caret-tp hidden-xs"></span>
+          </a>
+          <ul class="dropdown-menu list-group dropdown-persist w250" role="menu">
+            <li class="list-group-item">
+              <a href="#" class="animated animated-short fadeInUp">
+                <span class="fa fa-user"></span> 个人信息
+                <span class="label label-warning"></span>
+              </a>
+            </li>
+            <li class="list-group-item">
+              <a href="#" class="animated animated-short fadeInUp">
+                <span class="fa fa-gear"></span> 设置密码 </a>
+            </li>
+            <li class="dropdown-footer">
+              <a href="#" class="">
+                <span class="fa fa-power-off pr5"></span> 退出 </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </header>
     <!-- End: Header -->
 
@@ -110,9 +138,9 @@
                 <img src="/assets/img/avatars/3.jpg" class="img-responsive">
               </a>
               <div class="media-body">
-                <div class="media-author">${userId}</div>
+                <div class="media-author">薛剑文</div>
                 <div class="media-links">
-                  <a href="/exit">退出</a>
+                  <a href="pages_login.html">退出</a>
                 </div>
               </div>
             </div>
@@ -145,13 +173,13 @@
             </a>
           </li>
           <li class="active">
-            <a href="/list">
+            <a href="#">
               <span class="glyphicon glyphicon-home"></span>
               <span class="sidebar-title">我的相册</span>
             </a>
           </li>
           <li>
-            <a href="/recycle/recycle">
+            <a href="">
               <span class="fa fa-calendar"></span>
               <span class="sidebar-title">回收站</span>
             </a>
@@ -302,7 +330,7 @@
                 </div>
               <!-- end: .admin-form -->
             </div>
-              <input type="button" class="btn btn-primary btn-lg active" onclick="fun()" value="删除" id="delete1">
+              <input type="button" onclick="fun()" value="删除" id="delete1">
             <!-- end: .tray-center -->
       </section>
       <!-- End: Content -->
@@ -407,6 +435,56 @@
         }
         // console.log(JSON.stringify(data));
     });
+
+    $(function () {
+      $("#change").on("click",function () {
+        $("#uploadForm").show();
+      })
+    })
+
+    $(function () {
+
+      $("#modify").on("click", function (){
+
+
+        alert("hello");
+
+        // // var formdata=new FormData($('#file'));
+        var formdata=new FormData($('#uploadForm')[0]);//可传送二进制文件，即上传文件
+        var albumName = $("#albumName").val();
+        var albumDescription = $("#albumDescription").val();
+
+        // formdata.append("albumName",albumName);
+        // formdata.append("albumDescription",albumDescription);
+
+        $.ajax({
+
+          type:"POST",
+          url:"/modify",
+          dataType:"json",
+          processData:false,//取消格式化数据
+          contentType:false,
+          //  cache:false,
+          // async: false,
+          data:formdata,
+          success:function (result) {
+            //   $("#btnSave").removeClass("Saving");
+            // $("#btnSave").val("Save");
+
+            if (result.code == 0) {
+              alert(result.msg);
+            } else {
+              alert(result.msg);
+            }
+          },
+          error:function () {
+            // $("#btnSave").removeClass("Saving");
+            //  $("#btnSave").val("Save");
+            alert(data.status+"::"+data.info);
+          }
+        })
+      })
+    })
 </script>
 </body>
 </html>

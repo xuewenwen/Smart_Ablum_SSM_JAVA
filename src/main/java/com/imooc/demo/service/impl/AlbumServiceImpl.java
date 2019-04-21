@@ -36,4 +36,9 @@ public class AlbumServiceImpl implements AlbumService {
         albumDao.updateMinusNum(id);
     }
 
+    @Override
+    public void modifyURL(String albumCover, Integer albumId, Integer userId) {
+        albumDao.modifyURL(albumCover,albumId,userId);
+    }
+
 }

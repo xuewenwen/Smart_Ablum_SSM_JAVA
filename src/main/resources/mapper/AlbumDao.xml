@@ -56,4 +56,11 @@
 		WHERE album_id=#{id}
 	</update>
 
+
+    <update id="modifyURL">
+        update album
+        set album_cover=#{albumCover}
+        where album_id=#{albumId} and user_id=#{userId}
+    </update>
+
 </mapper>
