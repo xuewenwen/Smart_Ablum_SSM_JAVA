@@ -87,7 +87,7 @@
                                                 var userMail=$("#email").val();
                                                 if (userMail==null||userMail=="") {
                                                     alert("邮箱不能为空");
-                                                }
+                                                }else {
                                                 $.ajax({
                                                     type: "POST",
                                                     url: "/checkEmail",
@@ -106,6 +106,7 @@
                                                         }
                                                     }
                                                 })
+                                                }
                                             })
 
                                             $("#clickToCheck").on("click",function (){
