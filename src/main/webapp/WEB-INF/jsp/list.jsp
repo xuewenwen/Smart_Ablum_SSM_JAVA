@@ -433,8 +433,6 @@
           return;
         }
 
-        $("#asure").addClass("Saving");
-        $("#asure").val("Saving");
 
         // var formdata=new FormData($('#file'));
         var formdata=new FormData($('#uploadForm')[0]);//可传送二进制文件，即上传文件
@@ -460,6 +458,7 @@
 
             if (result.code == 0) {
               alert(result.msg);
+              this.refresh();
             } else {
               alert(result.msg);
             }
