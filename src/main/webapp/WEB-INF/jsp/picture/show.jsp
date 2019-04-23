@@ -112,7 +112,7 @@
               <div class="media-body">
                 <div class="media-author">${userId}</div>
                 <div class="media-links">
-                  <a href="pages_login.html">退出</a>
+                  <a href="/exit">退出</a>
                 </div>
               </div>
             </div>

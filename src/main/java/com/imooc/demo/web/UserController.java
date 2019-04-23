@@ -5,6 +5,7 @@ import com.imooc.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.Random;
 
@@ -87,6 +88,12 @@ public class UserController {
    @RequestMapping(value = "/updateUserInformation",method = RequestMethod.POST)
     public void updateUserInformation(@RequestParam("userEmail")String userEmail,@RequestParam("userName") String userName){
        userService.updateUserInfoByEmail(userEmail,userName);
+   }
+
+   @RequestMapping("/exit")
+    public String exit(HttpSession session){
+       session.removeAttribute("user");
+       return "redirect:/login";
    }
 
 }

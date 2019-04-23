@@ -58,32 +58,8 @@
 
 
     </div>
-    <!-- 创建相册 Modal -->
-    <ul class="nav navbar-nav navbar-right">
-      <li class="dropdown menu-merge">
-        <a href="#" class="dropdown-toggle fw600 p15" data-toggle="dropdown">
-          <img src="/assets/img/avatars/5.jpg" alt="avatar" class="mw30 br64">
-          <span class="hidden-xs pl15"> 薛剑文 </span>
-          <span class="caret caret-tp hidden-xs"></span>
-        </a>
-        <ul class="dropdown-menu list-group dropdown-persist w250" role="menu">
-          <li class="list-group-item">
-            <a href="#" class="animated animated-short fadeInUp">
-              <span class="fa fa-user"></span> 个人信息
-              <span class="label label-warning"></span>
-            </a>
-          </li>
-          <li class="list-group-item">
-            <a href="#" class="animated animated-short fadeInUp">
-              <span class="fa fa-gear"></span> 设置密码 </a>
-          </li>
-          <li class="dropdown-footer">
-            <a href="#" class="">
-              <span class="fa fa-power-off pr5"></span> 退出 </a>
-          </li>
-        </ul>
-      </li>
-    </ul>
+
+
   </header>
   <!-- End: Header -->
 
@@ -103,9 +79,9 @@
               <img src="/assets/img/avatars/3.jpg" class="img-responsive">
             </a>
             <div class="media-body">
-              <div class="media-author">薛剑文</div>
+              <div class="media-author">${userId}</div>
               <div class="media-links">
-                <a href="pages_login.html">退出</a>
+                <a href="/exit">退出</a>
               </div>
             </div>
           </div>
@@ -174,7 +150,7 @@
 
         <!-- Begin: Content Header -->
         <div class="content-header">
-          <h2> 我的相册</h2>
+          <h2> 搜索结果：${tagName}</h2>
           <p class="lead"></p>
         </div>
         <!-- message listing panel -->

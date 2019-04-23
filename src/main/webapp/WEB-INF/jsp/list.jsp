@@ -132,7 +132,7 @@
                 <span class="fa fa-gear"></span> 设置密码 </a>
             </li>
             <li class="dropdown-footer">
-              <a href="#" class="">
+              <a href="/exit" class="">
                 <span class="fa fa-power-off pr5"></span> 退出 </a>
             </li>
           </ul>
@@ -159,7 +159,7 @@
               <div class="media-body">
                 <div class="media-author">${userId}</div>
                 <div class="media-links">
-                  <a href="pages_login.html">退出</a>
+                  <a href="/exit">退出</a>
                 </div>
               </div>
             </div>

@@ -34,8 +34,12 @@ public class PictureController2 {
         HttpSession session = request.getSession();
         User user=(User)session.getAttribute("user");
         int id = user.getUserId();
+        session.setAttribute("tagName",tagName);
+        String tag = (String) session.getAttribute("tagName");
         List<String> url=pictureService.selectUrlByTagName(tagName,id);
+        model.addAttribute("userId",id);
         model.addAttribute("tag",url);
+        model.addAttribute("tagName",tagName);
         return "picture/searchResult";
     }
 
