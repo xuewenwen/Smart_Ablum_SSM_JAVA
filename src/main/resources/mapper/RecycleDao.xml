@@ -51,7 +51,7 @@
     <select id="selectDay" resultType="com.imooc.demo.bo.RecycleSite">
         SELECT recycle_id,user_id
         from recycle_site
-        WHERE datediff(NOW(),pic_delete_time)>=30
+        WHERE datediff(pic_delete_time,NOW())>=-30
     </select>
 
 

@@ -8,8 +8,6 @@
     <!--<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300italic,300,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
      <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 -->
-
-    <script src="/js/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords"
@@ -64,7 +62,6 @@
             <input type="submit" value="登录">
         </form>
     </div>
-
     <div class="signup-agileinfo">
         <h3>为什么要使用橘猫相册？</h3>
         <p>智能云相册应用中十分广泛，我们公司的这一款智能相册，表单外观比较华丽，赶紧点击下一步按钮即可跳转到下一步填写注册信息。从而在表单切换时拥有弹性的动画，是一款很不错的相册系统哦。</p>
@@ -150,33 +147,6 @@
                    </script>
     </div>
 </div>
-<!-- jQuery -->
-<script src="vendor/jquery/jquery-1.11.1.min.js"></script>
-<script src="vendor/jquery/jquery_ui/jquery-ui.min.js"></script>
-
-<!-- jQuery Validate Plugin-->
-<script src="assets/admin-tools/admin-forms/js/jquery.validate.min.js"></script>
-
-<!-- jQuery Validate Addon -->
-<script src="assets/admin-tools/admin-forms/js/additional-methods.min.js"></script>
-
-<!-- AdminForms JS -->
-<script src="assets/admin-tools/admin-forms/js/jquery-ui-datepicker.min.js"></script>
-
-<!-- Theme Javascript -->
-<script src="assets/js/utility/utility.js"></script>
-<script src="assets/js/demo/demo.js"></script>
-<script src="assets/js/main.js"></script>
-<!-- END: PAGE SCRIPTS -->
-<script type="text/javascript" src="js/pages.js"></script>
-<script type="text/javascript" src="js/items.js"></script>
-<!-- END: PAGE SCRIPTS -->
-<script src="../js/plugins/piexif.js" type="text/javascript"></script>
-<script src="../js/plugins/sortable.js" type="text/javascript"></script>
-<script src="../js/fileinput.js" type="text/javascript"></script>
-<script src="../js/locales/fr.js" type="text/javascript"></script>
-<script src="../js/locales/es.js" type="text/javascript"></script>
-<script src="../themes/fas/theme.js" type="text/javascript"></script>
-<script src="../themes/explorer-fas/theme.js" type="text/javascript"></script>
 </body>
+
 </html>

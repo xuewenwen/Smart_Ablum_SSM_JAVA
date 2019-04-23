@@ -91,24 +91,4 @@
         set user_size=user_size-#{size}
         where user_id=#{userId}
     </update>
-
-    <!--查找所有的用户信息-->
-    <select id="selectAll" resultType="com.imooc.demo.bo.User">
-        SELECT *
-        FROM `user`
-    </select>
-
-    <!--若job计算出来的数据与后台的数据不同则替换-->
-    <update id="updateSizeByJob">
-        update user
-        set user_size=#{size}
-        where user_id=#{userId}
-    </update>
-
-    <!--查找该用户的详细信息-->
-    <select id="selectByUserId" resultType="com.imooc.demo.bo.User">
-        SELECT *
-        FROM user
-        WHERE user_id = #{id}
-    </select>
 </mapper>

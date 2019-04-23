@@ -30,7 +30,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
             if (url.toLowerCase().indexOf("login") >= 0 || url.toLowerCase().indexOf("register")>0 || url.toLowerCase().indexOf("activate")>0||url.toLowerCase().indexOf("retrievepassword")>0) {
                 return true;
             }
-             //通过session来判断你是否登陆成功
+             //通过seesion来判断你是否登陆成功
             HttpSession session = httpServletRequest.getSession();
             if (session.getAttribute("user") != null) {
                 return true;

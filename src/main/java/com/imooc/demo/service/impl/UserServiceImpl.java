@@ -114,9 +114,4 @@ public class UserServiceImpl implements UserService {
     public void updateMinusSize(Long size, Integer id) {
         userDao.updateMinusSize(size,id);
     }
-
-    @Override
-    public User selectByUserId(Integer id) {
-        return userDao.selectByUserId(id);
-    }
 }

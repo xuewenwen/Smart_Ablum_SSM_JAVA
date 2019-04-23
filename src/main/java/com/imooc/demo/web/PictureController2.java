@@ -46,14 +46,10 @@ public class PictureController2 {
     //显示所有的照片
     @RequestMapping("/list/{albumId}")
     public String listPicture(@PathVariable String albumId, ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        HttpSession session = request.getSession();
-        User user=(User)session.getAttribute("user");
-        int userId = user.getUserId();
         Integer id = Integer.parseInt(albumId);
         String albumName = albumService.selectAlbumName(id);
         model.addAttribute("name",albumName);
         model.addAttribute("id",id);
-        model.addAttribute("userId",userId);
         return "/picture/show";
     }
 
@@ -76,6 +72,10 @@ public class PictureController2 {
             albumService.updateMinusNum(albumId);
         }
     }
+    @RequestMapping("/lisS")
+    public String a(){
+        return "/lisS";
+    }
 
     @RequestMapping("/picture/pictureList/{albumId}")
     //int currentPage,int pageSize
@@ -85,7 +85,7 @@ public class PictureController2 {
         Integer id = Integer.parseInt(albumId);
         session.setAttribute("album",id);
         //一页最多显示20张
-        int pageSize = 20;
+        int pageSize = 10;
         List<Picture> picture = pictureService.listPictureByPage(current, pageSize,id);
         model.addAttribute("pic",picture);
         return "/picture/pictureList";

@@ -67,12 +67,12 @@ public class UserController {
             return errorCode;
         }
    }
-   @RequestMapping(value = "/checkEmail" ,method = RequestMethod.POST)
+   @RequestMapping(value = "/SendCheckCode" ,method = RequestMethod.POST)
     public int changePassword(@RequestParam("userEmail") String userEmail) throws Exception {
        int userCode = new Random().nextInt(899999) + 100000;
        int errorCode=2;
        boolean check=userService.checkAccountByEmail(userEmail);
-       if (check){//如果账号存在才能找回密码
+       if (!check){//如果账号存在才能找回密码
        userService.updateCheckCodeByEmail(userEmail,userCode);
        String message="您的注册验证码为："+userCode;
        userService.sendSimpleMail(userEmail,"注册验证码",message);
@@ -80,7 +80,6 @@ public class UserController {
        return userCode;}
        return errorCode;
    }
-
    @RequestMapping(value = "/updatePassword",method = RequestMethod.POST)
     public void updatePassword(@RequestParam("userEmail") String userEmail,@RequestParam("userPassword") String userPassword){
        userService.updateUserPasswordByEmail(userEmail,userPassword);

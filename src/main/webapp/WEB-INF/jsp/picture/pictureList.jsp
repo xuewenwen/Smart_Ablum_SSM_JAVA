@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:forEach items="${pic}" var="pic" varStatus="picStatus">
+    <%--<script> var name  = "${pic.pictureName}"</script>--%>
         <div class="col-xs-6 col-md-3" data-toggle="modal" data-target="#myCarouselModal">
             <a href="#" class="thumbnail" style="text-align:center;"  pic_index="${picStatus.index}" >
                 <label class="option block mn" style="text-align:left;display:none">
