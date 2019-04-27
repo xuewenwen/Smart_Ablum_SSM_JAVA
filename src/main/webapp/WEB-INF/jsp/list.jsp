@@ -52,9 +52,23 @@
       <div style="display: inline-block;
       height: 60px;
       line-height: 60px;">
-        <input type="text" class="form-control" style="height: 30px;width:auto;display: inline-block;">
-        <button class="btn btn-primary" type="button"
-          style="height: 30px; line-height: 30px; padding: 0 12px;">搜索!</button>
+        <input type="text" class="form-control" style="height: 30px;width:auto;display: inline-block;" id="tagName">
+        <script>
+          function judgment() {
+            var a=document.getElementById("tagName").value;
+            //var i = parseInt(a)
+            if(a!=null && a!="" ){
+              window.location.href = "/picture/search/"+a;
+              //alert(a);
+            }
+            else {
+              alert("输入异常");
+            }
+            // alert(a);
+          }
+        </script>
+        <input class="btn btn-primary" type="button"
+          style="height: 30px; line-height: 30px; padding: 0 12px;" value="搜索!" onclick="judgment()"></input>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal_2"
                 data-target=".bs-example-modal-sm" style="height: 30px; line-height: 30px; padding: 0 12px;">创建相册</button>
 
