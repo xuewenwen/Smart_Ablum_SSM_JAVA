@@ -29,12 +29,5 @@ public class GlobalController {
         session.setAttribute("user", user);
         return "redirect:list";
     }
-
-//    @RequestMapping("/list")
-//    public  String intoHome(){
-//
-//            return "list";
-//
-//    }
-
+    
 }

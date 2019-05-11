@@ -48,6 +48,10 @@ public class PictureController2 {
     public String listPicture(@PathVariable String albumId, ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception {
         Integer id = Integer.parseInt(albumId);
         String albumName = albumService.selectAlbumName(id);
+        HttpSession session = request.getSession();
+        User user=(User)session.getAttribute("user");
+        String name = user.getUserName();
+        model.addAttribute("userName",name);
         model.addAttribute("name",albumName);
         model.addAttribute("id",id);
         return "/picture/show";

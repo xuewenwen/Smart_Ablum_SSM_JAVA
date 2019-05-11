@@ -3,13 +3,14 @@ package com.imooc.demo.web;
 import com.imooc.demo.bo.User;
 import com.imooc.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.Random;
 
-@RestController
+@Controller
 public class UserController {
 
     @Autowired
@@ -93,6 +94,10 @@ public class UserController {
     public String exit(HttpSession session){
        session.removeAttribute("user");
        return "redirect:/login";
+   }
+   @RequestMapping("/retrievepassword")
+   public String retrievepassword(){
+       return "/retrievepassword";
    }
 
 }

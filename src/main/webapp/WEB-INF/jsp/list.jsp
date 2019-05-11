@@ -120,31 +120,7 @@
         </div>
     
       </div>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown menu-merge">
-          <a href="#" class="dropdown-toggle fw600 p15" data-toggle="dropdown">
-            <img src="assets/img/avatars/5.jpg" alt="avatar" class="mw30 br64">
-            <span class="hidden-xs pl15"> 薛剑文 </span>
-            <span class="caret caret-tp hidden-xs"></span>
-          </a>
-          <ul class="dropdown-menu list-group dropdown-persist w250" role="menu">
-            <li class="list-group-item">
-              <a href="#" class="animated animated-short fadeInUp">
-                <span class="fa fa-user"></span> 个人信息
-                <span class="label label-warning"></span>
-              </a>
-            </li>
-            <li class="list-group-item">
-              <a href="#" class="animated animated-short fadeInUp">
-                <span class="fa fa-gear"></span> 设置密码 </a>
-            </li>
-            <li class="dropdown-footer">
-              <a href="#" class="">
-                <span class="fa fa-power-off pr5"></span> 退出 </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
+
     </header>
     <!-- End: Header -->
 
@@ -164,9 +140,9 @@
                 <img src="assets/img/avatars/3.jpg" class="img-responsive">
               </a>
               <div class="media-body">
-                <div class="media-author">薛剑文</div>
+                <div class="media-author">${name}</div>
                 <div class="media-links">
-                  <a href="pages_login.html">退出</a>
+                  <a href="/exit">退出</a>
                 </div>
               </div>
             </div>
@@ -193,9 +169,6 @@
             <a href="#">
               <span class="glyphicon glyphicon-book"></span>
               <span class="sidebar-title">全部相片</span>
-              <span class="sidebar-title-tray">
-                <span class="label label-xs bg-primary">New</span>
-              </span>
             </a>
           </li>
           <li class="active">
@@ -208,6 +181,12 @@
             <a href="/recycle/recycle">
               <span class="fa fa-calendar"></span>
               <span class="sidebar-title">回收站</span>
+            </a>
+          </li>
+          <li>
+            <a href="/retrievepassword" class="animated animated-short fadeInUp">
+              <span class="fa fa-gear"></span>
+              <span class="sidebar-title">密码修改</span>
             </a>
           </li>
 
@@ -225,6 +204,11 @@
 
       <!-- End: Sidebar Left Content -->
         </ul>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0.0; min-width: 2em;">
+            0.0
+          </div>
+        </div>
       </div>
     </aside>
 
@@ -250,30 +234,6 @@
               <!-- message toolbar header -->
               <div class="panel-menu">
                 <div class="row">
-                  <div class="hidden-xs hidden-sm col-md-3">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-default light ">
-                        <i class="fa fa-refresh"></i>
-                      </button>
-                      <button type="button" class="btn btn-default light">
-                        <i class="fa fa-trash"></i>
-                      </button>
-                      <button type="button" class="btn btn-default light" data-toggle="modal" data-target="#myModal">
-                        <i class="fa fa-plus"></i>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="col-xs-12 col-md-9 text-right">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-default light">
-                        <i class="fa fa-chevron-left"></i>
-                      </button>
-                      <button type="button " class="btn btn-default light">
-                        <i class="fa fa-chevron-right"></i>
-
-                      </button>
-                    </div>
-                  </div>
                 </div>
               </div>
               <!--  hide-->

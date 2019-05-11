@@ -9,6 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Arrays;
 
 @Configuration
 public class WebAppConfig extends WebMvcConfigurerAdapter {
@@ -19,7 +20,10 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 //        registry.addInterceptor(new InterceptorConfig()).addPathPatterns("/**").excludePathPatterns("index");
 
         //就是这个
-        registry.addInterceptor(new InterceptorConfig()).addPathPatterns("/**").excludePathPatterns("/index","/login","/admin/login","/retrievepassword");
+        registry.addInterceptor(new InterceptorConfig()).addPathPatterns("/**")
+                .excludePathPatterns("/index","/login","/admin/login","/retrievepassword")
+                //springboot2+之后需要将静态资源文件的访问路径 也排除
+                .excludePathPatterns("/assets/**", "/vendor/**", "/js/**", "/css/**", "/images/**", "/nuget/**", "/scss/**", "/themes/**", "/ts/**");
     }
 
     private class InterceptorConfig implements HandlerInterceptor {
