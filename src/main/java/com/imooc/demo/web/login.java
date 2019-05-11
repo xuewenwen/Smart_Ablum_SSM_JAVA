@@ -10,4 +10,9 @@ public class login {
     public String index(){
         return "login";
     }
+
+    @RequestMapping("/retrievepassword")
+    public String retrievepassword(){
+        return "/retrievepassword";
+    }
 }

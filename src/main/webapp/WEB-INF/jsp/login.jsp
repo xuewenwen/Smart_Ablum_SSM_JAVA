@@ -103,7 +103,6 @@
                     if (userPassword!=userRepeat) {
                         alert("两次输入密码不一致");
                     }
-
                     $.ajax({
                             type: "POST",
                             url: "/Register",

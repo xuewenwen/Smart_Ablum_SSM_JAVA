@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.Random;
 
-@Controller
+@RestController
 public class UserController {
 
     @Autowired
@@ -95,9 +95,6 @@ public class UserController {
        session.removeAttribute("user");
        return "redirect:/login";
    }
-   @RequestMapping("/retrievepassword")
-   public String retrievepassword(){
-       return "/retrievepassword";
-   }
+
 
 }
