@@ -61,31 +61,8 @@
       </a>
       <span id="toggle_sidemenu_l" class="ad ad-lines"></span>
     </div>
-    <ul class="nav navbar-nav navbar-right">
-      <li class="dropdown menu-merge">
-        <a href="#" class="dropdown-toggle fw600 p15" data-toggle="dropdown">
-          <img src="assets/img/avatars/5.jpg" alt="avatar" class="mw30 br64">
-          <span class="hidden-xs pl15"> 管理员 </span>
-          <span class="caret caret-tp hidden-xs"></span>
-        </a>
-        <ul class="dropdown-menu list-group dropdown-persist w250" role="menu">
-          <li class="list-group-item">
-            <a href="#" class="animated animated-short fadeInUp">
-              <span class="fa fa-user"></span> 个人信息
-              <span class="label label-warning"></span>
-            </a>
-          </li>
-          <li class="list-group-item">
-            <a href="#" class="animated animated-short fadeInUp">
-              <span class="fa fa-gear"></span> 设置密码 </a>
-          </li>
-          <li class="dropdown-footer">
-            <a href="#" class="">
-              <span class="fa fa-power-off pr5"></span> 退出 </a>
-          </li>
-        </ul>
-      </li>
-    </ul>
+
+
   </header>
   <!-- End: Header -->
 
@@ -102,7 +79,7 @@
         <div class="sidebar-widget author-widget">
           <div class="media">
             <a class="media-left" href="#">
-              <img src="assets/img/avatars/3.jpg" class="img-responsive">
+              <img src="/assets/img/avatars/5.jpg" class="img-responsive">
             </a>
             <div class="media-body">
               <div class="media-author">管理员</div>
@@ -178,20 +155,7 @@
             <!-- message toolbar header -->
             <div class="panel-menu">
               <div class="row">
-                <div class="hidden-xs hidden-sm col-md-3">
-                  <div class="btn-group">
-                  </div>
-                </div>
-                <div class="col-xs-12 col-md-9 text-right">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-default light">
-                      <i class="fa fa-chevron-left"></i>
-                    </button>
-                    <button type="button" class="btn btn-default light">
-                      <i class="fa fa-chevron-right"></i>
-                    </button>
-                  </div>
-                </div>
+
               </div>
             </div>
             <!-- message listings table -->

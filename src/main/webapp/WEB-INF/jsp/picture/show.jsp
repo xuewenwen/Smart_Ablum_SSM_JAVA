@@ -140,7 +140,6 @@
             </div>
           </div>
 
-
           <!-- Sidebar Widget - Search (hidden) -->
           <div class="sidebar-widget search-widget hidden">
             <div class="input-group">
@@ -329,6 +328,9 @@
             </div>
               <input type="button" onclick="fun()" value="删除" id="delete1">
             <!-- end: .tray-center -->
+            </div>
+          </div>
+        </div>
       </section>
       <!-- End: Content -->
 

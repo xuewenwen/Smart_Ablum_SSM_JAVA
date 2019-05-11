@@ -101,10 +101,7 @@
                       <textarea class="form-control" id="albumDescription" style="height: 100px"
                                 placeholder="描述....."></textarea>
                     </div>
-
                     <div>
-
-
                     </div>
                   </form>
                 </div>
