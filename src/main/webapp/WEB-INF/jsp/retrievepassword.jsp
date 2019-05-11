@@ -91,7 +91,7 @@
                                                 }else {
                                                 $.ajax({
                                                     type: "POST",
-                                                    url: "/checkEmail",
+                                                    url: "/SendCheckCode",
                                                     dataType: "json",
                                                     data: {
                                                         "userEmail": userMail

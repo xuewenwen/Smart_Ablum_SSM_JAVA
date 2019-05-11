@@ -21,7 +21,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 
         //就是这个
         registry.addInterceptor(new InterceptorConfig()).addPathPatterns("/**")
-                .excludePathPatterns("/index","/login","/admin/login","/retrievepassword")
+                .excludePathPatterns("/index","/login","/admin/login","/retrievepassword","/updatePassword","/SendCheckCode")
                 //springboot2+之后需要将静态资源文件的访问路径 也排除
                 .excludePathPatterns("/assets/**", "/vendor/**", "/js/**", "/css/**", "/images/**", "/nuget/**", "/scss/**", "/themes/**", "/ts/**");
     }

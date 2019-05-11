@@ -154,19 +154,19 @@
         <ul class="nav sidebar-menu">
           <li class="sidebar-label pt20">我的面板</li>
           <li>
-            <a href="#">
+            <a href="/showAll">
               <span class="glyphicon glyphicon-book"></span>
               <span class="sidebar-title">全部相片</span>
             </a>
           </li>
-          <li class="active">
-            <a href="#">
+          <li>
+            <a href="/list">
               <span class="glyphicon glyphicon-home"></span>
               <span class="sidebar-title">我的相册</span>
             </a>
           </li>
           <li>
-            <a href="">
+            <a href="/recycle/recycle">
               <span class="fa fa-calendar"></span>
               <span class="sidebar-title">回收站</span>
             </a>
