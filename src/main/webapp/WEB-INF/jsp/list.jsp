@@ -202,9 +202,12 @@
 
       <!-- End: Sidebar Left Content -->
         </ul>
+        <script>
+          var size = ${size}/(5*1024*1024*1024);
+        </script>
         <div class="progress">
-          <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0.0; min-width: 2em;">
-            0.0
+          <div class="progress-bar" role="progressbar" aria-valuenow="size" aria-valuemin="0" aria-valuemax="100" style="width: 0.0; min-width: 2em;">
+            <script>document.write(size);</script>
           </div>
         </div>
       </div>

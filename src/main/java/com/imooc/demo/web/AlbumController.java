@@ -5,6 +5,7 @@ import com.imooc.demo.bo.Picture;
 import com.imooc.demo.bo.User;
 import com.imooc.demo.service.AlbumService;
 import com.imooc.demo.service.PictureService;
+import com.imooc.demo.service.UserService;
 import com.imooc.demo.utils.ImagUtil;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,9 @@ public class AlbumController {
     @Autowired
     private AlbumService albumService;
 
+    @Autowired
+    private UserService userService;
+
     @RequestMapping("/srcAdd")
     public String srcAdd(){
         return "srcAdd";
@@ -47,7 +51,11 @@ public class AlbumController {
         HttpSession session = request.getSession();
         User user=(User)session.getAttribute("user");
         String name = user.getUserName();
+        int id = user.getUserId();
         model.addAttribute("name",name);
+        User user1 = userService.selectByUserId(id);
+        Long size = user1.getUserSize();
+        model.addAttribute("size",size);
         return "list";
     }
     @RequestMapping("/albumList")

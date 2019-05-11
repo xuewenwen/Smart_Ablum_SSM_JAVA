@@ -23,4 +23,6 @@ public interface UserService {
     public void updateSize(Long size,Integer id);
 
     public void updateMinusSize(Long size,Integer id);
+
+    public User selectByUserId(@Param("id")Integer id);
 }

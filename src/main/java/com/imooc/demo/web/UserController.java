@@ -90,11 +90,9 @@ public class UserController {
        userService.updateUserInfoByEmail(userEmail,userName);
    }
 
-   @RequestMapping("/exit")
-    public String exit(HttpSession session){
-       session.removeAttribute("user");
-       return "redirect:/login";
-   }
+
+
+
 
 
 }

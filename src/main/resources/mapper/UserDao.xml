@@ -17,6 +17,11 @@
         where user.user_id=album.user_id AND user.user_id=#{id}
         GROUP BY user.user_id
     </select>
+    <select id="selectByUserId" resultType="com.imooc.demo.bo.User">
+        SELECT *
+        FROM `user`
+        WHERE user_id=#{id}
+    </select>
 
     <select id="selectUserByName" resultType="com.imooc.demo.bo.User">
        select * from user where user_name=#{userName}

@@ -28,5 +28,7 @@ public interface UserDao {
 
     void updateMinusSize(@Param("size") Long size, @Param("userId")Integer id);//更新空间
 
+    User selectByUserId(@Param("id")Integer id);
+
 
 }
