@@ -213,7 +213,14 @@
               <c:forEach items="${tag}" var="tag">
                 <div class="col-xs-6 col-md-3">
                   <a href="#" class="thumbnail" style="text-align:center;">
-                    <img src="${tag}" alt="...">
+                    <img src="${tag}" alt="..." id="look">
+                    <style>
+                      #look{
+                        weight:200px;
+                        height:150px;
+                        border:1px solid #CCCCCC;
+                      }
+                    </style>
                   </a>
                 </div>
               </c:forEach>

@@ -154,8 +154,8 @@
               <!-- message toolbar header -->
               <div class="panel-menu">
                 <div class="row">
-                  <div class="col-xs-12 col-md-9 text-right">
-                    <div class="btn-group">
+                  <div class="col-xs-12 text-right">
+                    <div class="btn-group" >
                       <button type="button" class="btn btn-default light" id="left">
                         <i class="fa fa-chevron-left"></i>
                       </button>
