@@ -8,7 +8,7 @@
         from picture,pic_tag,tag,album,user
         where picture.picture_id=pic_tag.picture_id AND pic_tag.tag_id=tag.tag_id
 			AND picture.album_id=album.album_id AND album.user_id=`user`.user_id
-			AND tag.tag_name=#{tagName} AND picture.picture_status=1 AND `user`.user_name=#{id}
+			AND tag.tag_name=#{tagName} AND picture.picture_status=1 AND `user`.user_id=#{id}
     </select>
 
     <insert id="insertPicture" useGeneratedKeys="true" keyProperty="pictureId" keyColumn="picture_id" parameterType="com.imooc.demo.bo.Picture">

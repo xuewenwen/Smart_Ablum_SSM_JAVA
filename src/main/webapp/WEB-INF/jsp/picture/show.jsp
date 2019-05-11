@@ -38,6 +38,10 @@
         $(".picture").parent().show();
         $("#delete1").show();
       });
+      $("#delete1").click(function(){
+        $(".picture").parent().hide();
+        $("#delete1").hide();
+      });
     });
 
   </script>
