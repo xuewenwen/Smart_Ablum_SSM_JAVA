@@ -132,7 +132,7 @@
           <div class="sidebar-widget author-widget">
             <div class="media">
               <a class="media-left" href="#">
-                <img src="/assets/img/avatars/3.jpg" class="img-responsive">
+                <img src="/assets/img/avatars/0.png" class="img-responsive">
               </a>
               <div class="media-body">
                 <div class="media-author">${name}</div>

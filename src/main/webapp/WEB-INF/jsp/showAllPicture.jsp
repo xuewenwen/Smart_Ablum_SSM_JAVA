@@ -5,7 +5,6 @@
     <%--<script> var name  = "${pic.pictureName}"</script>--%>
         <div class="col-xs-6 col-md-3" data-toggle="modal" data-target="#myCarouselModal">
             <a href="#" class="thumbnail" style="text-align:center;"  pic_index="${pictureUrl}" >
-                <div>
                 <img src="${pictureUrl}" alt="..." id="look">
                 <style>
                     #look{
@@ -14,7 +13,6 @@
                         border:1px solid #CCCCCC;
                     }
                 </style>
-        </div>
             </a>
         </div>
 </c:forEach>
