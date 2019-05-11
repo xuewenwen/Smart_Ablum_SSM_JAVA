@@ -58,5 +58,18 @@
         where picture_id=#{id}
     </select>
 
+    <select id="selectAllByUserId" resultType="java.lang.String">
+        SELECT picture_url
+        FROM album,picture
+        WHERE album.album_id=picture.album_id AND user_id=#{id} and picture_status=1
+        ORDER BY picture_create_time DESC
+    </select>
+
+    <select id="selectAllCount" resultType="java.lang.Integer">
+        SELECT count(picture_id)
+        FROM album,picture
+        WHERE album.album_id=picture.album_id AND user_id=#{id} and picture_status=1
+    </select>
+
 
 </mapper>

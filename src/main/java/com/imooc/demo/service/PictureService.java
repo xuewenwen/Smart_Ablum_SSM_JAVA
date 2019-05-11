@@ -19,4 +19,6 @@ public interface PictureService {
     public List<Picture> listPictureByPage(int currentPage,int pageSize,int id)throws Exception;
 
     public Long selectPicSize(Integer id);
+
+    public List<String> selectAllByUserId(int currentPage, int pageSize,int id);
 }

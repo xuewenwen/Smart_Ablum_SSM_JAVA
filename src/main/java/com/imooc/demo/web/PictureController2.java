@@ -95,5 +95,27 @@ public class PictureController2 {
         return "/picture/pictureList";
     }
 
+    @RequestMapping("/showAll")
+    public String showAll(HttpSession session,ModelMap model){
+        User user=(User)session.getAttribute("user");
+        String name = user.getUserName();
+        model.addAttribute("name",name);
+        return "/showAll";
+    }
+
+    @RequestMapping("/showAllPicture")
+    public String showAllPicture(@RequestParam("currentPage") String currentPage,HttpSession session,ModelMap model){
+        int current = Integer.parseInt(currentPage);
+        //id是相册id
+        //一页最多显示20张
+        int pageSize = 20;
+        User user=(User)session.getAttribute("user");
+        int userId = user.getUserId();
+        List<String> pictureUrl = pictureService.selectAllByUserId(current, pageSize,userId);
+        model.addAttribute("pictureUrl",pictureUrl);
+        return "/showAllPicture";
+    }
+
+
 
 }

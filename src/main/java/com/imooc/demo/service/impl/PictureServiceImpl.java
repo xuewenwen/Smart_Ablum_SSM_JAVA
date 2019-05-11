@@ -50,13 +50,11 @@ public class PictureServiceImpl implements PictureService {
         PageHelper.startPage(currentPage, pageSize);
         List<Picture> picturesList = pictureDao.listPicture(id);
         int count = pictureDao.listPictureCount(id);
-        //PageBean<Picture> pageData = new PageBean<>(currentPage, pageSize, count);
         PageBean<Picture> pageData = new PageBean<>(currentPage, pageSize, count);
         //总页数
         int total = pageData.getTotalPage();
         //第一页
         if(currentPage<1){
-            //currentPage = total;
             pageData = new PageBean<>(total, pageSize, count);
         }
         //最后一页
@@ -71,6 +69,27 @@ public class PictureServiceImpl implements PictureService {
     @Override
     public Long selectPicSize(Integer id) {
         return pictureDao.selectPicSize(id);
+    }
+
+    @Override
+    public List<String> selectAllByUserId(int currentPage, int pageSize,int id) {
+        PageHelper.startPage(currentPage, pageSize);
+        List<String> picturesUrl = pictureDao.selectAllByUserId(id);
+        int count = pictureDao.selectAllCount(id);
+        PageBean<String> pageData = new PageBean<>(currentPage, pageSize, count);
+        //总页数
+        int total = pageData.getTotalPage();
+        //第一页
+        if(currentPage<1){
+            pageData = new PageBean<>(total, pageSize, count);
+        }
+        //最后一页
+        if(currentPage>total){
+            // currentPage=1;
+            pageData = new PageBean<>(1, pageSize, count);
+        }
+        pageData.setItems(picturesUrl);
+        return pageData.getItems();
     }
 
 
